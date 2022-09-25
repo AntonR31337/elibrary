@@ -1,6 +1,6 @@
-import './style.css';
+import './style.scss';
 
-export function Footer(){
+export function Footer() {
     return (
         <footer>
             <div className='container'>

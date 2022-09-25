@@ -13,6 +13,9 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 
+import LoginIcon from '@mui/icons-material/Login';
+import { Link } from "react-router-dom";
+
 import SearchIcon from '@mui/icons-material/Search';
 import { styled, alpha } from '@mui/material/styles';
 import InputBase from '@mui/material/InputBase';
@@ -65,6 +68,10 @@ export const SearchAppBar = () => {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
+
+
+
+
 
   return (
     <AppBar position="static">
@@ -162,6 +169,13 @@ export const SearchAppBar = () => {
                 <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
               </IconButton>
             </Tooltip>
+            <Tooltip title="Click here to LogIN">
+              <Link to={"/login"}>
+                <IconButton color="secondary" sx={{ p: 2, color: 'white' }}>
+                  <LoginIcon />
+                </IconButton>
+              </Link>
+            </Tooltip>
             <Menu
               sx={{ mt: '45px' }}
               id="menu-appbar"
@@ -187,14 +201,14 @@ export const SearchAppBar = () => {
           </Box>
         </Toolbar>
         <Search>
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase
-              placeholder="Search…"
-              inputProps={{ 'aria-label': 'search' }}
-            />
-          </Search>
+          <SearchIconWrapper>
+            <SearchIcon />
+          </SearchIconWrapper>
+          <StyledInputBase
+            placeholder="Search…"
+            inputProps={{ 'aria-label': 'search' }}
+          />
+        </Search>
       </Container>
     </AppBar>
   );

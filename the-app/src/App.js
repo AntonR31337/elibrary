@@ -1,17 +1,16 @@
 import './App.scss';
-import { Header } from "./components/header";
-import { Footer } from "./components/footer";
-import { BookList } from "./components/booklist";
+import { Route, Routes } from 'react-router-dom';
+import MainPage from './components/mainPage/MainPage';
+import LogIn from './components/logIn/LogIn';
 
 function App() {
 
   return (
     <div className="App">
-      <Header />
-      <main className='container main_wrapper'>
-        <BookList />
-      </main>
-      <Footer />
+      <Routes>
+        <Route path="/" element={<MainPage />} />
+        <Route path="/login" element={<LogIn />} />
+      </Routes>
     </div>
   );
 }

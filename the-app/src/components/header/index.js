@@ -1,7 +1,7 @@
-import "./style.css";
-import {SearchAppBar} from "./searchappbar/index.js";
+import "./style.scss";
+import { SearchAppBar } from "./searchappbar/index.js";
 
-export function Header(){
+export function Header() {
     return (
         <SearchAppBar />
     );
