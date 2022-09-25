@@ -1,15 +1,15 @@
 import './App.scss';
 import { Header } from "./components/header";
 import { Footer } from "./components/footer";
-import { BookCard } from "./components/card";
+import { BookList } from "./components/booklist";
 
 function App() {
+
   return (
     <div className="App">
       <Header />
-      <main className='container'>
-        Main block
-        <BookCard />
+      <main className='container main_wrapper'>
+        <BookList />
       </main>
       <Footer />
     </div>
