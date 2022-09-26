@@ -1,6 +1,8 @@
 import { Button, TextField } from "@mui/material";
 import { useState } from "react";
 import FormBody from "../../UI components/FormBody";
+import { auth } from "../../firebase/firebase-config";
+import { signInWithEmailAndPassword } from "firebase/auth";
 
 const LoginForm = ({ onSubmit }) => {
     //локально сохраняем данные инпутов
@@ -14,11 +16,23 @@ const LoginForm = ({ onSubmit }) => {
         setPass(event.target.value);
     };
     //обработчик отправки формы
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
         onSubmit({ login, pass });
         setLogin("");
         setPass("");
+
+        try {
+            const user = await signInWithEmailAndPassword (
+                auth,
+                login,
+                pass
+            )
+            console.log(user);
+        } catch (error) {
+            console.log(error.message);
+            alert('Неверный логин или пароль');
+        }
     };
 
     return (
