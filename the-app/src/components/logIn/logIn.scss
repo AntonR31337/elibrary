@@ -4,8 +4,13 @@
         flex-direction: column;
         align-items: center;
     }
-    &__text,&__heading{
+    &__text,&__link,&__heading{
         color: #4dabf5;
+    }
+    &__link{
+        font-weight: 500;
+        font-size: 18px;
+        text-decoration: none;
     }
 }
 

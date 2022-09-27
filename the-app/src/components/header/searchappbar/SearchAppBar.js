@@ -19,6 +19,8 @@ import { Link } from "react-router-dom";
 import SearchIcon from '@mui/icons-material/Search';
 import { styled, alpha } from '@mui/material/styles';
 import InputBase from '@mui/material/InputBase';
+import LogoutIcon from '@mui/icons-material/Logout';
+import { logOut } from '../../../firebase/firebaseConfig';
 
 const pages = ['Жанры', 'Популярное', 'Подборки'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
@@ -50,7 +52,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   color: 'inherit'
 }));
 
-export const SearchAppBar = () => {
+export const SearchAppBar = ({ authed }) => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -164,18 +166,27 @@ export const SearchAppBar = () => {
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-              </IconButton>
-            </Tooltip>
-            <Tooltip title="Click here to LogIN">
-              <Link to={"/login"}>
-                <IconButton color="secondary" sx={{ p: 2, color: 'white' }}>
-                  <LoginIcon />
-                </IconButton>
-              </Link>
-            </Tooltip>
+            {authed
+              ? <>
+                <Tooltip title="Open settings">
+                  <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                    <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                  </IconButton>
+                </Tooltip>
+                <Tooltip title="Click here to LogOut">
+                  <IconButton onClick={logOut} color="secondary" sx={{ size: "large", p: 2, color: 'white' }}>
+                    <LogoutIcon />
+                  </IconButton>
+                </Tooltip>
+              </>
+
+              : <Tooltip title="Click here to LogIN">
+                <Link to={"/login"}>
+                  <IconButton color="secondary" sx={{ size: "large", p: 2, color: 'white' }}>
+                    <LoginIcon />
+                  </IconButton>
+                </Link>
+              </Tooltip>}
             <Menu
               sx={{ mt: '45px' }}
               id="menu-appbar"

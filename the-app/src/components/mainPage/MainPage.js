@@ -1,6 +1,6 @@
 import { BookCard } from "../card";
 import { Footer } from "../footer";
-import { Header } from "../header";
+import { Header } from "../header/Header";
 import uniqid from "uniqid";
 
 const books = [
@@ -30,10 +30,10 @@ const books = [
     }
 ];
 
-const MainPage = () => {
+const MainPage = ({ authed }) => {
     return (
         <>
-            <Header />
+            <Header authed={authed} />
             <main className='container main_wrapper'>
                 {books.map((book) => (
                     <BookCard key={uniqid()} book={book} />
