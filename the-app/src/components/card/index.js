@@ -5,6 +5,7 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import CardMedia from '@mui/material/CardMedia';
 
 export function BookCard(props) {
     const book = props.book;
@@ -13,16 +14,17 @@ export function BookCard(props) {
       <Card variant="outlined">
       <React.Fragment>
     <CardContent>
+    <CardMedia
+        component="img"
+        height="194"
+        image={book.img}
+        alt="Paella dish"
+      />
       <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
         {book.title}
       </Typography>
-      <Typography sx={{ mb: 1.5 }} color="text.secondary">
-        adjective
-      </Typography>
       <Typography variant="body2">
       {book.author}
-        <br />
-        {'"a benevolent smile"'}
       </Typography>
     </CardContent>
     <CardActions>
