@@ -28,6 +28,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { textSearch } from '../../../store/actions/textSearchAction';
 import { bookSearch } from '../../../store/actions/booksSearchAction';
 
+import "./style.scss";
+
 const pages = ['Жанры', 'Популярное', 'Подборки'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
@@ -42,21 +44,6 @@ const Search = styled('div')(({ theme }) => ({
   marginLeft: 0,
   marginBottom: 5,
   width: '100%',
-}));
-
-const SearchIconWrapper = styled('div')(({ theme }) => ({
-  padding: theme.spacing(0, 2),
-  height: '100%',
-  position: 'absolute',
-  pointerEvents: 'none',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-}));
-
-const StyledInputBase = styled(InputBase)(({ theme }) => ({
-  color: 'inherit',
-  paddingLeft: 50,
 }));
 
 export const SearchAppBar = ({ authed }) => {
@@ -230,6 +217,15 @@ export const SearchAppBar = ({ authed }) => {
             ))}
           </Box>
 
+          <form className='searchForm' onSubmit={handleSubmit}>
+            <input className='searchForm__input'
+                placeholder="Search…"
+                type="text"
+                onChange={handleChange}
+              />
+            <button className='searchForm__btn' type="submit"><SearchIcon /></button>
+        </form>
+
           <Box sx={{ flexGrow: 0 }}>
             {authed
               ? <>
@@ -276,26 +272,6 @@ export const SearchAppBar = ({ authed }) => {
             </Menu>
           </Box>
         </Toolbar>
-        {/* <Search>
-          <SearchIconWrapper>
-            <SearchIcon />
-          </SearchIconWrapper>
-          <StyledInputBase
-            placeholder="Search…"
-            inputProps={{ 'aria-label': 'search' }}
-          />
-        </Search> */}
-        <form onSubmit={handleSubmit}>
-            <input
-                type="text"
-                onChange={handleChange}
-                
-            />
-            <button type="submit">Search</button>
-
-                            
-        </form>
-        
       </Container>
     </AppBar>
   );
