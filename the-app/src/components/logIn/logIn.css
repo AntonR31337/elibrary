@@ -1,0 +1,24 @@
+.main__wrapper, .main__text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.main__text, .main__link, .main__heading {
+  color: #4dabf5;
+}
+.main__link {
+  font-weight: 500;
+  font-size: 18px;
+  text-decoration: none;
+}
+
+.error {
+  position: absolute;
+  background-color: #ff6333;
+  z-index: 5;
+  top: 20%;
+  text-align: center;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px #ff6333, 0 0 50px #ff6333, 0 0 80px #ff6333;
+}/*# sourceMappingURL=logIn.css.map */
