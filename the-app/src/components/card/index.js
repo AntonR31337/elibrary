@@ -7,31 +7,37 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import CardMedia from '@mui/material/CardMedia';
 
+
 export function BookCard(props) {
-    const book = props.book;
-  return (
-    <Box sx={{ minWidth: 275 }}>
-      <Card variant="outlined">
-      <React.Fragment>
-    <CardContent>
-    <CardMedia
+  const book = props.book;
+  
+
+return (
+  <Box sx={{ minWidth: 275 }}>
+    <Card variant="outlined">
+    <React.Fragment>
+  <CardContent>
+  <CardMedia
         component="img"
         height="194"
-        image={book.img}
+        image={book.volumeInfo.imageLinks.thumbnail}
         alt="Paella dish"
       />
-      <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-        {book.title}
-      </Typography>
-      <Typography variant="body2">
-      {book.author}
-      </Typography>
-    </CardContent>
-    <CardActions>
-      <Button size="small">Learn More</Button>
-    </CardActions>
-  </React.Fragment>
-      </Card>
-    </Box>
-  );
+    <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+      {book.volumeInfo.title}
+    </Typography>
+    
+    <Typography variant="body2">
+    {book.volumeInfo.authors}
+      <br />
+      {book.volumeInfo.categories}
+    </Typography>
+  </CardContent>
+  <CardActions>
+    <Button size="small">Learn More</Button>
+  </CardActions>
+</React.Fragment>
+    </Card>
+  </Box>
+);
 }

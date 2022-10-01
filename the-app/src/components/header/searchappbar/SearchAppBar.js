@@ -19,6 +19,14 @@ import { Link } from "react-router-dom";
 import SearchIcon from '@mui/icons-material/Search';
 import { styled, alpha } from '@mui/material/styles';
 import InputBase from '@mui/material/InputBase';
+import LogoutIcon from '@mui/icons-material/Logout';
+import { logOut } from '../../../firebase/firebaseConfig';
+
+import {useState} from 'react';
+import axios from 'axios';
+import { useDispatch, useSelector } from 'react-redux';
+import { textSearch } from '../../../store/actions/textSearchAction';
+import { bookSearch } from '../../../store/actions/booksSearchAction';
 
 const pages = ['Жанры', 'Популярное', 'Подборки'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
@@ -51,7 +59,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   paddingLeft: 50,
 }));
 
-export const SearchAppBar = () => {
+export const SearchAppBar = ({ authed }) => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -71,7 +79,65 @@ export const SearchAppBar = () => {
   };
 
 
+  //количество отображаемых на странице книг
+  let maxResults = 8;
+  let startIndex = 0 ;
 
+  const [apiKey, setApiKey] = useState('AIzaSyCAYJ7mjkMe1kdmZQbgayiO5QcfDUgAQEQ');
+
+  //общее количество книг, найденных по результатам поиска
+  const [totalItems, setTotalItems] = useState('');
+
+  const dispatch = useDispatch();
+  const book = useSelector(state => state.textSearch.book)
+
+  function handleChange(e) {
+    dispatch(textSearch(e.target.value))
+  }
+
+  // корректировка данных, полученных от API 
+  function missingData(data) {
+    const missData = data.data.items.map((item) => {
+      if (item.volumeInfo.hasOwnProperty('imageLinks') === false) {
+        item.volumeInfo['imageLinks'] = {thumbnail: 'http://placehold.it/128x190'};
+      }
+      if (item.volumeInfo.imageLinks.hasOwnProperty('thumbnail') === false) {
+        item.volumeInfo.imageLinks['thumbnail'] = 'http://placehold.it/128x190';
+      }
+      if (item.volumeInfo.hasOwnProperty('categories') === false) {
+        item.volumeInfo['categories'] = [];
+      }
+      if (item.volumeInfo.categories.length > 0) {
+        item.volumeInfo.categories = item.volumeInfo.categories[0].split(' ')[0];
+      }
+      if (item.volumeInfo.hasOwnProperty('title') === false) {
+        item.volumeInfo['title'] = '';
+      }
+      if (item.volumeInfo.hasOwnProperty('authors') === false) {
+        item.volumeInfo['authors'] = '';
+      }
+      if (item.volumeInfo.authors.length > 1) {
+        item.volumeInfo.authors = item.volumeInfo.authors.join(', ');
+      }
+      return item;
+    })
+    return missData;
+  }
+
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    e.target[0].value = ''
+
+    axios.get('https://www.googleapis.com/books/v1/volumes?q=' + book + '&key=' + apiKey + '&maxResults='+ maxResults + '&startIndex=' + startIndex )
+      .then(data => {
+        setTotalItems(data.data.totalItems);
+        dispatch(bookSearch(missingData(data)))
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+  }
 
 
   return (
@@ -165,18 +231,27 @@ export const SearchAppBar = () => {
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-              </IconButton>
-            </Tooltip>
-            <Tooltip title="Click here to LogIN">
-              <Link to={"/login"}>
-                <IconButton color="secondary" sx={{ p: 2, color: 'white' }}>
-                  <LoginIcon />
-                </IconButton>
-              </Link>
-            </Tooltip>
+            {authed
+              ? <>
+                <Tooltip title="Open settings">
+                  <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                    <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                  </IconButton>
+                </Tooltip>
+                <Tooltip title="Click here to LogOut">
+                  <IconButton onClick={logOut} color="secondary" sx={{ size: "large", p: 2, color: 'white' }}>
+                    <LogoutIcon />
+                  </IconButton>
+                </Tooltip>
+              </>
+
+              : <Tooltip title="Click here to LogIN">
+                <Link to={"/login"}>
+                  <IconButton color="secondary" sx={{ size: "large", p: 2, color: 'white' }}>
+                    <LoginIcon />
+                  </IconButton>
+                </Link>
+              </Tooltip>}
             <Menu
               sx={{ mt: '45px' }}
               id="menu-appbar"
@@ -201,7 +276,7 @@ export const SearchAppBar = () => {
             </Menu>
           </Box>
         </Toolbar>
-        <Search>
+        {/* <Search>
           <SearchIconWrapper>
             <SearchIcon />
           </SearchIconWrapper>
@@ -209,7 +284,18 @@ export const SearchAppBar = () => {
             placeholder="Search…"
             inputProps={{ 'aria-label': 'search' }}
           />
-        </Search>
+        </Search> */}
+        <form onSubmit={handleSubmit}>
+            <input
+                type="text"
+                onChange={handleChange}
+                
+            />
+            <button type="submit">Search</button>
+
+                            
+        </form>
+        
       </Container>
     </AppBar>
   );
