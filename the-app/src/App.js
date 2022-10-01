@@ -7,6 +7,7 @@ import { auth } from './firebase/firebaseConfig';
 import { onAuthStateChanged } from "@firebase/auth";
 import { PublicRoute } from './components/publicRoute/PublicRoute';
 
+
 function App() {
 
   //локально сохраняем статус авторизации
