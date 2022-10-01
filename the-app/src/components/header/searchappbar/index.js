@@ -47,7 +47,8 @@ const SearchIconWrapper = styled('div')(({ theme }) => ({
 }));
 
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
-  color: 'inherit'
+  color: 'inherit',
+  paddingLeft: 50,
 }));
 
 export const SearchAppBar = () => {

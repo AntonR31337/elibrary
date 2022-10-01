@@ -1,5 +1,4 @@
 .App {
-  text-align: center;
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -8,5 +7,6 @@
 .main_wrapper {
   display: flex;
   flex-flow: row wrap;
-  justify-content: space-around;
+  justify-content: space-evenly;
+  gap: 10px;
 }
