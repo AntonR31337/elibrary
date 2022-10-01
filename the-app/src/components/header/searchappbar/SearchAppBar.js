@@ -17,8 +17,6 @@ import LoginIcon from '@mui/icons-material/Login';
 import { Link } from "react-router-dom";
 
 import SearchIcon from '@mui/icons-material/Search';
-import { styled, alpha } from '@mui/material/styles';
-import InputBase from '@mui/material/InputBase';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { logOut } from '../../../firebase/firebaseConfig';
 
@@ -32,19 +30,6 @@ import "./style.scss";
 
 const pages = ['Жанры', 'Популярное', 'Подборки'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
-
-const Search = styled('div')(({ theme }) => ({
-  position: 'relative',
-  borderRadius: theme.shape.borderRadius,
-  backgroundColor: alpha(theme.palette.common.white, 0.15),
-  '&:hover': {
-    backgroundColor: alpha(theme.palette.common.white, 0.25),
-  },
-  marginRight: theme.spacing(2),
-  marginLeft: 0,
-  marginBottom: 5,
-  width: '100%',
-}));
 
 export const SearchAppBar = ({ authed }) => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
