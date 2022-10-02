@@ -2,10 +2,9 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import LoginForm from "./loginForm/LoginForm";
 import "./logIn.scss";
-import Tooltip from '@mui/material/Tooltip';
-import HomeIcon from '@mui/icons-material/Home';
 import { FirebaseError } from "firebase/app";
 import { logIn, signUp } from "../../firebase/firebaseConfig";
+import HomeButton from "../UI components/HomeButton";
 
 const LogIn = ({ authed }) => {
     //сообщание ошибки
@@ -50,11 +49,7 @@ const LogIn = ({ authed }) => {
                 </Link>
                 : null}
             <p className="main__text">
-                <Tooltip title="На главную страницу">
-                    <Link className="main__link" to={"/"}>
-                        <HomeIcon sx={{ fontSize: "50px", color: "#4dabf5" }} />
-                    </Link>
-                </Tooltip>
+                <HomeButton />
             </p>
 
 
