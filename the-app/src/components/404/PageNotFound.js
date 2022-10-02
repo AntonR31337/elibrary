@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import pic from "../../assets/404.png";
 import HomeButton from "../UI components/HomeButton";
 import "./PageNotFound.scss";
