@@ -24,7 +24,7 @@ const SearchForm = () => {
     //общее количество книг, найденных по результатам поиска
     const [totalItems, setTotalItems] = useState('');
     //состояние инпута
-    const [searchName, setSearchName] = useState("");
+    let [searchName, setSearchName] = useState("");
 
     //ключ обращения к Book Api
     const bookApiKey = "AIzaSyCAYJ7mjkMe1kdmZQbgayiO5QcfDUgAQEQ";
@@ -37,14 +37,15 @@ const SearchForm = () => {
     //обработчик изменения инпута
     const handleChange = (event) => {
         const item = event.target.value.trim();
-        if (item) {
-            setSearchName(item);
-        }
+        setSearchName(item);
     }
 
     //обработчик отправки формы
     const handleSubmit = (e) => {
         e.preventDefault();
+        if (searchName === '') {
+            searchName = 'random'
+        }
         // e.target[0].value = ''
         setSearchName("");
         axios.get(`https://www.googleapis.com/books/v1/volumes?q=${searchName}&key=${bookApiKey}&maxResults=${maxResults}&startIndex=${startIndex}`)
