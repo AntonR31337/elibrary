@@ -5,6 +5,7 @@ import { Box } from '@mui/material';
 
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from "react-router-dom";
 
 import { useTheme } from '@mui/material/styles';
 
@@ -16,7 +17,7 @@ import { missingData } from '../../helpers/bookRequest';
 
 const SearchForm = () => {
     //количество отображаемых на странице книг
-    const maxResults = 8;
+    const maxResults = 9;
     const startIndex = 0;
 
     const theme = useTheme();
@@ -40,22 +41,27 @@ const SearchForm = () => {
         setSearchName(item);
     }
 
+    const navigate = useNavigate();
+
     //обработчик отправки формы
     const handleSubmit = (e) => {
+        
         e.preventDefault();
         if (searchName === '') {
             searchName = 'random'
         }
+
         // e.target[0].value = ''
         setSearchName("");
         axios.get(`https://www.googleapis.com/books/v1/volumes?q=${searchName}&key=${bookApiKey}&maxResults=${maxResults}&startIndex=${startIndex}`)
             .then(data => {
                 setTotalItems(data.data.totalItems);
-                dispatch(bookSearch(missingData(data)))
+                dispatch(bookSearch(missingData(data)));
             })
             .catch((error) => {
                 console.log(error)
             })
+            navigate("/bookslist")
     }
 
 

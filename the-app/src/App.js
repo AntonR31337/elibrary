@@ -7,6 +7,7 @@ import { auth } from './firebase/firebaseConfig';
 import { onAuthStateChanged } from "@firebase/auth";
 import { PublicRoute } from './components/publicRoute/PublicRoute';
 import PageNotFound from './components/404/PageNotFound';
+import { BooksList } from './components/booksList/BooksList';
 
 
 function App() {
@@ -43,6 +44,7 @@ function App() {
           <Route path="" element={<LogIn authed />} />
         </Route>
         <Route path="*" element={<PageNotFound />} />
+        <Route path="/bookslist" element={<BooksList authed={authed} />} />
       </Routes>
     </div>
   );
