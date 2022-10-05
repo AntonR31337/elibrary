@@ -20,9 +20,10 @@ const MainPage = ({ authed }) => {
             <Header authed={authed} />
             <main className='main'>
                 <div className="main__content">
-                    {books.map((book) => (
+                    {/* {books.map((book) => (
                         <BookCard key={uniqid()} book={book} />
-                    ))}
+                    ))}  */}
+                    <h2>Sliders</h2>
                 </div>
             </main>
             <Footer />
