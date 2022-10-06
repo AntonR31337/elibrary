@@ -3,7 +3,6 @@ import { Footer } from "../footer/Footer";
 import { Header } from "../header/Header";
 import uniqid from "uniqid";
 import { useSelector } from "react-redux";
-import { randomBooks } from "../mainPage/randomBooks";
 
 
 export const BooksList = ({ authed }) => {
