@@ -6,6 +6,7 @@ import { Box } from '@mui/material';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from "react-router-dom";
+import { useLocation } from 'react-router-dom';
 
 import { useTheme } from '@mui/material/styles';
 
@@ -37,31 +38,39 @@ const SearchForm = () => {
 
     //обработчик изменения инпута
     const handleChange = (event) => {
-        const item = event.target.value.trim();
+        const item = event.target.value;
         setSearchName(item);
     }
 
     const navigate = useNavigate();
+    const location = useLocation();
 
     //обработчик отправки формы
     const handleSubmit = (e) => {
-        
         e.preventDefault();
         if (searchName === '') {
             searchName = 'random'
         }
-
+        if (location.pathname === '/'){
+            navigate("/bookslist")
+        }
         // e.target[0].value = ''
         setSearchName("");
-        axios.get(`https://www.googleapis.com/books/v1/volumes?q=${searchName}&key=${bookApiKey}&maxResults=${maxResults}&startIndex=${startIndex}`)
+        //поиск только по названию книги
+        // axios.get(`https://www.googleapis.com/books/v1/volumes?q=${searchName}&key=${bookApiKey}&maxResults=${maxResults}&startIndex=${startIndex}`)
+        //поиск по названию или автору
+        axios.get(`https://www.googleapis.com/books/v1/volumes?q=${searchName}+inauthor:${searchName}&key=${bookApiKey}&maxResults=${maxResults}&startIndex=${startIndex}`)
+        //поиск по жанру, на на деле по любому совпадению
+        // axios.get(`https://www.googleapis.com/books/v1/volumes?q=subject:${searchName}&key=${bookApiKey}&maxResults=${maxResults}&startIndex=${startIndex}`)
+
             .then(data => {
                 setTotalItems(data.data.totalItems);
                 dispatch(bookSearch(missingData(data)));
             })
             .catch((error) => {
                 console.log(error)
+                navigate("/404")
             })
-            navigate("/bookslist")
     }
 
 
