@@ -1,6 +1,5 @@
 import { BookCard } from "../card/BookCard";
 import { Footer } from "../footer/Footer";
-import { Header } from "../header/Header";
 import uniqid from "uniqid";
 import { useSelector } from "react-redux";
 import { randomBooks } from "./randomBooks";
@@ -17,16 +16,14 @@ const MainPage = ({ authed }) => {
 
     return (
         <>
-            <Header authed={authed} />
             <main className='main'>
                 <div className="main__content">
-                    {/* {books.map((book) => (
+                    {books.map((book) => (
                         <BookCard key={uniqid()} book={book} />
-                    ))}  */}
-                    <h2>Sliders</h2>
+                    ))} 
+                    {/* <h2>Sliders</h2> */}
                 </div>
             </main>
-            <Footer />
         </>
 
     )
