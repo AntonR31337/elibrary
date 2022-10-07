@@ -15,7 +15,7 @@ export const BookCard = ({ book }) => {
         <p className="book__text">Категория: {categories ? categories : "Нет информации"}</p>
         <p className="book__text">Авторы: {authors ? authors : "Нет информации"}</p>
       </figcaption>
-      <Link className="book__link" to={`/${id}`}>
+      <Link className="book__link" to={`/book/${id}`}>
         Подробнее...
       </Link>
     </figure >
