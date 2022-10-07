@@ -48,7 +48,7 @@ function App() {
           </Route>
           <Route path="*" element={<PageNotFound />} />
           <Route path="/bookslist" element={<BooksList authed={authed} />} />
-          <Route path='/book' element={<BookPage />} />
+          <Route path='/book/:id' element={<BookPage />} />
         </Routes>
       <Footer />
     </div>

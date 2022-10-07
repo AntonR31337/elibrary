@@ -1,5 +1,4 @@
 import { BookCard } from "../card/BookCard";
-import { Footer } from "../footer/Footer";
 import uniqid from "uniqid";
 import { useSelector } from "react-redux";
 import { randomBooks } from "./randomBooks";
