@@ -15,33 +15,33 @@ export const BookPage = () => {
     const description = book.searchInfo.textSnippet
 
     return (
-        <main className='main'>
-            <div className="book__wrapper">
-                <img className="book__img" src={book.volumeInfo.imageLinks.thumbnail} alt="BookImage" />
-            </div>
-
-            <figcaption className="book__description" >
-                <h3 className="book__heading">{title ? title : "Нет информации"}</h3>
-                <p className="book__text">{description ? description : "Нет информации"}</p>
-                <p className="book__text">Категория: {categories ? categories : "Нет информации"}</p>
-                <p className="book__text">Авторы: {authors ? authors : "Нет информации"}</p>
-                <div>
-                    <BasicRating />
+            <div className="bookPage">
+                    <div className="bookPage__wrapper">
+                        <img className="bookPage__img" src={book.volumeInfo.imageLinks.thumbnail} alt="BookImage" />
+                        <div className="" >
+                            <h3 className="">{title ? title : "Нет информации"}</h3>
+                            <p className="">Категория: {categories ? categories : "Нет информации"}</p>
+                            <p className="">Авторы: {authors ? authors : "Нет информации"}</p>
+                            <div>
+                                <BasicRating />
+                            </div>
+                            <div className="book__buttons">
+                                <BasicButton textBtn={"В ИЗБРАННОЕ"} >
+                                    <FavoriteIcon sx={{
+                                        marginRight: "10px",
+                                        stroke: "#1976d2",
+                                        color: "white" 
+                                    }} />
+                                </BasicButton>
+                                <BasicButton textBtn={"ЧИТАТЬ"} />
+                                <BasicButton textBtn={"СКАЧАТЬ"} />
+                                <BasicButton textBtn={"КУПИТЬ"} />
+                            </div>
+                        </div>
+                    </div>
+                    <div className="bookPage__description">
+                        <p className="">{description ? description : "Нет информации"}</p>
+                    </div>
                 </div>
-                <div className="book__buttons">
-                    <BasicButton textBtn={"В ИЗБРАННОЕ"} >
-                        <FavoriteIcon sx={{
-                            marginRight: "10px",
-                            stroke: "#1976d2",
-                            color: "white" 
-                        }} />
-                    </BasicButton>
-                    <BasicButton textBtn={"ЧИТАТЬ"} />
-                    <BasicButton textBtn={"СКАЧАТЬ"} />
-                    <BasicButton textBtn={"КУПИТЬ"} />
-                </div>
-                <p className="book__text">{description ? description : "Нет информации"}</p>
-            </figcaption>
-        </main>
     )
 }
