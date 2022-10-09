@@ -15,6 +15,7 @@ import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import LoginIcon from '@mui/icons-material/Login';
 import LogoutIcon from '@mui/icons-material/Logout';
+import AccountBoxIcon from '@mui/icons-material/AccountBox';
 
 import { Link } from "react-router-dom";
 
@@ -22,20 +23,17 @@ import { logOut } from '../../firebase/firebaseConfig';
 
 import SearchForm from "../UI components/SearchForm";
 import { pages, settings } from "../../helpers/vars";
-
+import logo from "../../assets/bookLogo.svg";
 
 export function Header({ authed }) {
     const [anchorElNav, setAnchorElNav] = React.useState(null);
     const [anchorElUser, setAnchorElUser] = React.useState(null);
 
-    const handleOpenNavMenu = (event) => {
-        setAnchorElNav(event.currentTarget);
-    };
     const handleOpenUserMenu = (event) => {
         setAnchorElUser(event.currentTarget);
     };
 
-    const handleCloseNavMenu = () => {
+    const handleClose = () => {
         setAnchorElNav(null);
     };
 
@@ -43,144 +41,75 @@ export function Header({ authed }) {
         setAnchorElUser(null);
     };
 
-
     return (
-        <AppBar position="static">
-            <Container maxWidth="xl" className='container'>
-                <Toolbar disableGutters>
-                    <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
-                    <Typography
-                        variant="h6"
-                        noWrap
-                        component="a"
-                        href="/"
-                        sx={{
-                            mr: 2,
-                            display: { xs: 'none', md: 'flex' },
-                            fontFamily: 'monospace',
-                            fontWeight: 700,
-                            letterSpacing: '.3rem',
-                            color: 'inherit',
-                            textDecoration: 'none',
-                        }}
-                    >
-                        BOOKlib
-                    </Typography>
-
-                    <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
-                        <IconButton
-                            size="large"
-                            aria-label="account of current user"
-                            aria-controls="menu-appbar"
-                            aria-haspopup="true"
-                            onClick={handleOpenNavMenu}
-                            color="inherit"
-                        >
-                            <MenuIcon />
-                        </IconButton>
-                        <Menu
-                            id="menu-appbar"
-                            anchorEl={anchorElNav}
-                            anchorOrigin={{
-                                vertical: 'bottom',
-                                horizontal: 'left',
-                            }}
-                            keepMounted
-                            transformOrigin={{
-                                vertical: 'top',
-                                horizontal: 'left',
-                            }}
-                            open={Boolean(anchorElNav)}
-                            onClose={handleCloseNavMenu}
-                            sx={{
-                                display: { xs: 'block', md: 'none' },
-                            }}
-                        >
-                            {pages.map((page) => (
-                                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                                    <Typography textAlign="center">{page}</Typography>
-                                </MenuItem>
-                            ))}
-                        </Menu>
-                    </Box>
-                    <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
-                    <Typography
-                        variant="h5"
-                        noWrap
-                        component="a"
-                        href=""
-                        sx={{
-                            mr: 2,
-                            display: { xs: 'flex', md: 'none' },
-                            flexGrow: 1,
-                            fontFamily: 'monospace',
-                            fontWeight: 700,
-                            letterSpacing: '.3rem',
-                            color: 'inherit',
-                            textDecoration: 'none',
-                        }}
-                    >
-                        BOOKlib
-                    </Typography>
-                    <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-                        {pages.map((page) => (
-                            <Button
-                                key={page}
-                                onClick={handleCloseNavMenu}
-                                sx={{ my: 2, color: 'white', display: 'block' }}
-                            >
-                                {page}
-                            </Button>
-                        ))}
-                    </Box>
+        <header className="header">
+            <div className="header__content">
+                <ul className="header__left">
+                    <li className="header__logo">
+                        <img className="header__img" src={logo} alt="Logo" />
+                    </li>
+                    <li className="header__heading">
+                        <Tooltip title="Нажмите для перехода на главную страницу ">
+                            <Link className="header__link" to={"/"}>
+                                BookLib
+                            </Link >
+                        </Tooltip>
+                    </li>
+                    <li className="header__genre">
+                        <Tooltip title="Нажмите для перехода на страницу с полным списком жанров">
+                            <Link className="header__link" to={"/genre"}>
+                                Жанры
+                            </Link >
+                        </Tooltip>
+                    </li>
+                </ul>
+                <div className="header__right">
                     <SearchForm />
-                    <Box sx={{ flexGrow: 0 }}>
-                        {authed
-                            ? <>
-                                <Tooltip title="Open settings">
-                                    <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                                        <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-                                    </IconButton>
-                                </Tooltip>
-                                <Tooltip title="Click here to LogOut">
-                                    <IconButton onClick={logOut} color="secondary" sx={{ size: "large", p: 2, color: 'white' }}>
-                                        <LogoutIcon />
-                                    </IconButton>
-                                </Tooltip>
-                            </>
+                    {authed
+                        ? <>
+                            <Tooltip title="Открыть меню профиля">
+                                <IconButton onClick={handleOpenUserMenu} sx={{ size: "large", color: 'white' }}>
+                                    <AccountBoxIcon />
+                                </IconButton>
+                            </Tooltip>
+                            <Tooltip title="Нажмите для выхода из профиля">
+                                <IconButton onClick={logOut} sx={{ size: "large", color: 'white' }}>
+                                    <LogoutIcon />
+                                </IconButton>
+                            </Tooltip>
+                        </>
 
-                            : <Tooltip title="Click here to LogIN">
-                                <Link to={"/login"}>
-                                    <IconButton color="secondary" sx={{ size: "large", p: 2, color: 'white' }}>
-                                        <LoginIcon />
-                                    </IconButton>
-                                </Link>
-                            </Tooltip>}
-                        <Menu
-                            sx={{ mt: '45px' }}
-                            id="menu-appbar"
-                            anchorEl={anchorElUser}
-                            anchorOrigin={{
-                                vertical: 'top',
-                                horizontal: 'right',
-                            }}
-                            keepMounted
-                            transformOrigin={{
-                                vertical: 'top',
-                                horizontal: 'right',
-                            }}
-                            open={Boolean(anchorElUser)}
-                            onClose={handleCloseUserMenu}
-                        >
-                            {settings.map((setting) => (
-                                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                                    <Typography textAlign="center">{setting}</Typography>
-                                </MenuItem>
-                            ))}
-                        </Menu>
-                    </Box>
-                </Toolbar>
-            </Container>
-        </AppBar>
+                        : <Tooltip title="Нажмите для входа в профиль">
+                            <Link to={"/login"}>
+                                <IconButton sx={{ size: "large", color: 'white' }}>
+                                    <LoginIcon />
+                                </IconButton>
+                            </Link>
+                        </Tooltip>}
+                    <Menu
+                        id="menu-appbar"
+                        anchorEl={anchorElUser}
+                        anchorOrigin={{
+                            vertical: 'top',
+                            horizontal: 'right',
+                        }}
+                        keepMounted
+                        open={Boolean(anchorElUser)}
+                        onClose={handleCloseUserMenu}
+                    >
+                        <MenuItem onClick={handleClose}>
+                            <Link className="header__profile-link" to={"/profile"} >
+                                Профиль
+                            </Link>
+                        </MenuItem>
+                        <MenuItem onClick={handleClose}>
+                            <Link className="header__profile-link" to={"/profile"} >
+                                Избранное
+                            </Link>
+                        </MenuItem>
+                    </Menu>
+                </div>
+            </div>
+        </header >
     );
 };
