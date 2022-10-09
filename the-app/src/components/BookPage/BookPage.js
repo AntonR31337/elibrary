@@ -40,6 +40,7 @@ export const BookPage = () => {
                         </div>
                     </div>
                     <div className="bookPage__description">
+                        <h4>О книге:</h4>
                         <p className="">{description ? description : "Нет информации"}</p>
                     </div>
                 </div>
