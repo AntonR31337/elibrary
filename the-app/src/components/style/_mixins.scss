@@ -5,6 +5,9 @@
 %shadow{
     box-shadow: 0px 4px 20px rgba(108, 94, 57, 0.6);
 }
+%genre-shadow{
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+}
 @mixin font($font,$weight,$size) {
     font-family: $font;
     font-size: $size;
