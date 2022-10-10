@@ -87,12 +87,12 @@ export function Header({ authed }) {
                         onClose={handleCloseUserMenu}
                     >
                         <MenuItem onClick={handleClose}>
-                            <Link className="header__profile-link" to={"/profile"} >
+                            <Link className="header__profile-link" to={"/profilepage"} >
                                 Профиль
                             </Link>
                         </MenuItem>
                         <MenuItem onClick={handleClose}>
-                            <Link className="header__profile-link" to={"/profile"} >
+                            <Link className="header__profile-link" to={"/profilepage"} >
                                 Избранное
                             </Link>
                         </MenuItem>

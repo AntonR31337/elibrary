@@ -1,16 +1,27 @@
 .logIn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
     &__wrapper,&__text{
         display: flex;
         flex-direction: column;
         align-items: center;
     }
     &__text,&__link,&__heading{
-        color: #4dabf5;
+        text-align: center;
+        color: $primary-bg-color;
+    }
+    &__heading{
+        @include font($font-2,700,36px);
+
     }
     &__link{
-        font-weight: 500;
-        font-size: 18px;
+        @include font($font-2,500,24px);
         text-decoration: none;
+    }
+    &__redirect{
+        @include font($font-2,700,30px);
+        text-decoration: underline;
     }
 }
 

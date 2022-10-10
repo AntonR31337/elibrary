@@ -30,28 +30,28 @@ const LogIn = ({ authed }) => {
     }, [error])
 
     return (
-        <main className="logIn__wrapper">
-            {authed
-                ? <h2 className="logIn__heading">
-                    Пожалуйста, введите адрес электроной почты и пароль для регистрации и входа.
-                </h2>
-                : <h2 className="logIn__heading">
-                    Пожалуйста, введите адрес электроной почты и пароль указанный при регистрации.
-                </h2>
+        <main className="logIn">
+            <div className="logIn__wrapper">
+                {authed
+                    ? <h2 className="logIn__heading">
+                        Пожалуйста, введите адрес электроной почты и пароль для регистрации и входа.
+                    </h2>
+                    : <h2 className="logIn__heading">
+                        Пожалуйста, введите адрес электроной почты и пароль указанный при регистрации.
+                    </h2>
 
-            }
+                }
 
-            <LoginForm onSubmit={handleSubmit} />
-            {!authed
-                ? <Link className="logIn__link" to={"/signup"}>
-                    Если вы не зарегистрированы , пожалуйста, нажмите здесь для перехода на страницу регистрации.
-                </Link>
-                : null}
-            <p className="logIn__text">
-                <HomeButton />
-            </p>
-
-
+                <LoginForm onSubmit={handleSubmit} />
+                {!authed
+                    ? <Link className="logIn__link" to={"/signup"}>
+                        Если вы не зарегистрированы , пожалуйста, нажмите <span className="logIn__redirect">здесь</span> для перехода на страницу регистрации.
+                    </Link>
+                    : null}
+                <p className="logIn__text">
+                    <HomeButton />
+                </p>
+            </div>
             {error && <h2 className="error">{error}</h2>}
         </main>
     )

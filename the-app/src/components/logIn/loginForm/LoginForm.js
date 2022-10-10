@@ -37,7 +37,12 @@ const LoginForm = ({ onSubmit }) => {
                 variant="outlined" />
             <Button
                 type="submit"
-                sx={{ backgroundColor: "#4dabf5", padding: "15px 82px" }}
+                sx={{
+                    backgroundColor: "#1B3764",
+                    padding: "15px 82px",
+                    border: "3px solid #FFCA42",
+                    borderRadius: "8px"
+                }}
                 variant='contained'
             >
                 Войти!

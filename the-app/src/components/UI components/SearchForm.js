@@ -51,7 +51,7 @@ const SearchForm = () => {
         if (searchName === '') {
             searchName = 'random'
         }
-        if (location.pathname === '/') {
+        if (location.pathname !== '/bookslist') {
             navigate("/bookslist")
         }
         // e.target[0].value = ''

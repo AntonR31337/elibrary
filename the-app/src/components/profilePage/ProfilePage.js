@@ -2,7 +2,12 @@ import "./ProfilePage.scss";
 
 const ProfilePage = () => {
     return (
-        <div className="profile-title">Profile</div>
+        <main className="profile">
+            <div className="profile__title">
+                Profile
+            </div>
+        </main>
+
     )
 }
 
