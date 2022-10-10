@@ -9,13 +9,27 @@ import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
 import SwipeableViews from 'react-swipeable-views';
 import { autoPlay } from 'react-swipeable-views-utils';
+import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { bookSearch } from '../../../../store/actions/booksSearchAction';
+import { randomBooks1, randomBooks2, randomBooks3 } from '../../../../helpers/randomBooks';
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
 const Slider = ({ category, images }) => {
+
+        // Код ниже - зашлушка для слайдера на главной
+        const helperBooks = [...randomBooks1, ...randomBooks2, ...randomBooks3];
+        console.log(helperBooks);
+        const dispatch = useDispatch();
+        dispatch(bookSearch(helperBooks));
+        //
+
     const theme = useTheme();
     const [activeStep, setActiveStep] = React.useState(0);
     const maxSteps = images.length;
+
+    const id = images[activeStep].id;
 
     const handleNext = () => {
         setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -58,7 +72,7 @@ const Slider = ({ category, images }) => {
                             fontWeight: "500",
                             color: "#1B3764"
                         }}
-                    >{images[activeStep].label}</Typography>
+                    ><Link className="book__link" to={`/book/${id}`}>{images[activeStep].label}</Link></Typography>
                 </Paper>
                 <AutoPlaySwipeableViews
                     axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
@@ -67,6 +81,7 @@ const Slider = ({ category, images }) => {
                     enableMouseEvents
                 >
                     {images.map((step, index) => (
+                        <Link className="book__link" to={`/book/${id}`}>
                         <div key={step.label}>
                             {Math.abs(activeStep - index) <= 2 ? (
                                 <Box
@@ -83,6 +98,7 @@ const Slider = ({ category, images }) => {
                                 />
                             ) : null}
                         </div>
+                        </Link>
                     ))}
                 </AutoPlaySwipeableViews>
                 <MobileStepper

@@ -1,35 +1,34 @@
 import { useParams } from "react-router-dom";
 import "./BookPage.style.scss";
 
-import { randomBooks1 } from "../../helpers/randomBooks";
-
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import BasicRating from '../UI components/BasicRating';
 import BasicButton from "../UI components/BasicButton";
+import { useDispatch, useSelector } from "react-redux";
+import { bookSearch } from "../../store/actions/booksSearchAction";
+
+import { randomBooks1, randomBooks2, randomBooks3 } from "../../helpers/randomBooks";
 
 export const BookPage = () => {
 
     const params = useParams();
-    const book = randomBooks1.find(el => el.id === params.id);
+    const { books } = useSelector((state) => state.books);
+
+    const book = books.find(el => el.id === params.id);
     const { title, categories, authors } = book.volumeInfo;
-    const description = book.searchInfo.textSnippet
+    const description = book.searchInfo.textSnippet;
 
     return (
         <div className="bookPage">
             <div className="bookPage__wrapper">
                 <img className="bookPage__img" src={book.volumeInfo.imageLinks.thumbnail} alt="BookImage" />
-                <div className="" >
-                    <h3 className="">{title ? title : "Нет информации"}</h3>
+                <div className="bookPage__startInfo" >
+                    <h3 className="bookPage__startInfo-title boldText">{title ? title : "Нет информации"}</h3>
                     <p className="">Категория: {categories ? categories : "Нет информации"}</p>
                     <p className="">Авторы: {authors ? authors : "Нет информации"}</p>
                     <div>
                         <BasicRating />
                     </div>
-<<<<<<< HEAD
-                    <div className="bookPage__description">
-                        <h4>О книге:</h4>
-                        <p className="">{description ? description : "Нет информации"}</p>
-=======
                     <div className="book__buttons">
                         <BasicButton textBtn={"В ИЗБРАННОЕ"} >
                             <FavoriteIcon sx={{
@@ -41,12 +40,11 @@ export const BookPage = () => {
                         <BasicButton textBtn={"ЧИТАТЬ"} />
                         <BasicButton textBtn={"СКАЧАТЬ"} />
                         <BasicButton textBtn={"КУПИТЬ"} />
->>>>>>> main
                     </div>
                 </div>
             </div>
-            <h4>О книге:</h4>
             <div className="bookPage__description">
+                <h4 className="bookPage__description-title boldText">О книге:</h4>
                 <p className="">{description ? description : "Нет информации"}</p>
             </div>
         </div>

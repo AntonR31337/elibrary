@@ -284,7 +284,7 @@ export const randomBooks1 = [
         }
     }
 ]
-const randomBooks2 = [
+export const randomBooks2 = [
     {
         "kind": "books#volume",
         "id": "PalHAQAAMAAJ",
@@ -567,7 +567,7 @@ const randomBooks2 = [
         }
     },
 ]
-const randomBooks3 = [
+export const randomBooks3 = [
     {
         "kind": "books#volume",
         "id": "y7BcEAAAQBAJ",
@@ -900,7 +900,8 @@ const randomBooks3 = [
 const adapter = (arr) => arr.reduce((acc, item) => {
     acc.push({
         label: item.volumeInfo.title,
-        imgPath: item.volumeInfo.imageLinks.thumbnail
+        imgPath: item.volumeInfo.imageLinks.thumbnail,
+        id: item.id
     })
     return acc;
 }, [])
