@@ -1,0 +1,28 @@
+.bookPage {
+    max-width: 1536px;
+    height: 100%;
+    margin: 0 auto;
+}
+.bookPage__wrapper {
+    display: flex;
+    justify-content: space-evenly;
+}
+.bookPage__img {
+    object-fit: contain;
+    max-width: 300px;
+    max-height: 100%;
+}
+.book__buttons {
+    display: flex;
+}
+.bookPage__description {
+    margin: 10px;
+}
+@media (max-width: 599px) {
+    .bookPage__wrapper {
+        flex-direction: column;
+    }
+    .bookPage__img {
+        margin: 0 auto;
+    }
+}
