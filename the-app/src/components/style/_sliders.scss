@@ -1,0 +1,12 @@
+.sliders{
+    padding: 54px 0;
+    background-color: $third-bg-color;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    &__heading{
+        @include font($font-1,700,36px);
+        margin: 0 0 100px 0;
+    }
+}
