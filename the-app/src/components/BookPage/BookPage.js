@@ -25,11 +25,6 @@ export const BookPage = () => {
                     <div>
                         <BasicRating />
                     </div>
-<<<<<<< HEAD
-                    <div className="bookPage__description">
-                        <h4>О книге:</h4>
-                        <p className="">{description ? description : "Нет информации"}</p>
-=======
                     <div className="book__buttons">
                         <BasicButton textBtn={"В ИЗБРАННОЕ"} >
                             <FavoriteIcon sx={{
@@ -41,12 +36,11 @@ export const BookPage = () => {
                         <BasicButton textBtn={"ЧИТАТЬ"} />
                         <BasicButton textBtn={"СКАЧАТЬ"} />
                         <BasicButton textBtn={"КУПИТЬ"} />
->>>>>>> main
                     </div>
                 </div>
             </div>
-            <h4>О книге:</h4>
             <div className="bookPage__description">
+                <h4>О книге:</h4>
                 <p className="">{description ? description : "Нет информации"}</p>
             </div>
         </div>
