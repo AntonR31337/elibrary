@@ -1,4 +1,4 @@
-export const randomBooks = [
+export const randomBooks1 = [
     {
         "kind": "books#volume",
         "id": "nO9ZAgAAQBAJ",
@@ -284,3 +284,626 @@ export const randomBooks = [
         }
     }
 ]
+const randomBooks2 = [
+    {
+        "kind": "books#volume",
+        "id": "PalHAQAAMAAJ",
+        "etag": "JZevyAjxXBA",
+        "selfLink": "https://www.googleapis.com/books/v1/volumes/PalHAQAAMAAJ",
+        "volumeInfo": {
+            "title": "Литература Востока",
+            "authors": [
+                "Izdatelʹstvo \"Vsemirnai︠a︡ literatura.\""
+            ],
+            "publishedDate": "1919",
+            "industryIdentifiers": [
+                {
+                    "type": "OTHER",
+                    "identifier": "UCBK:C070914089"
+                }
+            ],
+            "readingModes": {
+                "text": false,
+                "image": false
+            },
+            "pageCount": 90,
+            "printType": "BOOK",
+            "categories": "Oriental",
+            "maturityRating": "NOT_MATURE",
+            "allowAnonLogging": false,
+            "contentVersion": "0.3.2.0.preview.0",
+            "panelizationSummary": {
+                "containsEpubBubbles": false,
+                "containsImageBubbles": false
+            },
+            "imageLinks": {
+                "smallThumbnail": "http://books.google.com/books/content?id=PalHAQAAMAAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api",
+                "thumbnail": "http://books.google.com/books/content?id=PalHAQAAMAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+            },
+            "language": "ru",
+            "previewLink": "http://books.google.ru/books?id=PalHAQAAMAAJ&q=%D0%BB%D0%B8%D1%82%D0%B5%D1%80%D0%B0%D1%82%D1%83%D1%80%D0%B0+inauthor:%D0%BB%D0%B8%D1%82%D0%B5%D1%80%D0%B0%D1%82%D1%83%D1%80%D0%B0&dq=%D0%BB%D0%B8%D1%82%D0%B5%D1%80%D0%B0%D1%82%D1%83%D1%80%D0%B0+inauthor:%D0%BB%D0%B8%D1%82%D0%B5%D1%80%D0%B0%D1%82%D1%83%D1%80%D0%B0&hl=&cd=1&source=gbs_api",
+            "infoLink": "http://books.google.ru/books?id=PalHAQAAMAAJ&dq=%D0%BB%D0%B8%D1%82%D0%B5%D1%80%D0%B0%D1%82%D1%83%D1%80%D0%B0+inauthor:%D0%BB%D0%B8%D1%82%D0%B5%D1%80%D0%B0%D1%82%D1%83%D1%80%D0%B0&hl=&source=gbs_api",
+            "canonicalVolumeLink": "https://books.google.com/books/about/%D0%9B%D0%B8%D1%82%D0%B5%D1%80%D0%B0%D1%82%D1%83%D1%80%D0%B0_%D0%92%D0%BE%D1%81%D1%82%D0%BE%D0%BA%D0%B0.html?hl=&id=PalHAQAAMAAJ"
+        },
+        "saleInfo": {
+            "country": "RU",
+            "saleability": "NOT_FOR_SALE",
+            "isEbook": false
+        },
+        "accessInfo": {
+            "country": "RU",
+            "viewability": "NO_PAGES",
+            "embeddable": false,
+            "publicDomain": false,
+            "textToSpeechPermission": "ALLOWED",
+            "epub": {
+                "isAvailable": false
+            },
+            "pdf": {
+                "isAvailable": false
+            },
+            "webReaderLink": "http://play.google.com/books/reader?id=PalHAQAAMAAJ&hl=&printsec=frontcover&source=gbs_api",
+            "accessViewStatus": "NONE",
+            "quoteSharingAllowed": false
+        },
+        "searchInfo": {
+            "textSnippet": "Издательство &quot;Всемирная <b>литература</b>.&quot; -} - -|--- * - -|- - -- - |-- -} - --- --* --} - - - —- -- - --- - |-} т.- - -- - -- - -- -- -- |*} |--1 - --*-- |--- ----- - ---|-- --- -- -- |-- - |-- |- - - } |* - - - - - -- - * - -- - - - 2&nbsp;..."
+        }
+    },
+    {
+        "kind": "books#volume",
+        "id": "fZUjAAAAMAAJ",
+        "etag": "4lt7EJ1KxkM",
+        "selfLink": "https://www.googleapis.com/books/v1/volumes/fZUjAAAAMAAJ",
+        "volumeInfo": {
+            "title": "История на българската литература: Старобългарска литература",
+            "authors": [
+                "Институт за литература (Българска академия на науките)"
+            ],
+            "publishedDate": "1962",
+            "industryIdentifiers": [
+                {
+                    "type": "OTHER",
+                    "identifier": "UOM:39015049776670"
+                }
+            ],
+            "readingModes": {
+                "text": false,
+                "image": false
+            },
+            "printType": "BOOK",
+            "categories": "Bulgarian",
+            "maturityRating": "NOT_MATURE",
+            "allowAnonLogging": false,
+            "contentVersion": "0.2.1.0.preview.0",
+            "panelizationSummary": {
+                "containsEpubBubbles": false,
+                "containsImageBubbles": false
+            },
+            "imageLinks": {
+                "smallThumbnail": "http://books.google.com/books/content?id=fZUjAAAAMAAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api",
+                "thumbnail": "http://books.google.com/books/content?id=fZUjAAAAMAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+            },
+            "language": "bg",
+            "previewLink": "http://books.google.ru/books?id=fZUjAAAAMAAJ&q=%D0%BB%D0%B8%D1%82%D0%B5%D1%80%D0%B0%D1%82%D1%83%D1%80%D0%B0+inauthor:%D0%BB%D0%B8%D1%82%D0%B5%D1%80%D0%B0%D1%82%D1%83%D1%80%D0%B0&dq=%D0%BB%D0%B8%D1%82%D0%B5%D1%80%D0%B0%D1%82%D1%83%D1%80%D0%B0+inauthor:%D0%BB%D0%B8%D1%82%D0%B5%D1%80%D0%B0%D1%82%D1%83%D1%80%D0%B0&hl=&cd=2&source=gbs_api",
+            "infoLink": "http://books.google.ru/books?id=fZUjAAAAMAAJ&dq=%D0%BB%D0%B8%D1%82%D0%B5%D1%80%D0%B0%D1%82%D1%83%D1%80%D0%B0+inauthor:%D0%BB%D0%B8%D1%82%D0%B5%D1%80%D0%B0%D1%82%D1%83%D1%80%D0%B0&hl=&source=gbs_api",
+            "canonicalVolumeLink": "https://books.google.com/books/about/%D0%98%D1%81%D1%82%D0%BE%D1%80%D0%B8%D1%8F_%D0%BD%D0%B0_%D0%B1%D1%8A%D0%BB%D0%B3%D0%B0%D1%80%D1%81%D0%BA%D0%B0%D1%82.html?hl=&id=fZUjAAAAMAAJ"
+        },
+        "saleInfo": {
+            "country": "RU",
+            "saleability": "NOT_FOR_SALE",
+            "isEbook": false
+        },
+        "accessInfo": {
+            "country": "RU",
+            "viewability": "NO_PAGES",
+            "embeddable": false,
+            "publicDomain": false,
+            "textToSpeechPermission": "ALLOWED",
+            "epub": {
+                "isAvailable": false
+            },
+            "pdf": {
+                "isAvailable": false
+            },
+            "webReaderLink": "http://play.google.com/books/reader?id=fZUjAAAAMAAJ&hl=&printsec=frontcover&source=gbs_api",
+            "accessViewStatus": "NONE",
+            "quoteSharingAllowed": false
+        },
+        "searchInfo": {
+            "textSnippet": "Институт за <b>литература</b> (Българска академия на науките) Стойко Божков."
+        }
+    },
+    {
+        "kind": "books#volume",
+        "id": "-r1HDwAAQBAJ",
+        "etag": "2WSbHdEJKiY",
+        "selfLink": "https://www.googleapis.com/books/v1/volumes/-r1HDwAAQBAJ",
+        "volumeInfo": {
+            "title": "Задонщина",
+            "authors": [
+                "Древнерусская литература"
+            ],
+            "publisher": "Strelbytskyy Multimedia Publishing",
+            "publishedDate": "2018-01-19",
+            "description": "«Читай быстро» — это серия кратких изложений шедевров мировой литературы. Эта книга станет настоящей находкой для тех, кто хочет быстро подготовиться к контрольной или выполнить домашнее задание. Книга в пересказе М.С. Самоделкина.",
+            "industryIdentifiers": [
+                {
+                    "type": "OTHER",
+                    "identifier": "PKEY:SMP2300000147988"
+                }
+            ],
+            "readingModes": {
+                "text": true,
+                "image": true
+            },
+            "printType": "BOOK",
+            "categories": "Education",
+            "maturityRating": "NOT_MATURE",
+            "allowAnonLogging": true,
+            "contentVersion": "1.1.1.0.preview.3",
+            "panelizationSummary": {
+                "containsEpubBubbles": false,
+                "containsImageBubbles": false
+            },
+            "imageLinks": {
+                "smallThumbnail": "http://books.google.com/books/content?id=-r1HDwAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+                "thumbnail": "http://books.google.com/books/content?id=-r1HDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+            },
+            "language": "ru",
+            "previewLink": "http://books.google.ru/books?id=-r1HDwAAQBAJ&printsec=frontcover&dq=%D0%BB%D0%B8%D1%82%D0%B5%D1%80%D0%B0%D1%82%D1%83%D1%80%D0%B0+inauthor:%D0%BB%D0%B8%D1%82%D0%B5%D1%80%D0%B0%D1%82%D1%83%D1%80%D0%B0&hl=&cd=3&source=gbs_api",
+            "infoLink": "https://play.google.com/store/books/details?id=-r1HDwAAQBAJ&source=gbs_api",
+            "canonicalVolumeLink": "https://play.google.com/store/books/details?id=-r1HDwAAQBAJ"
+        },
+        "saleInfo": {
+            "country": "RU",
+            "saleability": "FOR_SALE",
+            "isEbook": true,
+            "listPrice": {
+                "amount": 3,
+                "currencyCode": "RUB"
+            },
+            "retailPrice": {
+                "amount": 3,
+                "currencyCode": "RUB"
+            },
+            "buyLink": "https://play.google.com/store/books/details?id=-r1HDwAAQBAJ&rdid=book--r1HDwAAQBAJ&rdot=1&source=gbs_api",
+            "offers": [
+                {
+                    "finskyOfferType": 1,
+                    "listPrice": {
+                        "amountInMicros": 3000000,
+                        "currencyCode": "RUB"
+                    },
+                    "retailPrice": {
+                        "amountInMicros": 3000000,
+                        "currencyCode": "RUB"
+                    }
+                }
+            ]
+        },
+        "accessInfo": {
+            "country": "RU",
+            "viewability": "PARTIAL",
+            "embeddable": true,
+            "publicDomain": false,
+            "textToSpeechPermission": "ALLOWED",
+            "epub": {
+                "isAvailable": true,
+                "acsTokenLink": "http://books.google.ru/books/download/%D0%97%D0%B0%D0%B4%D0%BE%D0%BD%D1%89%D0%B8%D0%BD%D0%B0-sample-epub.acsm?id=-r1HDwAAQBAJ&format=epub&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+            },
+            "pdf": {
+                "isAvailable": true,
+                "acsTokenLink": "http://books.google.ru/books/download/%D0%97%D0%B0%D0%B4%D0%BE%D0%BD%D1%89%D0%B8%D0%BD%D0%B0-sample-pdf.acsm?id=-r1HDwAAQBAJ&format=pdf&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+            },
+            "webReaderLink": "http://play.google.com/books/reader?id=-r1HDwAAQBAJ&hl=&printsec=frontcover&source=gbs_api",
+            "accessViewStatus": "SAMPLE",
+            "quoteSharingAllowed": false
+        },
+        "searchInfo": {
+            "textSnippet": "«Читай быстро» — это серия кратких изложений шедевров мировой литературы. Эта книга станет настоящей находкой для тех, кто хочет ..."
+        }
+    },
+    {
+        "kind": "books#volume",
+        "id": "0AECzgEACAAJ",
+        "etag": "3Ziekq4TNSE",
+        "selfLink": "https://www.googleapis.com/books/v1/volumes/0AECzgEACAAJ",
+        "volumeInfo": {
+            "title": "Творчество Васила Друмева",
+            "subtitle": "И становление болгарской национальной литературы",
+            "authors": [
+                "Марина Генадиева Чемоданова"
+            ],
+            "publishedDate": "1987",
+            "industryIdentifiers": [
+                {
+                    "type": "OTHER",
+                    "identifier": "OCLC:741090579"
+                }
+            ],
+            "readingModes": {
+                "text": false,
+                "image": false
+            },
+            "pageCount": 166,
+            "printType": "BOOK",
+            "categories": "Bulgarian",
+            "maturityRating": "NOT_MATURE",
+            "allowAnonLogging": false,
+            "contentVersion": "preview-1.0.0",
+            "panelizationSummary": {
+                "containsEpubBubbles": false,
+                "containsImageBubbles": false
+            },
+            "language": "ru",
+            "previewLink": "http://books.google.ru/books?id=0AECzgEACAAJ&dq=%D0%BB%D0%B8%D1%82%D0%B5%D1%80%D0%B0%D1%82%D1%83%D1%80%D0%B0+inauthor:%D0%BB%D0%B8%D1%82%D0%B5%D1%80%D0%B0%D1%82%D1%83%D1%80%D0%B0&hl=&cd=4&source=gbs_api",
+            "infoLink": "http://books.google.ru/books?id=0AECzgEACAAJ&dq=%D0%BB%D0%B8%D1%82%D0%B5%D1%80%D0%B0%D1%82%D1%83%D1%80%D0%B0+inauthor:%D0%BB%D0%B8%D1%82%D0%B5%D1%80%D0%B0%D1%82%D1%83%D1%80%D0%B0&hl=&source=gbs_api",
+            "canonicalVolumeLink": "https://books.google.com/books/about/%D0%A2%D0%B2%D0%BE%D1%80%D1%87%D0%B5%D1%81%D1%82%D0%B2%D0%BE_%D0%92%D0%B0%D1%81%D0%B8%D0%BB%D0%B0_%D0%94%D1%80%D1%83.html?hl=&id=0AECzgEACAAJ",
+            "imageLinks": {
+                "thumbnail": "http://placehold.it/128x190"
+            }
+        },
+        "saleInfo": {
+            "country": "RU",
+            "saleability": "NOT_FOR_SALE",
+            "isEbook": false
+        },
+        "accessInfo": {
+            "country": "RU",
+            "viewability": "NO_PAGES",
+            "embeddable": false,
+            "publicDomain": false,
+            "textToSpeechPermission": "ALLOWED",
+            "epub": {
+                "isAvailable": false
+            },
+            "pdf": {
+                "isAvailable": false
+            },
+            "webReaderLink": "http://play.google.com/books/reader?id=0AECzgEACAAJ&hl=&printsec=frontcover&source=gbs_api",
+            "accessViewStatus": "NONE",
+            "quoteSharingAllowed": false
+        }
+    },
+]
+const randomBooks3 = [
+    {
+        "kind": "books#volume",
+        "id": "y7BcEAAAQBAJ",
+        "etag": "3+8b4VysDuc",
+        "selfLink": "https://www.googleapis.com/books/v1/volumes/y7BcEAAAQBAJ",
+        "volumeInfo": {
+            "title": "Беатрайс. Легенда о Марии",
+            "authors": [
+                "Средневековая голландская литература"
+            ],
+            "publisher": "Litres",
+            "publishedDate": "2022-03-31",
+            "description": "«Беатрайс» – легенда о Марии, написанная неизвестным фламандским автором (возможно, двумя) приблизительно в 13 веке, считается вершиной творчества в духовной литературе Голландии. Слава её переживёт века. Прочитав эту историю, вы узнаете о судьбе женщины, которая сложилась печально и необъяснимо таинственно. Ценность легенды не только в том, о чём она рассказывает, но главное, как она рассказывает; история завораживает своей реальностью и мистикой.",
+            "industryIdentifiers": [
+                {
+                    "type": "ISBN_13",
+                    "identifier": "9785044174597"
+                },
+                {
+                    "type": "ISBN_10",
+                    "identifier": "5044174599"
+                }
+            ],
+            "readingModes": {
+                "text": true,
+                "image": true
+            },
+            "pageCount": 51,
+            "printType": "BOOK",
+            "categories": "Religion",
+            "maturityRating": "NOT_MATURE",
+            "allowAnonLogging": false,
+            "contentVersion": "0.2.2.0.preview.3",
+            "panelizationSummary": {
+                "containsEpubBubbles": false,
+                "containsImageBubbles": false
+            },
+            "imageLinks": {
+                "smallThumbnail": "http://books.google.com/books/content?id=y7BcEAAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+                "thumbnail": "http://books.google.com/books/content?id=y7BcEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+            },
+            "language": "ru",
+            "previewLink": "http://books.google.ru/books?id=y7BcEAAAQBAJ&printsec=frontcover&dq=%D0%BB%D0%B8%D1%82%D0%B5%D1%80%D0%B0%D1%82%D1%83%D1%80%D0%B0+inauthor:%D0%BB%D0%B8%D1%82%D0%B5%D1%80%D0%B0%D1%82%D1%83%D1%80%D0%B0&hl=&cd=6&source=gbs_api",
+            "infoLink": "http://books.google.ru/books?id=y7BcEAAAQBAJ&dq=%D0%BB%D0%B8%D1%82%D0%B5%D1%80%D0%B0%D1%82%D1%83%D1%80%D0%B0+inauthor:%D0%BB%D0%B8%D1%82%D0%B5%D1%80%D0%B0%D1%82%D1%83%D1%80%D0%B0&hl=&source=gbs_api",
+            "canonicalVolumeLink": "https://books.google.com/books/about/%D0%91%D0%B5%D0%B0%D1%82%D1%80%D0%B0%D0%B9%D1%81_%D0%9B%D0%B5%D0%B3%D0%B5%D0%BD%D0%B4%D0%B0_%D0%BE_%D0%9C%D0%B0.html?hl=&id=y7BcEAAAQBAJ"
+        },
+        "saleInfo": {
+            "country": "RU",
+            "saleability": "NOT_FOR_SALE",
+            "isEbook": false
+        },
+        "accessInfo": {
+            "country": "RU",
+            "viewability": "PARTIAL",
+            "embeddable": true,
+            "publicDomain": false,
+            "textToSpeechPermission": "ALLOWED",
+            "epub": {
+                "isAvailable": true,
+                "acsTokenLink": "http://books.google.ru/books/download/%D0%91%D0%B5%D0%B0%D1%82%D1%80%D0%B0%D0%B9%D1%81_%D0%9B%D0%B5%D0%B3%D0%B5%D0%BD%D0%B4%D0%B0_%D0%BE_%D0%9C%D0%B0-sample-epub.acsm?id=y7BcEAAAQBAJ&format=epub&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+            },
+            "pdf": {
+                "isAvailable": true,
+                "acsTokenLink": "http://books.google.ru/books/download/%D0%91%D0%B5%D0%B0%D1%82%D1%80%D0%B0%D0%B9%D1%81_%D0%9B%D0%B5%D0%B3%D0%B5%D0%BD%D0%B4%D0%B0_%D0%BE_%D0%9C%D0%B0-sample-pdf.acsm?id=y7BcEAAAQBAJ&format=pdf&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+            },
+            "webReaderLink": "http://play.google.com/books/reader?id=y7BcEAAAQBAJ&hl=&printsec=frontcover&source=gbs_api",
+            "accessViewStatus": "SAMPLE",
+            "quoteSharingAllowed": false
+        },
+        "searchInfo": {
+            "textSnippet": "«Беатрайс» – легенда о Марии, написанная неизвестным фламандским автором (возможно, двумя) приблизительно в 13 веке, считается ..."
+        }
+    },
+    {
+        "kind": "books#volume",
+        "id": "LL5HDwAAQBAJ",
+        "etag": "nN/IRp/TsKA",
+        "selfLink": "https://www.googleapis.com/books/v1/volumes/LL5HDwAAQBAJ",
+        "volumeInfo": {
+            "title": "Шемякин суд",
+            "subtitle": "Пересказ",
+            "authors": [
+                "Древнерусская литература"
+            ],
+            "publisher": "Strelbytskyy Multimedia Publishing",
+            "publishedDate": "2018-01-19",
+            "description": "«Читай быстро» — это серия кратких изложений шедевров мировой литературы. Эта книга станет настоящей находкой для тех, кто хочет быстро подготовиться к контрольной или выполнить домашнее задание. Книга в пересказе М.С. Самоделкина.",
+            "industryIdentifiers": [
+                {
+                    "type": "OTHER",
+                    "identifier": "PKEY:SMP2300000148015"
+                }
+            ],
+            "readingModes": {
+                "text": true,
+                "image": true
+            },
+            "printType": "BOOK",
+            "categories": "Education",
+            "maturityRating": "NOT_MATURE",
+            "allowAnonLogging": true,
+            "contentVersion": "1.1.2.0.preview.3",
+            "panelizationSummary": {
+                "containsEpubBubbles": false,
+                "containsImageBubbles": false
+            },
+            "imageLinks": {
+                "smallThumbnail": "http://books.google.com/books/content?id=LL5HDwAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+                "thumbnail": "http://books.google.com/books/content?id=LL5HDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+            },
+            "language": "ru",
+            "previewLink": "http://books.google.ru/books?id=LL5HDwAAQBAJ&printsec=frontcover&dq=%D0%BB%D0%B8%D1%82%D0%B5%D1%80%D0%B0%D1%82%D1%83%D1%80%D0%B0+inauthor:%D0%BB%D0%B8%D1%82%D0%B5%D1%80%D0%B0%D1%82%D1%83%D1%80%D0%B0&hl=&cd=7&source=gbs_api",
+            "infoLink": "https://play.google.com/store/books/details?id=LL5HDwAAQBAJ&source=gbs_api",
+            "canonicalVolumeLink": "https://play.google.com/store/books/details?id=LL5HDwAAQBAJ"
+        },
+        "saleInfo": {
+            "country": "RU",
+            "saleability": "FOR_SALE",
+            "isEbook": true,
+            "listPrice": {
+                "amount": 3,
+                "currencyCode": "RUB"
+            },
+            "retailPrice": {
+                "amount": 3,
+                "currencyCode": "RUB"
+            },
+            "buyLink": "https://play.google.com/store/books/details?id=LL5HDwAAQBAJ&rdid=book-LL5HDwAAQBAJ&rdot=1&source=gbs_api",
+            "offers": [
+                {
+                    "finskyOfferType": 1,
+                    "listPrice": {
+                        "amountInMicros": 3000000,
+                        "currencyCode": "RUB"
+                    },
+                    "retailPrice": {
+                        "amountInMicros": 3000000,
+                        "currencyCode": "RUB"
+                    }
+                }
+            ]
+        },
+        "accessInfo": {
+            "country": "RU",
+            "viewability": "PARTIAL",
+            "embeddable": true,
+            "publicDomain": false,
+            "textToSpeechPermission": "ALLOWED",
+            "epub": {
+                "isAvailable": true,
+                "acsTokenLink": "http://books.google.ru/books/download/%D0%A8%D0%B5%D0%BC%D1%8F%D0%BA%D0%B8%D0%BD_%D1%81%D1%83%D0%B4-sample-epub.acsm?id=LL5HDwAAQBAJ&format=epub&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+            },
+            "pdf": {
+                "isAvailable": true,
+                "acsTokenLink": "http://books.google.ru/books/download/%D0%A8%D0%B5%D0%BC%D1%8F%D0%BA%D0%B8%D0%BD_%D1%81%D1%83%D0%B4-sample-pdf.acsm?id=LL5HDwAAQBAJ&format=pdf&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+            },
+            "webReaderLink": "http://play.google.com/books/reader?id=LL5HDwAAQBAJ&hl=&printsec=frontcover&source=gbs_api",
+            "accessViewStatus": "SAMPLE",
+            "quoteSharingAllowed": false
+        },
+        "searchInfo": {
+            "textSnippet": "«Читай быстро» — это серия кратких изложений шедевров мировой литературы. Эта книга станет настоящей находкой для тех, кто хочет ..."
+        }
+    },
+    {
+        "kind": "books#volume",
+        "id": "Hr5HDwAAQBAJ",
+        "etag": "CUUE4JMG89A",
+        "selfLink": "https://www.googleapis.com/books/v1/volumes/Hr5HDwAAQBAJ",
+        "volumeInfo": {
+            "title": "Повесть о житии Александра Невского",
+            "subtitle": "Пересказ",
+            "authors": [
+                "Древнерусская литература"
+            ],
+            "publisher": "Strelbytskyy Multimedia Publishing",
+            "publishedDate": "2018-01-19",
+            "description": "«Читай быстро» — это серия кратких изложений шедевров мировой литературы. Эта книга станет настоящей находкой для тех, кто хочет быстро подготовиться к контрольной или выполнить домашнее задание. Книга в пересказе М.С. Самоделкина.",
+            "industryIdentifiers": [
+                {
+                    "type": "OTHER",
+                    "identifier": "PKEY:SMP2300000147995"
+                }
+            ],
+            "readingModes": {
+                "text": true,
+                "image": true
+            },
+            "printType": "BOOK",
+            "categories": "Fiction",
+            "maturityRating": "NOT_MATURE",
+            "allowAnonLogging": true,
+            "contentVersion": "1.1.2.0.preview.3",
+            "panelizationSummary": {
+                "containsEpubBubbles": false,
+                "containsImageBubbles": false
+            },
+            "imageLinks": {
+                "smallThumbnail": "http://books.google.com/books/content?id=Hr5HDwAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+                "thumbnail": "http://books.google.com/books/content?id=Hr5HDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+            },
+            "language": "ru",
+            "previewLink": "http://books.google.ru/books?id=Hr5HDwAAQBAJ&printsec=frontcover&dq=%D0%BB%D0%B8%D1%82%D0%B5%D1%80%D0%B0%D1%82%D1%83%D1%80%D0%B0+inauthor:%D0%BB%D0%B8%D1%82%D0%B5%D1%80%D0%B0%D1%82%D1%83%D1%80%D0%B0&hl=&cd=8&source=gbs_api",
+            "infoLink": "https://play.google.com/store/books/details?id=Hr5HDwAAQBAJ&source=gbs_api",
+            "canonicalVolumeLink": "https://play.google.com/store/books/details?id=Hr5HDwAAQBAJ"
+        },
+        "saleInfo": {
+            "country": "RU",
+            "saleability": "FOR_SALE",
+            "isEbook": true,
+            "listPrice": {
+                "amount": 3,
+                "currencyCode": "RUB"
+            },
+            "retailPrice": {
+                "amount": 3,
+                "currencyCode": "RUB"
+            },
+            "buyLink": "https://play.google.com/store/books/details?id=Hr5HDwAAQBAJ&rdid=book-Hr5HDwAAQBAJ&rdot=1&source=gbs_api",
+            "offers": [
+                {
+                    "finskyOfferType": 1,
+                    "listPrice": {
+                        "amountInMicros": 3000000,
+                        "currencyCode": "RUB"
+                    },
+                    "retailPrice": {
+                        "amountInMicros": 3000000,
+                        "currencyCode": "RUB"
+                    }
+                }
+            ]
+        },
+        "accessInfo": {
+            "country": "RU",
+            "viewability": "PARTIAL",
+            "embeddable": true,
+            "publicDomain": false,
+            "textToSpeechPermission": "ALLOWED",
+            "epub": {
+                "isAvailable": true,
+                "acsTokenLink": "http://books.google.ru/books/download/%D0%9F%D0%BE%D0%B2%D0%B5%D1%81%D1%82%D1%8C_%D0%BE_%D0%B6%D0%B8%D1%82%D0%B8%D0%B8_%D0%90%D0%BB%D0%B5%D0%BA%D1%81-sample-epub.acsm?id=Hr5HDwAAQBAJ&format=epub&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+            },
+            "pdf": {
+                "isAvailable": true,
+                "acsTokenLink": "http://books.google.ru/books/download/%D0%9F%D0%BE%D0%B2%D0%B5%D1%81%D1%82%D1%8C_%D0%BE_%D0%B6%D0%B8%D1%82%D0%B8%D0%B8_%D0%90%D0%BB%D0%B5%D0%BA%D1%81-sample-pdf.acsm?id=Hr5HDwAAQBAJ&format=pdf&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+            },
+            "webReaderLink": "http://play.google.com/books/reader?id=Hr5HDwAAQBAJ&hl=&printsec=frontcover&source=gbs_api",
+            "accessViewStatus": "SAMPLE",
+            "quoteSharingAllowed": false
+        },
+        "searchInfo": {
+            "textSnippet": "«Читай быстро» — это серия кратких изложений шедевров мировой литературы. Эта книга станет настоящей находкой для тех, кто хочет ..."
+        }
+    },
+    {
+        "kind": "books#volume",
+        "id": "49ZcEAAAQBAJ",
+        "etag": "pwwy87y4pzE",
+        "selfLink": "https://www.googleapis.com/books/v1/volumes/49ZcEAAAQBAJ",
+        "volumeInfo": {
+            "title": "Лис Райнарт и его проделки",
+            "authors": [
+                "Средневековая голландская литература"
+            ],
+            "publisher": "Litres",
+            "publishedDate": "2022-03-31",
+            "description": "Средневековый рассказ «Лис Райнарт и его проделки» считается непревзойдённым шедевром и лучшим образцом эпоса о зверях во всей Западно-Европейской литературе. Лис Райнарт сильно провинился перед всеми жителями леса. Все звери жаждут справедливого суда. Жизнь Райнарта висит на волоске. Добьётся ли он прощения? Ускользнёт ли от своих жестоких судей? Об этом вы узнаете, прочитав этот занимательный и поучительный рассказ.",
+            "industryIdentifiers": [
+                {
+                    "type": "ISBN_13",
+                    "identifier": "9785044176218"
+                },
+                {
+                    "type": "ISBN_10",
+                    "identifier": "5044176214"
+                }
+            ],
+            "readingModes": {
+                "text": true,
+                "image": true
+            },
+            "pageCount": 91,
+            "printType": "BOOK",
+            "categories": "Fiction",
+            "maturityRating": "NOT_MATURE",
+            "allowAnonLogging": false,
+            "contentVersion": "0.3.4.0.preview.3",
+            "panelizationSummary": {
+                "containsEpubBubbles": false,
+                "containsImageBubbles": false
+            },
+            "imageLinks": {
+                "smallThumbnail": "http://books.google.com/books/content?id=49ZcEAAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+                "thumbnail": "http://books.google.com/books/content?id=49ZcEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+            },
+            "language": "ru",
+            "previewLink": "http://books.google.ru/books?id=49ZcEAAAQBAJ&pg=PT1&dq=%D0%BB%D0%B8%D1%82%D0%B5%D1%80%D0%B0%D1%82%D1%83%D1%80%D0%B0+inauthor:%D0%BB%D0%B8%D1%82%D0%B5%D1%80%D0%B0%D1%82%D1%83%D1%80%D0%B0&hl=&cd=9&source=gbs_api",
+            "infoLink": "http://books.google.ru/books?id=49ZcEAAAQBAJ&dq=%D0%BB%D0%B8%D1%82%D0%B5%D1%80%D0%B0%D1%82%D1%83%D1%80%D0%B0+inauthor:%D0%BB%D0%B8%D1%82%D0%B5%D1%80%D0%B0%D1%82%D1%83%D1%80%D0%B0&hl=&source=gbs_api",
+            "canonicalVolumeLink": "https://books.google.com/books/about/%D0%9B%D0%B8%D1%81_%D0%A0%D0%B0%D0%B9%D0%BD%D0%B0%D1%80%D1%82_%D0%B8_%D0%B5%D0%B3%D0%BE_%D0%BF%D1%80%D0%BE%D0%B4.html?hl=&id=49ZcEAAAQBAJ"
+        },
+        "saleInfo": {
+            "country": "RU",
+            "saleability": "NOT_FOR_SALE",
+            "isEbook": false
+        },
+        "accessInfo": {
+            "country": "RU",
+            "viewability": "PARTIAL",
+            "embeddable": true,
+            "publicDomain": false,
+            "textToSpeechPermission": "ALLOWED",
+            "epub": {
+                "isAvailable": true,
+                "acsTokenLink": "http://books.google.ru/books/download/%D0%9B%D0%B8%D1%81_%D0%A0%D0%B0%D0%B9%D0%BD%D0%B0%D1%80%D1%82_%D0%B8_%D0%B5%D0%B3%D0%BE_%D0%BF%D1%80%D0%BE%D0%B4-sample-epub.acsm?id=49ZcEAAAQBAJ&format=epub&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+            },
+            "pdf": {
+                "isAvailable": true,
+                "acsTokenLink": "http://books.google.ru/books/download/%D0%9B%D0%B8%D1%81_%D0%A0%D0%B0%D0%B9%D0%BD%D0%B0%D1%80%D1%82_%D0%B8_%D0%B5%D0%B3%D0%BE_%D0%BF%D1%80%D0%BE%D0%B4-sample-pdf.acsm?id=49ZcEAAAQBAJ&format=pdf&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+            },
+            "webReaderLink": "http://play.google.com/books/reader?id=49ZcEAAAQBAJ&hl=&printsec=frontcover&source=gbs_api",
+            "accessViewStatus": "SAMPLE",
+            "quoteSharingAllowed": false
+        },
+        "searchInfo": {
+            "textSnippet": "Средневековая голландская <b>литература</b>. Средневековая голландская <b>литература</b> Лис Райнарт и его проделки Вступление в что Книги серии «Шедевры средневековой <b>литературы</b> Голландии» представляют."
+        }
+    }
+]
+const adapter = (arr) => arr.reduce((acc, item) => {
+    acc.push({
+        label: item.volumeInfo.title,
+        imgPath: item.volumeInfo.imageLinks.thumbnail
+    })
+    return acc;
+}, [])
+export const images1 = adapter(randomBooks1);
+export const images2 = adapter(randomBooks2);
+export const images3 = adapter(randomBooks3);

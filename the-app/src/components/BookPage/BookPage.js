@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import "./BookPage.style.scss";
 
-import { randomBooks } from "../../helpers/randomBooks";
+import { randomBooks1 } from "../../helpers/randomBooks";
 
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import BasicRating from '../UI components/BasicRating';
@@ -10,7 +10,7 @@ import BasicButton from "../UI components/BasicButton";
 export const BookPage = () => {
 
     const params = useParams();
-    const book = randomBooks.find(el => el.id === params.id);
+    const book = randomBooks1.find(el => el.id === params.id);
     const { title, categories, authors } = book.volumeInfo;
     const description = book.searchInfo.textSnippet
 
