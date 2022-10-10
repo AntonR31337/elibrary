@@ -13,13 +13,13 @@ const FormBody = ({ children, onSubmit }) => {
                 alignItems: "center",
                 gap: "10px",
                 padding: "20px",
-                margin: "20px 0",
+                margin: "50px 0",
                 flexWrap: "wrap",
                 borderRadius: "10px",
-                boxShadow: "0 0 10px #4dabf5,0 0 10px #4dabf5,0 0 10px #4dabf5",
+                boxShadow: "0 0 20px rgba(108, 94, 57, 0.6),0 0 30px rgba(108, 94, 57, 0.6)",
                 boxSizing: "border-box",
                 minHeight: "120px",
-                bgcolor: '#e0f7fa',
+                bgcolor: '#B4C7E7',
             }}
             onSubmit={onSubmit}
             autoComplete="off"

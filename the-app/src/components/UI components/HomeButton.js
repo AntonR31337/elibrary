@@ -6,7 +6,7 @@ const HomeButton = () => {
     return (
         <Tooltip title="На главную страницу">
             <Link to={"/"}>
-                <HomeIcon sx={{ fontSize: "50px", color: "#4dabf5" }} />
+                <HomeIcon sx={{ fontSize: "50px", color: "#FFCA42" }} />
             </Link>
         </Tooltip>
     )

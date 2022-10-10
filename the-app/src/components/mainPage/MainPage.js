@@ -1,30 +1,19 @@
-import { BookCard } from "../card/BookCard";
-import uniqid from "uniqid";
-import { useSelector } from "react-redux";
-import { randomBooks } from "./randomBooks";
+import Genre from "./genre/Genre";
+import BookSliders from "./BookSliders/BookSliders";
 
-const MainPage = ({ authed }) => {
 
-    let books = useSelector((state) => state.books).books;
-
-    //при начальной загрузке в store Redux пусто,
-    // TODO определить, что будет загружаться при старте
-    if (books.length === 0) {
-        books = randomBooks;
-    }
+const MainPage = () => {
 
     return (
-        <>
-            <main className='main'>
-                <div className="main__content">
-                    {books.map((book) => (
-                        <BookCard key={uniqid()} book={book} />
-                    ))} 
-                    {/* <h2>Sliders</h2> */}
-                </div>
-            </main>
-        </>
-
+        <main className='main'>
+            <div className="main__content">
+                <h1 className="main__heading">
+                    Рады приветствовать Вас на сайте-агрегаторе книг!
+                </h1>
+                <BookSliders />
+                <Genre />
+            </div>
+        </main>
     )
 }
 

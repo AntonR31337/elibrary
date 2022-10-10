@@ -1,19 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@100;400;700&family=Mulish:wght@300&family=Noto+Serif:wght@700&family=Raleway:wght@600;700&family=Roboto:wght@400;500;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@100;400;700&family=Inter:wght@400;500;700&family=Mulish:wght@300&family=Noto+Serif:wght@700&family=Raleway:wght@600;700&family=Roboto:wght@400;500;700;900&display=swap');
+
+@import "./components/style/vars";
+@import "./components/style/mixins";
+@import "./components/style/reset";
+@import "./components/style/header";
+@import "./components/style/footer";
+@import "./components/style/mainPage";
+@import "./components/style/sliders";
+@import "./components/style/slider";
+@import "./components/style/logIn";
+@import "./components/style/sliders";
+@import "./components/style/booksList";
+@import "./components/style/pageNotFound";
+
+
 .App {
   height: 100vh;
   display: flex;
   flex-direction: column;
-}
-
-.main{
-  display: grid;
-  grid-template-columns: 1fr minmax(auto,1200px) 1fr;
-  margin: 50px 0;
-  &__content{
-    grid-column: 2/3;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
-  }
-
 }

@@ -51,7 +51,7 @@ const SearchForm = () => {
         if (searchName === '') {
             searchName = 'random'
         }
-        if (location.pathname === '/'){
+        if (location.pathname !== '/bookslist') {
             navigate("/bookslist")
         }
         // e.target[0].value = ''
@@ -60,10 +60,11 @@ const SearchForm = () => {
         // axios.get(`https://www.googleapis.com/books/v1/volumes?q=${searchName}&key=${bookApiKey}&maxResults=${maxResults}&startIndex=${startIndex}`)
         //поиск по названию или автору
         axios.get(`https://www.googleapis.com/books/v1/volumes?q=${searchName}+inauthor:${searchName}&key=${bookApiKey}&maxResults=${maxResults}&startIndex=${startIndex}`)
-        //поиск по жанру, на на деле по любому совпадению
-        // axios.get(`https://www.googleapis.com/books/v1/volumes?q=subject:${searchName}&key=${bookApiKey}&maxResults=${maxResults}&startIndex=${startIndex}`)
+            //поиск по жанру, на на деле по любому совпадению
+            // axios.get(`https://www.googleapis.com/books/v1/volumes?q=subject:${searchName}&key=${bookApiKey}&maxResults=${maxResults}&startIndex=${startIndex}`)
 
             .then(data => {
+                console.log(data);
                 setTotalItems(data.data.totalItems);
                 dispatch(bookSearch(missingData(data)));
             })
