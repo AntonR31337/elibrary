@@ -2,7 +2,7 @@ import Genre from "./genre/Genre";
 import BookSliders from "./BookSliders/BookSliders";
 
 
-const MainPage = ({ authed }) => {
+const MainPage = () => {
 
     return (
         <main className='main'>

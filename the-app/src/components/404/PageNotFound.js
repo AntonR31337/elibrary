@@ -2,7 +2,6 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import pic from "../../assets/404.png";
 import HomeButton from "../UI components/HomeButton";
-import "./PageNotFound.scss";
 
 const PageNotFound = () => {
 

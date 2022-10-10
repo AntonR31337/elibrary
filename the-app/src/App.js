@@ -8,9 +8,11 @@ import { useEffect, useState } from 'react';
 import { auth } from './firebase/firebaseConfig';
 import { onAuthStateChanged } from "@firebase/auth";
 import { PublicRoute } from './components/publicRoute/PublicRoute';
+import { PrivateRoute } from './components/PrivateRoute/PrivateRoute';
 import PageNotFound from './components/404/PageNotFound';
 import { BooksList } from './components/booksList/BooksList';
 import { BookPage } from './components/BookPage/BookPage';
+import ProfilePage from './components/profilePage/ProfilePage';
 
 function App() {
 
@@ -38,18 +40,21 @@ function App() {
   return (
     <div className="App">
       <Header authed={authed} />
-        <Routes>
-          <Route path="/" element={<MainPage authed={authed} />} />
-          <Route path="/login" element={<PublicRoute authed={authed} />}>
-            <Route path="" element={<LogIn />} />
-          </Route>
-          <Route path="/signup" element={<PublicRoute authed={authed} />}>
-            <Route path="" element={<LogIn authed />} />
-          </Route>
-          <Route path="*" element={<PageNotFound />} />
-          <Route path="/bookslist" element={<BooksList authed={authed} />} />
-          <Route path='/book/:id' element={<BookPage />} />
-        </Routes>
+      <Routes>
+        <Route path="/" element={<MainPage />} />
+        <Route path="/login" element={<PublicRoute authed={authed} />}>
+          <Route path="" element={<LogIn />} />
+        </Route>
+        <Route path="/signup" element={<PublicRoute authed={authed} />}>
+          <Route path="" element={<LogIn authed />} />
+        </Route>
+        <Route path="/profilepage" element={<PrivateRoute authed={authed} />} >
+          <Route path="" element={<ProfilePage />} />
+        </Route>
+        <Route path="/bookslist" element={<BooksList />} />
+        <Route path='/book/:id' element={<BookPage />} />
+        <Route path="*" element={<PageNotFound />} />
+      </Routes>
       <Footer />
     </div>
   );
