@@ -4,7 +4,10 @@ import "./BookPage.style.scss";
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import BasicRating from '../UI components/BasicRating';
 import BasicButton from "../UI components/BasicButton";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { bookSearch } from "../../store/actions/booksSearchAction";
+
+import { randomBooks1, randomBooks2, randomBooks3 } from "../../helpers/randomBooks";
 
 export const BookPage = () => {
 
