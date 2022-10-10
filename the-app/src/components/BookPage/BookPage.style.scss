@@ -3,20 +3,34 @@
     height: 100%;
     margin: 0 auto;
 }
+.boldText {
+    font-weight: bold;
+}
 .bookPage__wrapper {
     display: flex;
     justify-content: space-evenly;
+    margin-top: 15px;
+    margin-bottom: 15px;
 }
 .bookPage__img {
     object-fit: contain;
     max-width: 300px;
     max-height: 100%;
 }
+.bookPage__startInfo {
+    align-self: flex-end;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
 .book__buttons {
     display: flex;
 }
 .bookPage__description {
     margin: 10px;
+        &-title {
+            margin-bottom: 15px;
+        }
 }
 @media (max-width: 599px) {
     .bookPage__wrapper {
