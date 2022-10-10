@@ -1,6 +1,3 @@
-@import "../style/vars";
-@import "../style/mixins";
-
 .header, .footer {
     @extend %grid;
     background-color: $primary-bg-color;

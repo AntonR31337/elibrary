@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import LoginForm from "./loginForm/LoginForm";
-import "./logIn.scss";
 import { FirebaseError } from "firebase/app";
 import { logIn, signUp } from "../../firebase/firebaseConfig";
 import HomeButton from "../UI components/HomeButton";
