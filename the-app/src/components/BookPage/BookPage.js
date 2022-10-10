@@ -15,6 +15,7 @@ export const BookPage = () => {
     const description = book.searchInfo.textSnippet
 
     return (
+
         <div className="bookPage">
             <div className="bookPage__wrapper">
                 <img className="bookPage__img" src={book.volumeInfo.imageLinks.thumbnail} alt="BookImage" />
@@ -25,29 +26,27 @@ export const BookPage = () => {
                     <div>
                         <BasicRating />
                     </div>
-<<<<<<< HEAD
                     <div className="bookPage__description">
                         <h4>О книге:</h4>
                         <p className="">{description ? description : "Нет информации"}</p>
-=======
-                    <div className="book__buttons">
-                        <BasicButton textBtn={"В ИЗБРАННОЕ"} >
-                            <FavoriteIcon sx={{
-                                marginRight: "10px",
-                                stroke: "#1976d2",
-                                color: "white"
-                            }} />
-                        </BasicButton>
-                        <BasicButton textBtn={"ЧИТАТЬ"} />
-                        <BasicButton textBtn={"СКАЧАТЬ"} />
-                        <BasicButton textBtn={"КУПИТЬ"} />
->>>>>>> main
+                        <div className="book__buttons">
+                            <BasicButton textBtn={"В ИЗБРАННОЕ"} >
+                                <FavoriteIcon sx={{
+                                    marginRight: "10px",
+                                    stroke: "#1976d2",
+                                    color: "white"
+                                }} />
+                            </BasicButton>
+                            <BasicButton textBtn={"ЧИТАТЬ"} />
+                            <BasicButton textBtn={"СКАЧАТЬ"} />
+                            <BasicButton textBtn={"КУПИТЬ"} />
+                        </div>
                     </div>
                 </div>
-            </div>
-            <h4>О книге:</h4>
-            <div className="bookPage__description">
-                <p className="">{description ? description : "Нет информации"}</p>
+                <h4>О книге:</h4>
+                <div className="bookPage__description">
+                    <p className="">{description ? description : "Нет информации"}</p>
+                </div>
             </div>
         </div>
     )
