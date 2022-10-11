@@ -16,7 +16,7 @@ export const BookPage = () => {
 
     const book = books.find(el => el.id === params.id);
     const { title, categories, authors } = book.volumeInfo;
-    const description = book.searchInfo.textSnippet;
+    const description = book.volumeInfo.description || book.volumeInfo.subtitle;
 
     return (
         <div className="bookPage">

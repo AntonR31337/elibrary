@@ -13,6 +13,7 @@ import PageNotFound from './components/404/PageNotFound';
 import { BooksList } from './components/booksList/BooksList';
 import { BookPage } from './components/BookPage/BookPage';
 import ProfilePage from './components/profilePage/ProfilePage';
+import { GenreList } from './components/genre/GenreList';
 
 function App() {
 
@@ -53,6 +54,7 @@ function App() {
         </Route>
         <Route path="/bookslist" element={<BooksList />} />
         <Route path='/book/:id' element={<BookPage />} />
+        <Route path="/genre" element={<GenreList authed={authed} />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
       <Footer />
