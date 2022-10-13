@@ -36,10 +36,15 @@
         justify-content: center;
         color: $secondary-bg-color;
         @include font($font-1,500,24px);
-        width: 484px;
-        height: 81px;
+        padding: 20px 50px;
         background-color: $primary-bg-color;
         border: 3px solid $secondary-bg-color;
         border-radius: 8px;
+        transition: 0.3s ease-in-out;
+        &:hover{
+            border: 3px solid $primary-bg-color;
+            @extend %genre-shadow-hover;
+            transform: scale(1.1);
+        }
     }
 }
