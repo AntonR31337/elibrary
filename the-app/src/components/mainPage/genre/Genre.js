@@ -12,7 +12,7 @@ const Genre = () => {
             <div className="genre__list">
                 {genres.map(genre => <GenreItem key={uniqid()} genre={genre} />)}
             </div>
-            <Link className="genre__link" to={"/genre"}>
+            <Link className="genre__link" to={"/genres/1"}>
                 Посмотреть все жанры
             </Link>
         </section>
