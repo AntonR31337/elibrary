@@ -46,7 +46,7 @@ export function Header({ authed }) {
                     </li>
                     <li className="header__genre">
                         <Tooltip title="Нажмите для перехода на страницу с полным списком жанров">
-                            <Link className="header__link" to={"/genre"}>
+                            <Link className="header__link" to={"/genres/1"}>
                                 Жанры
                             </Link >
                         </Tooltip>
