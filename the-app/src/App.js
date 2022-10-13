@@ -54,7 +54,7 @@ function App() {
         </Route>
         <Route path="/bookslist" element={<BooksList />} />
         <Route path='/book/:id' element={<BookPage />} />
-        <Route path="/genre" element={<GenreList />} />
+        <Route path="/genres/:id" element={<GenreList />} />
         <Route path="/genre/:genre" element={<BooksList genre={true} />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
