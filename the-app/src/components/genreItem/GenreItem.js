@@ -17,7 +17,6 @@ const GenreItem = ({ genre }) => {
 
             .then(data => {
                 dispatch(bookSearch(missingData(data)));
-                console.log(data)
                 navigate(`/genre/${name}`);
             })
             .catch((error) => {

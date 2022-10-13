@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 export const BooksList = ({ genre }) => {
 
     let books = useSelector((state) => state.books).books;
+    console.log(books)
 
     return (
 
