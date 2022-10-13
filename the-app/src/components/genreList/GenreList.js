@@ -26,7 +26,7 @@ export const GenreList = () => {
         }
     }, [currentPage])
 
-    const handleChange = (value) => {
+    const handleChange = (event, value) => {
         setPage(value);
         navigate(`/genres/${value}`)
     };
