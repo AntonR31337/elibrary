@@ -12,9 +12,9 @@ const BookSliders = () => {
                 Популярные произведения
             </h2>
             <div className="sliders__content">
-                <Slider images={images1} category={" компьютеры"} />
-                <Slider images={images2} category={" детективы"} />
-                <Slider images={images3} category={" романы"} />
+                <Slider images={images1} category={" компьютеры"} delay={2300} />
+                <Slider images={images2} category={" детективы"} delay={3100} />
+                <Slider images={images3} category={" романы"} delay={4200} />
             </div>
         </section>
     )

@@ -16,14 +16,14 @@ import { randomBooks1, randomBooks2, randomBooks3 } from '../../../../helpers/ra
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
-const Slider = ({ category, images }) => {
+const Slider = ({ category, images, delay }) => {
 
-        // Код ниже - зашлушка для слайдера на главной
-        const helperBooks = [...randomBooks1, ...randomBooks2, ...randomBooks3];
-        console.log(helperBooks);
-        const dispatch = useDispatch();
-        dispatch(bookSearch(helperBooks));
-        //
+    // Код ниже - зашлушка для слайдера на главной
+    const helperBooks = [...randomBooks1, ...randomBooks2, ...randomBooks3];
+
+    const dispatch = useDispatch();
+    dispatch(bookSearch(helperBooks));
+
 
     const theme = useTheme();
     const [activeStep, setActiveStep] = React.useState(0);
@@ -78,26 +78,27 @@ const Slider = ({ category, images }) => {
                     axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
                     index={activeStep}
                     onChangeIndex={handleStepChange}
+                    interval={delay}
                     enableMouseEvents
                 >
                     {images.map((step, index) => (
-                        <Link className="book__link" to={`/book/${id}`}>
-                        <div key={step.label}>
-                            {Math.abs(activeStep - index) <= 2 ? (
-                                <Box
-                                    component="img"
-                                    sx={{
-                                        height: 400,
-                                        display: 'block',
-                                        maxWidth: 375,
-                                        overflow: 'hidden',
-                                        width: '100%',
-                                    }}
-                                    src={step.imgPath}
-                                    alt={step.label}
-                                />
-                            ) : null}
-                        </div>
+                        <Link key={step.label} className="book__link" to={`/book/${id}`}>
+                            <div >
+                                {Math.abs(activeStep - index) <= 2 ? (
+                                    <Box
+                                        component="img"
+                                        sx={{
+                                            height: 400,
+                                            display: 'block',
+                                            maxWidth: 375,
+                                            overflow: 'hidden',
+                                            width: '100%',
+                                        }}
+                                        src={step.imgPath}
+                                        alt={step.label}
+                                    />
+                                ) : null}
+                            </div>
                         </Link>
                     ))}
                 </AutoPlaySwipeableViews>

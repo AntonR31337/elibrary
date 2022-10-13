@@ -1,12 +1,12 @@
 .sliders{
-    padding: 54px 0;
+    padding: 54px 10px;
     background-color: $primary-bg-color;
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     border: 3px solid $secondary-bg-color;
-    border-radius: 8px;
+    border-radius: 20px;
     @extend %shadow;
     color: $primary-text-color;
     &__heading{
@@ -15,7 +15,7 @@
     }
     &__content{
         display: flex;
-        gap: 30px;
+        gap: 20px;
         flex-wrap: wrap;
         justify-content: center;
     }
