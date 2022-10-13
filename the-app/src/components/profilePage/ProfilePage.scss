@@ -1,7 +1,68 @@
-.profile{
-    &__title{
-    font-weight: bold;
-    font-size: 40px;
-    text-align: center;
+.profile {
+    &__title {
+        font-size: 25px;
+        text-align: left;
+        margin-left: 10px;
+        font-size: 3em;
+
+    }
+
+    background-color: rgb(183, 236, 240);
 }
+
+.left-content {
+    background-color: white;
+    width: 45%;
+    height: 100%;
+}
+
+.form-question {
+    font-size: 30px;
+    color: rgb(15, 15, 149);
+    margin: 12px 5px;
+}
+
+.input-form {
+    margin: 5px;
+    border: 1px solid #cccccc; //цвет рамки
+    border-radius: 8px; //закругление углов (общее)
+    -webkit-border-radius: 8px; //закругление углов (Google Chrome)
+    -moz-border-radius: 8px; //закругление углов (FireFox)
+    -khtml-border-radius: 8px; //закругление углов (Safari)
+    background: #ffffff !important; // желательно прописывать, так как в Chrome при сохранных данных оно может быть желтым
+    outline: none; // удаляет обводку в браузерах хром(желтая) и сафари(синяя)
+    height: 50px; // высота на свое усмотрение
+    width: 100%; // ширина на свое усмотрение
+    color: black; //цвет шрифта в обычном состоянии
+    font-size: 22px; // Размер шрифта
+    font-family: Tahoma; // Стиль шрифта
+    padding: 0 5px;
+}
+
+
+.open {
+    display: block;
+    display: flex;
+    width: 420px;
+}
+
+.close {
+    display: none;
+}
+
+.answers {
+    display: block;
+    width: 420px;
+    font-size: 30px;
+    padding: 10px 5px;
+    outline: 1px solid red;
+    display: flex;
+    flex-direction: column;
+}
+
+.btn-edit {
+    width: 40px;
+    border-radius: 8px;
+
+
 }
