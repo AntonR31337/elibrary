@@ -16,6 +16,8 @@ const firebaseConfig = {
   appId: process.env.REACT_APP_APP_ID
 };
 
+export const bookApiKey = "AIzaSyCAYJ7mjkMe1kdmZQbgayiO5QcfDUgAQEQ";
+
 const firebaseApp = initializeApp(firebaseConfig);
 
 

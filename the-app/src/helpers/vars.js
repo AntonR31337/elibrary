@@ -1,15 +1,14 @@
-import scary from "../assets/scary.svg";
-import detective from "../assets/detective.svg";
-import adventure from "../assets/adventure.svg";
-import romance from "../assets/romance.svg";
-import science from "../assets/science.svg";
-// import detective from "../assets/detective.svg";
+import scary from "../assets/scary.jpg";
+import detective from "../assets/detective.jpg";
+import adventure from "../assets/adventure.jpg";
+import romance from "../assets/romance.jpg";
+import science from "../assets/science.jpg";
 
 export const genres = [
-    ["Ужасы", scary, "id"],
-    ["Наука", science, "id"],
-    ["Романы", romance, "id"],
-    ["Приключения", adventure, "id"],
-    ["Сказки", scary, "id"],
-    ["Детектив", detective, "id"],
+    [scary, "scary"],
+    [science, "science"],
+    [romance, "romance"],
+    [adventure, "adventure"],
+    [scary, "scary"],
+    [detective, "detective"],
 ];

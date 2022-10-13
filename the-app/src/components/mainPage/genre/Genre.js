@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import uniqid from "uniqid";
 import { genres } from "../../../helpers/vars";
-import GenreItem from "./genreItem/GenreItem";
+import GenreItem from "../../genreItem/GenreItem";
 
 const Genre = () => {
     return (

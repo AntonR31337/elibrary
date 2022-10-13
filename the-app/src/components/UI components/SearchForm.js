@@ -15,6 +15,7 @@ import axios from 'axios';
 import { bookSearch } from '../../store/actions/booksSearchAction';
 //import { textSearch } from '../../store/actions/textSearchAction';
 import { missingData } from '../../helpers/bookRequest';
+import { bookApiKey } from '../../firebase/firebaseConfig';
 
 const SearchForm = () => {
     //количество отображаемых на странице книг
@@ -27,10 +28,6 @@ const SearchForm = () => {
     const [totalItems, setTotalItems] = useState('');
     //состояние инпута
     let [searchName, setSearchName] = useState("");
-
-    //ключ обращения к Book Api
-    const bookApiKey = "AIzaSyCAYJ7mjkMe1kdmZQbgayiO5QcfDUgAQEQ";
-
     // const book = useSelector(state => state.textSearch.book)
     // const handleChange = (e) => {
     //     dispatch(textSearch(e.target.value))
