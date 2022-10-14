@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import MobileStepper from '@mui/material/MobileStepper';
@@ -10,25 +9,17 @@ import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
 import SwipeableViews from 'react-swipeable-views';
 import { autoPlay } from 'react-swipeable-views-utils';
 import { Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { bookSearch } from '../../../../store/actions/booksSearchAction';
-import { randomBooks1, randomBooks2, randomBooks3 } from '../../../../helpers/randomBooks';
+import { useState } from 'react';
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
 const Slider = ({ category, images, delay }) => {
 
-    // Код ниже - зашлушка для слайдера на главной
-    const helperBooks = [...randomBooks1, ...randomBooks2, ...randomBooks3];
-
-    const dispatch = useDispatch();
-    dispatch(bookSearch(helperBooks));
-
-
     const theme = useTheme();
-    const [activeStep, setActiveStep] = React.useState(0);
-    const maxSteps = images.length;
 
+    const [activeStep, setActiveStep] = useState(0);
+
+    const maxSteps = images.length;
     const id = images[activeStep].id;
 
     const handleNext = () => {

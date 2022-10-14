@@ -1,11 +1,11 @@
 import { BookCard } from "../card/BookCard";
 import uniqid from "uniqid";
-import { useSelector } from "react-redux";
+import { shallowEqual, useSelector } from "react-redux";
+import { getBooks } from "../../store/selectors/getListOfBooksSelectors";
 
 export const BooksList = ({ genre }) => {
 
-    let books = useSelector((state) => state.books).books;
-    console.log(books)
+    const books = useSelector(getBooks, shallowEqual);
 
     return (
 

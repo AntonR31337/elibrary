@@ -1,4 +1,4 @@
-import { bookSearch } from '../../store/actions/booksSearchAction';
+import { bookSearch } from '../../store/actions/getListOfBooksActions';
 import { missingData } from '../../helpers/bookRequest';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from "react-router-dom";
