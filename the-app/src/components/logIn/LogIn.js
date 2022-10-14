@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import LoginForm from "./loginForm/LoginForm";
 import { FirebaseError } from "firebase/app";
@@ -6,6 +6,7 @@ import { logIn, signUp } from "../../firebase/firebaseAuth";
 import HomeButton from "../UI components/HomeButton";
 
 const LogIn = ({ authed }) => {
+    const navigate = useNavigate();
     //сообщание ошибки
     const [error, setError] = useState("");
 
@@ -14,8 +15,10 @@ const LogIn = ({ authed }) => {
         try {
             if (authed) {
                 await signUp(login, pass);
+                navigate(-1);
             } else {
                 await logIn(login, pass);
+                navigate(-1);
             }
         }
         catch (error) {

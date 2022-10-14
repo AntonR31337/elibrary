@@ -13,7 +13,6 @@ import { auth } from "./firebase"
   //обработка авторизации
   export const logIn = async (email, pass) => {
     await signInWithEmailAndPassword(auth, email, pass);
-    console.log("in");
   };
   //обработка разлогинивания
   export const logOut = async () => {

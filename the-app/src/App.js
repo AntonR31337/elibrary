@@ -53,7 +53,7 @@ function App() {
           <Route path="" element={<ProfilePage />} />
         </Route>
         <Route path="/bookslist/:id" element={<BooksList />} />
-        <Route path='/book/:id' element={<BookPage />} />
+        <Route path='/book/:id' element={<BookPage authed={authed} />} />
         <Route path="/genres/:id" element={<GenreList />} />
         <Route path="/genre/:genre" element={<BooksList genre={true} />} />
         <Route path="*" element={<PageNotFound />} />
