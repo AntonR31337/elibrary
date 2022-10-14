@@ -7,7 +7,7 @@ import { useParams } from "react-router-dom";
 import { shallowEqual, useSelector } from "react-redux";
 import { getBooks, getSliderBooks } from "../../store/selectors/getListOfBooksSelectors";
 
-export const BookPage = () => {
+export const BookPage = ({ authed }) => {
 
     const params = useParams();
 
@@ -27,10 +27,10 @@ export const BookPage = () => {
                     <p className="">Категория: {categories ? categories : "Нет информации"}</p>
                     <p className="">Авторы: {authors ? authors : "Нет информации"}</p>
                     <div>
-                        <BasicRating />
+                        <BasicRating authed={authed} />
                     </div>
                     <div className="book__buttons">
-                        <BasicButton textBtn={"В ИЗБРАННОЕ"} >
+                        <BasicButton textBtn={"В ИЗБРАННОЕ"} authed={authed} >
                             <FavoriteIcon sx={{
                                 marginRight: "10px",
                                 stroke: "#1976d2",
@@ -38,7 +38,7 @@ export const BookPage = () => {
                             }} />
                         </BasicButton>
                         <BasicButton textBtn={"ЧИТАТЬ"} />
-                        <BasicButton textBtn={"СКАЧАТЬ"} />
+                        <BasicButton textBtn={"СКАЧАТЬ"} authed={authed} />
                         <BasicButton textBtn={"КУПИТЬ"} />
                     </div>
                 </div>
