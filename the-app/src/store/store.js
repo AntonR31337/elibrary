@@ -1,13 +1,8 @@
 import { createStore, combineReducers } from 'redux';
-import { textSearchReducer } from './reducers/textSearchReducer';
-import { booksSearchReducer } from './reducers/booksSearchReducer';
-import { genreSearchReducer } from './reducers/genreSearchReducer';
-
+import { getListOfBooksReducer } from './reducers/getListOfBooksReducer';
 
 const rootReducer = combineReducers({
-    textSearch: textSearchReducer,
-    books: booksSearchReducer,
-    booksGenre: genreSearchReducer,
+    search: getListOfBooksReducer,
 })
 
 export const store = createStore(
