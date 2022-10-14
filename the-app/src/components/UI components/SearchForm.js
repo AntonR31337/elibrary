@@ -13,19 +13,19 @@ import axios from 'axios';
 
 import { missingData } from '../../helpers/bookRequest';
 import { bookApiKey } from '../../firebase/firebaseConfig';
-import { bookSearch } from '../../store/actions/getListOfBooksActions';
+import { bookSearch, bookSearchRequest } from '../../store/actions/getListOfBooksActions';
 
 const SearchForm = () => {
     //количество отображаемых на странице книг
-    const maxResults = 9;
-    const startIndex = 0;
+    // const maxResults = 9;
+    // const startIndex = 0;
 
     const theme = useTheme();
     const dispatch = useDispatch();
     //общее количество книг, найденных по результатам поиска
-    const [totalItems, setTotalItems] = useState('');
+    //const [totalItems, setTotalItems] = useState('');
     //состояние инпута
-    let [searchName, setSearchName] = useState("");
+    const [searchName, setSearchName] = useState("");
     // const book = useSelector(state => state.textSearch.book)
     // const handleChange = (e) => {
     //     dispatch(textSearch(e.target.value))
@@ -46,27 +46,29 @@ const SearchForm = () => {
         if (searchName === '') {
             searchName = 'random'
         }
-        if (location.pathname !== '/bookslist') {
-            navigate("/bookslist")
+        if (location.pathname.slice(0, 9) !== '/bookslist') {
+            navigate("/bookslist/1")
         }
-        // e.target[0].value = ''
-        setSearchName("");
-        //поиск только по названию книги
-        // axios.get(`https://www.googleapis.com/books/v1/volumes?q=${searchName}&key=${bookApiKey}&maxResults=${maxResults}&startIndex=${startIndex}`)
-        //поиск по названию или автору
-        axios.get(`https://www.googleapis.com/books/v1/volumes?q=${searchName}+inauthor:${searchName}&key=${bookApiKey}&maxResults=${maxResults}&startIndex=${startIndex}`)
-            //поиск по жанру, на на деле по любому совпадению
-            // axios.get(`https://www.googleapis.com/books/v1/volumes?q=subject:${searchName}&key=${bookApiKey}&maxResults=${maxResults}&startIndex=${startIndex}`)
+        // // e.target[0].value = ''
+        // setSearchName("");
+        // //поиск только по названию книги
+        // // axios.get(`https://www.googleapis.com/books/v1/volumes?q=${searchName}&key=${bookApiKey}&maxResults=${maxResults}&startIndex=${startIndex}`)
+        // //поиск по названию или автору
+        // axios.get(`https://www.googleapis.com/books/v1/volumes?q=${searchName}+inauthor:${searchName}&key=${bookApiKey}&maxResults=${maxResults}&startIndex=${startIndex}`)
+        //     //поиск по жанру, на на деле по любому совпадению
+        //     // axios.get(`https://www.googleapis.com/books/v1/volumes?q=subject:${searchName}&key=${bookApiKey}&maxResults=${maxResults}&startIndex=${startIndex}`)
 
-            .then(data => {
-                console.log(data);
-                setTotalItems(data.data.totalItems);
-                dispatch(bookSearch(missingData(data)));
-            })
-            .catch((error) => {
-                console.log(error)
-                navigate("/404")
-            })
+        //     .then(data => {
+        //         console.log(data);
+        //         setTotalItems(data.data.totalItems);
+        //         dispatch(bookSearch(missingData(data)));
+        //     })
+        //     .catch((error) => {
+        //         console.log(error)
+        //         navigate("/404")
+        //     })
+        dispatch(bookSearchRequest(searchName, 0));
+        setSearchName("");
     }
 
 

@@ -52,7 +52,7 @@ function App() {
         <Route path="/profilepage" element={<PrivateRoute authed={authed} />} >
           <Route path="" element={<ProfilePage />} />
         </Route>
-        <Route path="/bookslist" element={<BooksList />} />
+        <Route path="/bookslist/:id" element={<BooksList />} />
         <Route path='/book/:id' element={<BookPage />} />
         <Route path="/genres/:id" element={<GenreList />} />
         <Route path="/genre/:genre" element={<BooksList genre={true} />} />

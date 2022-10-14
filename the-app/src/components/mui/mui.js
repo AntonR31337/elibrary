@@ -14,7 +14,7 @@ export const theme = createTheme({
             styleOverrides: {
                 root: {
                     color: "#f8d862",
-                    maxWidth: "330px",
+                    maxWidth: "365px",
                     margin: "20px 0 0"
                 },
                 outlined: {

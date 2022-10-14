@@ -12,3 +12,5 @@ export const genres = [
     [scary, "scary"],
     [detective, "detective"],
 ];
+
+export const maxResults = 27;
