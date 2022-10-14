@@ -7,15 +7,13 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from "react-router-dom";
 import { useLocation } from 'react-router-dom';
-
 import { useTheme } from '@mui/material/styles';
 
 import axios from 'axios';
 
-import { bookSearch } from '../../store/actions/booksSearchAction';
-//import { textSearch } from '../../store/actions/textSearchAction';
 import { missingData } from '../../helpers/bookRequest';
 import { bookApiKey } from '../../firebase/firebaseConfig';
+import { bookSearch } from '../../store/actions/getListOfBooksActions';
 
 const SearchForm = () => {
     //количество отображаемых на странице книг

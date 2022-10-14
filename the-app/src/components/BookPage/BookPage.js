@@ -1,20 +1,20 @@
-import { useParams } from "react-router-dom";
 import "./BookPage.style.scss";
 
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import BasicRating from '../UI components/BasicRating';
 import BasicButton from "../UI components/BasicButton";
-import { useDispatch, useSelector } from "react-redux";
-import { bookSearch } from "../../store/actions/booksSearchAction";
-
-import { randomBooks1, randomBooks2, randomBooks3 } from "../../helpers/randomBooks";
+import { useParams } from "react-router-dom";
+import { shallowEqual, useSelector } from "react-redux";
+import { getBooks, getSliderBooks } from "../../store/selectors/getListOfBooksSelectors";
 
 export const BookPage = () => {
 
     const params = useParams();
-    const { books } = useSelector((state) => state.books);
 
-    const book = books.find(el => el.id === params.id);
+    const books = useSelector(getBooks, shallowEqual);
+    const sliderBooks = useSelector(getSliderBooks, shallowEqual);
+
+    const book = [...books, ...sliderBooks].find(el => el.id === params.id);
     const { title, categories, authors } = book.volumeInfo;
     const description = book.volumeInfo.description || book.volumeInfo.subtitle;
 
