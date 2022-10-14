@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import LoginForm from "./loginForm/LoginForm";
 import { FirebaseError } from "firebase/app";
-import { logIn, signUp } from "../../firebase/firebaseConfig";
+import { logIn, signUp } from "../../firebase/firebaseAuth";
 import HomeButton from "../UI components/HomeButton";
 
 const LogIn = ({ authed }) => {

@@ -12,7 +12,7 @@ import { useTheme } from '@mui/material/styles';
 import axios from 'axios';
 
 import { missingData } from '../../helpers/bookRequest';
-import { bookApiKey } from '../../firebase/firebaseConfig';
+import { bookApiKey } from '../../helpers/googleBookApiKey';
 import { bookSearch, bookSearchRequest } from '../../store/actions/getListOfBooksActions';
 
 const SearchForm = () => {

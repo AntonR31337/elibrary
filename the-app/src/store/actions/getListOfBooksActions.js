@@ -1,7 +1,7 @@
 import { BOOKS_SEARCH, GENRE_SEARCH, TEXT_SEARCH, TOTAL_BOOK_QUANTITY, TOTAL_ITEMS } from "../types/types";
 
 import axios from 'axios';
-import { bookApiKey } from "../../firebase/firebaseConfig";
+import { bookApiKey } from "../../helpers/googleBookApiKey";
 import { maxResults } from "../../helpers/vars";
 import { missingData } from "../../helpers/bookRequest";
 

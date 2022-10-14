@@ -5,7 +5,7 @@ import { Header } from './components/header/Header';
 import { Footer } from './components/footer/Footer';
 import LogIn from './components/logIn/LogIn';
 import { useEffect, useState } from 'react';
-import { auth } from './firebase/firebaseConfig';
+import { auth } from './firebase/firebase';
 import { onAuthStateChanged } from "@firebase/auth";
 import { PublicRoute } from './components/publicRoute/PublicRoute';
 import { PrivateRoute } from './components/PrivateRoute/PrivateRoute';

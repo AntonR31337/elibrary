@@ -2,7 +2,7 @@ import { bookGenreSearchRequest, bookSearch } from '../../store/actions/getListO
 // import { missingData } from '../../helpers/bookRequest';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from "react-router-dom";
-// import { bookApiKey } from "../../firebase/firebaseConfig";
+// import { bookApiKey } from "../../helpers/googleBookApiKey";
 // import axios from 'axios';
 
 const GenreItem = ({ genre }) => {

@@ -9,7 +9,7 @@ import AccountBoxIcon from '@mui/icons-material/AccountBox';
 
 import { Link } from "react-router-dom";
 
-import { logOut } from '../../firebase/firebaseConfig';
+import { logOut } from '../../firebase/firebaseAuth';
 
 import SearchForm from "../UI components/SearchForm";
 import logo from "../../assets/bookLogo.svg";
