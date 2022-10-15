@@ -33,7 +33,6 @@ export const BookPage = ({ authed }) => {
                         <BasicButton textBtn={"В ИЗБРАННОЕ"} authed={authed} >
                             <FavoriteIcon sx={{
                                 marginRight: "10px",
-                                stroke: "#1976d2",
                                 color: "white"
                             }} />
                         </BasicButton>
