@@ -13,7 +13,7 @@
     0px 8px 20px rgba(0, 0, 0, 0.45),
     0px 12px 40px rgba(0, 0, 0, 0.65);
 }
-@mixin font($font,$weight,$size) {
+@mixin font($font: ("Raleway", sans-serif),$weight: 400,$size: 16px) {
     font-family: $font;
     font-size: $size;
     font-weight: $weight;
