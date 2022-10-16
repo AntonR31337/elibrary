@@ -1,65 +1,86 @@
 .profile {
-    &__title {
-        font-size: 25px;
-        text-align: left;
-        margin-left: 10px;
-        font-size: 3em;
-
-    }
-
-    background-color: rgb(183, 236, 240);
+    padding: 50px 50px;
 }
 
-.left-content {
-    background-color: white;
-    width: 45%;
-    height: 100%;
+.profile-title {
+    font-size: 20px;
+    margin: 20px 0;
+    font-weight: bold;
 }
 
-.form-question {
-    font-size: 30px;
-    color: rgb(15, 15, 149);
-    margin: 12px 5px;
+.main-title{
+    margin: 50px 0;
 }
 
-.input-form {
-    margin: 5px;
-    border: 1px solid #cccccc; //цвет рамки
-    border-radius: 8px; //закругление углов (общее)
-    -webkit-border-radius: 8px; //закругление углов (Google Chrome)
-    -moz-border-radius: 8px; //закругление углов (FireFox)
-    -khtml-border-radius: 8px; //закругление углов (Safari)
-    background: #ffffff !important; // желательно прописывать, так как в Chrome при сохранных данных оно может быть желтым
-    outline: none; // удаляет обводку в браузерах хром(желтая) и сафари(синяя)
-    height: 50px; // высота на свое усмотрение
-    width: 100%; // ширина на свое усмотрение
-    color: black; //цвет шрифта в обычном состоянии
-    font-size: 22px; // Размер шрифта
-    font-family: Tahoma; // Стиль шрифта
-    padding: 0 5px;
-}
-
-
-.open {
-    display: block;
+.profile-user {
     display: flex;
-    width: 420px;
+    column-gap: 20px;
+    align-items: center;
+    margin-bottom: 20px;
 }
 
-.close {
-    display: none;
+.profile-img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: darkgray;
 }
 
-.answers {
+.profile-btn {
+    padding: 10px 15px;
+    cursor: pointer;
+    border: 1px solid rgba(46, 46, 183, 0.55);
+    color: rgba(46, 46, 183, 0.55);
+    border-radius: 12px;
+    background: transparent;
+}
+
+.profile-icon {
+    font-size: 25px;
+    color: rgb(230, 230, 4);
+    cursor: pointer;
+}
+
+.profile-info {
+    font-size: 16px;
+    color: grey;
+    margin-bottom: 20px;
+    border-bottom: 1px solid grey;
+    width: 600px;
+}
+
+.profile-input {
+    width: 600px;
+    height: 40px;
+    outline: none;
+    padding-left: 20px;
+}
+
+.profile-btn2 {
     display: block;
-    width: 420px;
-    font-size: 30px;
-    padding: 10px 5px;
-    display: flex;
-    flex-direction: column;
+    color: white;
+    background: rgba(46, 46, 183, 0.55);
+    padding: 15px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 15px;
+    margin-top: 20px;
 }
 
-.btn-edit {
-    width: 40px;
-    border-radius: 8px;
+.profile-input2 {
+    width: 600px;
+    padding: 30px 15px;
+}
+
+.profile-remove {
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+    font-size: 20px;
+    color: red;
+    cursor: pointer;
+}
+
+.crumbs{
+    display: flex;
 }
