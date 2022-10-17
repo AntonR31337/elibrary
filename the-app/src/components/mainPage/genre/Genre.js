@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import uniqid from "uniqid";
-import { genres } from "../../../helpers/vars";
+import { genres } from "../../../helpers/genres";
 import GenreItem from "../../genreItem/GenreItem";
 
 const Genre = () => {
@@ -10,7 +10,7 @@ const Genre = () => {
                 Популярные жанры книг
             </h2>
             <div className="genre__list">
-                {genres.map(genre => <GenreItem key={uniqid()} genre={genre} />)}
+                {genres.slice(0, 6).map(genre => <GenreItem key={uniqid()} genre={genre} />)}
             </div>
             <Link className="genre__link" to={"/genres/1"}>
                 Посмотреть все жанры
