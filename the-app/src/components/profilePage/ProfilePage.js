@@ -1,7 +1,7 @@
 import "./ProfilePage.scss";
 import { BiTrash } from "react-icons/bi";
 import { Link } from "react-router-dom";
-
+import face from "../../assets/face.jpg";
 
 
 const ProfilePage = () => {
@@ -15,7 +15,7 @@ const ProfilePage = () => {
                 <div className="profile-content">
                     <h2 className="profile-title">Фото профиля</h2>
                     <div className="profile-user">
-                        <img className="profile-img" src="https://www.pngitem.com/pimgs/m/146-1468465_early-signs-of-conception-user-profile-icon-hd.png" alt="" />
+                        <img className="profile-img" src={face} alt="" />
                         <button className="profile-btn">Выберите файл</button>
                         <p className="profile-icon"><BiTrash /></p>
                     </div>
