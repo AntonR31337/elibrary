@@ -15,6 +15,7 @@ import { BookPage } from './components/BookPage/BookPage';
 import ProfilePage from './components/profilePage/ProfilePage';
 import { GenreList } from './components/genreList/GenreList';
 
+
 function App() {
 
   //локально сохраняем статус авторизации

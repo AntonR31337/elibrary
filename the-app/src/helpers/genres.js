@@ -1,63 +1,63 @@
-import adventure from "../assets/genre/adventure.jpg";
-import ballads from "../assets/genre/ballads.jpg";
-import childrensTale from "../assets/genre/childrens-tale.jpg";
-import classic from "../assets/genre/classic.jpg";
-import comic from "../assets/genre/comic.jpg";
-import crime from "../assets/genre/crime.jpg";
-import detective from "../assets/genre/detective.jpg";
-import drama from "../assets/genre/drama.jpg";
-import fable from "../assets/genre/fable.jpg";
-import fairyTale from "../assets/genre/fairy-tale.jpg";
-import fantasy from "../assets/genre/fantasy.jpg";
-import folklore from "../assets/genre/folklore.jpg";
-import graphicNovel from "../assets/genre/graphic-novel.jpg";
-import history from "../assets/genre/history.jpg";
-import horror from "../assets/genre/horror.jpg";
-import legends from "../assets/genre/legends.jpg";
-import legends_1 from "../assets/genre/legends_1.jpg";
-import loveStory from "../assets/genre/love-story.jpg";
-import lyrics from "../assets/genre/lyrics.jpg";
-import mystery from "../assets/genre/mystery.jpg";
-import mythology from "../assets/genre/mythology.jpg";
-import poetry from "../assets/genre/poetry.jpg";
-import religion from "../assets/genre/religion.jpg";
-import romance from "../assets/genre/romance.jpg";
-import science from "../assets/genre/science.jpg";
-import scienceFiction from "../assets/genre/science-fiction.jpg";
-import sonnet from "../assets/genre/sonnet.jpg";
-import technical from "../assets/genre/technical.jpg";
-import thriller from "../assets/genre/thriller.jpg";
-import tragedy from "../assets/genre/tragedy.jpg";
+import adventure from "../assets/adventure.jpg";
+import action from "../assets/action.jpg";
+import animals from "../assets/animals.jpg";
+import biography from "../assets/biography.jpg";
+import botanic from "../assets/botanic.jpg";
+import cars from "../assets/cars.jpg";
+import children from "../assets/children.jpg";
+import classic from "../assets/classic.jpg";
+import cooking from "../assets/cooking.jpg";
+import detective from "../assets/detective.jpg";
+import dictionary from "../assets/dictionary.jpg";
+import fantastic from "../assets/fantastic.jpg";
+import health from "../assets/health.jpg";
+import history from "../assets/history.jpg";
+import hobby from "../assets/hobby.jpg";
+import humor from "../assets/humor.jpg";
+import medicine from "../assets/medicine.jpg";
+import music from "../assets/music.jpg";
+import myths from "../assets/myths.jpg";
+import pedagogy from "../assets/pedagogy.jpg";
+import psyhology from "../assets/psyhology.jpg";
+import poetry from "../assets/poetry.jpg";
+import scary from "../assets/scary.jpg";
+import romance from "../assets/romance.jpg";
+import science from "../assets/science.jpg";
+import sport from "../assets/sport.jpg";
+import tales from "../assets/tales.jpg";
+import technical from "../assets/technical.jpg";
+import thriller from "../assets/technical.jpg";
+import tragedy from "../assets/technical.jpg";
 
 
 export const genres = [
     [adventure, "adventure"],
-    [ballads, "ballads"],
-    [childrensTale, "children"],
+    [action, "action"],
+    [animals, "animals"],
+    [biography, "biography"],
+    [botanic, "botanic"],
+    [cars, "cars"],
+    [children, "children"],
     [classic, "classic"],
-    [comic, "comic"],
-    [crime, "crime"],
+    [cooking, "cooking"],
     [detective, "detective"],
-    [drama, "drama"],
-    [fable, "fable"],
-    [fairyTale, "fairyTale"],
-    [fantasy, "fantasy"],
-    [folklore, "folklore"],
-    [graphicNovel, "novel"],
+    [dictionary, "dictionary"],
+    [fantastic, "fantastic"],
+    [health, "health"],
     [history, "history"],
-    [horror, "horror"],
-    [legends, "legends"],
-    [legends_1, "legends_1"],
-    [loveStory, "loveStory"],
-    [lyrics, "lyrics"],
-    [mystery, "mystery"],
-    [mythology, "mythology"],
+    [hobby, "hobby"],
+    [humor, "humor"],
+    [medicine, "medicine"],
+    [music, "music"],
+    [myths, "myths"],
+    [pedagogy, "pedagogy"],
+    [psyhology, "psyhology"],
     [poetry, "poetry"],
-    [religion, "religion"],
+    [scary, "scary"],
     [romance, "romance"],
     [science, "science"],
-    [scienceFiction, "fiction"],
-    [sonnet, "sonnet"],
+    [sport, "sport"],
+    [tales, "tales"],
     [technical, "technical"],
     [thriller, "thriller"],
     [tragedy, "tragedy"],
