@@ -2,8 +2,9 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
-} from "firebase/auth"
+  } from "firebase/auth"
 import { auth } from "./firebase"
+
 
     
   //обработка  подписки
