@@ -20,9 +20,6 @@ const ProfilePage = () => {
     const [phoneNumber, setPhoneNumber] = useState('');
     const [imgUrl, setImgUrl] = useState('');
 
-    if (imgUrl == null){
-        setImgUrl("https://www.pngitem.com/pimgs/m/146-1468465_early-signs-of-conception-user-profile-icon-hd.png")
-    }
     useEffect(() => {
          onAuthStateChanged(auth, (user) => {
           setName(user.displayName);
@@ -105,8 +102,7 @@ const ProfilePage = () => {
                 <form action="" onSubmit={handleSubmitImg}>
                     <h2 className="profile-title">Фото профиля</h2>
                     <div className="profile-user">
-                        {/* <img className="profile-img" src="https://www.pngitem.com/pimgs/m/146-1468465_early-signs-of-conception-user-profile-icon-hd.png" alt="" /> */}
-                        <img src={imgUrl} alt='uploaded file' className="profile-img" />
+                        <img src={imgUrl?imgUrl:face} alt='uploaded file' className="profile-img" />
                         <label className="input-file">
                             <input type="file" name="file"/>        
                             <span>Выберать файл</span>
