@@ -1,4 +1,3 @@
-import "./ProfilePage.scss";
 import DeleteIcon from '@mui/icons-material/Delete';
 import Popup from "reactjs-popup";
 import { deleteUser } from "firebase/auth";
