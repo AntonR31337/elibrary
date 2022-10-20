@@ -6,12 +6,11 @@ import {
     onAuthStateChanged,
     updateProfile,
     updateEmail,
-    deleteUser, 
   } from "firebase/auth"
 import { auth, storage } from "../../firebase/firebase"
 import { useEffect, useState } from 'react';
 import { ref, getDownloadURL, uploadBytesResumable } from "firebase/storage";
-
+import { DeleteProfile } from "./DeleteProfile";
 
 const ProfilePage = () => {
 
@@ -31,14 +30,6 @@ const ProfilePage = () => {
         
       }, []);
 
-   
-      const deleteProfile = () => {
-        deleteUser(auth.currentUser).then(() => {
-            console.log('User deleted');
-          }).catch((error) => {
-            console.log('An error ocurred', error);
-          });
-      }
 
       const handleChangeUserInfo = (event) => {
         event.preventDefault();
@@ -62,9 +53,7 @@ const ProfilePage = () => {
             setEmail(event.target[1].value);
             event.target[1].value = '';
         }
-        
     }
-
     
     const handleSubmitImg = (e) => {
         e.preventDefault()
@@ -135,8 +124,7 @@ const ProfilePage = () => {
                         <input className="profile-input" placeholder="Пароль" type="password" />
                         <button className="profile-btn2">Сохранить</button>
                     </form>
-                    <h3 className="profile-title main-title">Удаление профиля</h3>
-                    <p className="profile-remove" onClick={deleteProfile}><span className="profile-remove-icon"><BiTrash /></span>Удалить профиль</p>
+                    <DeleteProfile />
                 </div>
             </div>
         </div>
