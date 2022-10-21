@@ -105,7 +105,7 @@ const ProfilePage = () => {
                         <p className="profile-title">Моё имя: {name}</p>
                         <input className="profile-input" placeholder="Введите имя и фамилию" type="text" pattern="^[а-яА-ЯёЁa-zA-Z]+ [а-яА-ЯёЁa-zA-Z]+ ?[а-яА-ЯёЁa-zA-Z]+$" />
                         <p className="profile-title">Email: {email}</p>
-                        <input className="profile-input" placeholder="Введите email" type="email" />
+                        <input className="profile-input" placeholder="например BookLib@mail.ru" type="email" pattern="[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-zA-Z]{2,4}" />
                         {/* <p className="profile-title">Обо мне</p>
                         <input className="profile-input2" placeholder="Расскажите что-нибудь о себе" type="text" /> */}
                         <p className="profile-title">Номер телефона: {phoneNumber} </p>
