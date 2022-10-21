@@ -1,60 +1,53 @@
-import { BOOKS_SEARCH, GENRE_SEARCH, TEXT_SEARCH, TOTAL_BOOK_QUANTITY, TOTAL_ITEMS } from "../types/types";
+import { BOOKS_SEARCH, TEXT_SEARCH, TOTAL_BOOK_QUANTITY, } from "../types/types";
+
+import { setLoading, setError, setSuccess } from "./commonActions";
 
 import axios from 'axios';
 import { bookApiKey } from "../../helpers/googleBookApiKey";
 import { maxResults } from "../../helpers/vars";
 import { missingData } from "../../helpers/bookRequest";
 
-export const textSearch = (book) => ({
+export const textSearch = (data) => ({
     type: TEXT_SEARCH,
-    payload: {
-        book,
-    }
+    data
 })
 
-
-// export const genreSearch = (books) => ({
-//     type: GENRE_SEARCH,
-//     payload: {
-//         books,
-//     }
-// })
-
-
-export const bookSearch = (books) => ({
+export const bookSearch = (data) => ({
     type: BOOKS_SEARCH,
-    payload: {
-        books,
-    }
+    data
 })
 
-export const setTotalItems = (totalBookQuantity) => ({
+export const setTotalItems = (data) => ({
     type: TOTAL_BOOK_QUANTITY,
-    payload: {
-        totalBookQuantity,
-    }
+    data
 })
 export const bookSearchRequest = (searchName, startIndex) => async (dispatch) => {
     try {
+        dispatch(setLoading());
         const books = await axios.get(`https://www.googleapis.com/books/v1/volumes?q=${searchName}+inauthor:${searchName}&key=${bookApiKey}&maxResults=${maxResults}&startIndex=${startIndex}`);
         console.log(books);
         dispatch(setTotalItems(books.data.totalItems));
         dispatch(bookSearch(missingData(books)));
         dispatch(textSearch(searchName));
+        dispatch(setSuccess());
     }
     catch (error) {
-        console.log(error)
+        console.log(error);
+        dispatch(setError(error));
     }
 }
 export const bookGenreSearchRequest = (searchName, startIndex) => async (dispatch) => {
     try {
+        dispatch(setLoading());
         const books = await axios.get(`https://www.googleapis.com/books/v1/volumes?q=subject:${searchName}&key=${bookApiKey}&maxResults=${maxResults}&startIndex=${startIndex}`);
         console.log(books);
         dispatch(setTotalItems(books.data.totalItems));
         dispatch(bookSearch(missingData(books)));
         dispatch(textSearch(searchName));
+        dispatch(setSuccess());
     }
     catch (error) {
-        console.log(error)
+        console.log(error);
+        dispatch(setError(error));
     }
 }

@@ -15,17 +15,12 @@ import SearchForm from "../UI components/SearchForm";
 import logo from "../../assets/bookLogo.svg";
 
 export function Header({ authed }) {
-    const [anchorElNav, setAnchorElNav] = React.useState(null);
+
     const [anchorElUser, setAnchorElUser] = React.useState(null);
 
     const handleOpenUserMenu = (event) => {
         setAnchorElUser(event.currentTarget);
     };
-
-    const handleClose = () => {
-        setAnchorElNav(null);
-    };
-
     const handleCloseUserMenu = () => {
         setAnchorElUser(null);
     };
@@ -86,12 +81,12 @@ export function Header({ authed }) {
                         open={Boolean(anchorElUser)}
                         onClose={handleCloseUserMenu}
                     >
-                        <MenuItem onClick={handleClose}>
+                        <MenuItem onClick={handleCloseUserMenu}>
                             <Link className="header__profile-link" to={"/profilepage"} >
                                 Профиль
                             </Link>
                         </MenuItem>
-                        <MenuItem onClick={handleClose}>
+                        <MenuItem onClick={handleCloseUserMenu}>
                             <Link className="header__profile-link" to={"/profilepage"} >
                                 Избранное
                             </Link>

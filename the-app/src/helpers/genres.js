@@ -26,8 +26,8 @@ import science from "../assets/science.jpg";
 import sport from "../assets/sport.jpg";
 import tales from "../assets/tales.jpg";
 import technical from "../assets/technical.jpg";
-import thriller from "../assets/technical.jpg";
-import tragedy from "../assets/technical.jpg";
+import computers from "../assets/computers.jpg";
+import underwater from "../assets/underwater.jpg";
 
 
 export const genres = [
@@ -53,12 +53,44 @@ export const genres = [
     [pedagogy, "pedagogy"],
     [psyhology, "psyhology"],
     [poetry, "poetry"],
-    [scary, "scary"],
+    [scary, "horror"],
     [romance, "romance"],
     [science, "science"],
     [sport, "sport"],
     [tales, "tales"],
     [technical, "technical"],
-    [thriller, "thriller"],
-    [tragedy, "tragedy"],
+    [computers, "computers"],
+    [underwater, "ocean"],
 ]
+export const translate = {
+    action: "боевик",
+    adventure: "приключения",
+    animals: "животные",
+    biography: "биография",
+    botanic: "ботаника",
+    cars: "автомобили",
+    children: "детская литература",
+    classic: "классика",
+    cooking: "кулинария",
+    detective: "детектив",
+    dictionary: "словари",
+    fantastic: "фантастика",
+    health: "здоровье",
+    history: "история",
+    hobby: "хобби",
+    humor: "юмористическая литература",
+    medicine: "медицина",
+    music: "музыка",
+    myths: "мифы",
+    pedagogy: "педагогика",
+    psyhology: "психология",
+    poetry: "поэзия",
+    scary: "ужасы",
+    romance: "роман",
+    science: "научно-популярное",
+    sport: "спорт",
+    tales: "сказки",
+    technical: "техническая литература",
+    computers: "компьютеры",
+    underwater: "подводный мир",
+}

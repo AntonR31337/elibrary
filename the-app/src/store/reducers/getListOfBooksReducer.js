@@ -1,5 +1,5 @@
 import { randomBooks1, randomBooks2, randomBooks3 } from "../../helpers/randomBooks";
-import { BOOKS_SEARCH, GENRE_SEARCH, TEXT_SEARCH, TOTAL_BOOK_QUANTITY } from "../types/types";
+import { BOOKS_SEARCH, TEXT_SEARCH, TOTAL_BOOK_QUANTITY } from "../types/types";
 
 const initialState = {
     sliderBooks: [
@@ -12,27 +12,22 @@ const initialState = {
     totalBookQuantity: 0,
 }
 
-export const getListOfBooksReducer = (state = initialState, { type, payload }) => {
+export const getListOfBooksReducer = (state = initialState, { type, data }) => {
     switch (type) {
-        // case GENRE_SEARCH:
-        //     return {
-        //         ...state,
-        //         books: payload.books,
-        //     }
         case BOOKS_SEARCH:
             return {
                 ...state,
-                books: payload.books,
+                books: data,
             }
         case TEXT_SEARCH:
             return {
                 ...state,
-                book: payload.book,
+                book: data,
             }
         case TOTAL_BOOK_QUANTITY:
             return {
                 ...state,
-                totalBookQuantity: payload.totalBookQuantity,
+                totalBookQuantity: data,
             }
         default:
             return state

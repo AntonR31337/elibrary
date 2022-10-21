@@ -1,17 +1,25 @@
 .books-list{
-    @extend %grid;
-    margin: 50px 0;       
+    @extend %grid;  
     &__content{
         grid-column: 2/3;
         display: flex;
         flex-direction: column;
         color: $primary-bg-color;
         align-items: center;
+        justify-content: center;
+        background-color: $third-bg-color;
+        padding:  50px 0; 
+        @extend %shadow;  
     }
     &__heading{
         @include font($font-1,700,40px);
         margin: 0 0 50px 0;
         text-align: center;
+        & span{
+            text-decoration: underline;
+            color: $secondary-bg-color;
+            font-style: italic;
+        }
     }
     &__list{
         display: flex;
