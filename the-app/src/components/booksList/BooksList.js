@@ -2,11 +2,13 @@ import { BookCard } from "../card/BookCard";
 import uniqid from "uniqid";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { getBooks, getSearchName, getTotalQuantity } from "../../store/selectors/getListOfBooksSelectors";
+import { getError, getLoading } from "../../store/selectors/commonSelectors";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 import Pagination from '@mui/material/Pagination';
 import { bookGenreSearchRequest, bookSearchRequest } from "../../store/actions/getListOfBooksActions";
+import Loader from "../UI components/Loader";
 
 export const BooksList = ({ genre }) => {
 
@@ -15,6 +17,8 @@ export const BooksList = ({ genre }) => {
     const dispatch = useDispatch();
 
     const books = useSelector(getBooks, shallowEqual);
+    const error = useSelector(getError);
+    const loading = useSelector(getLoading);
 
     const searchName = useSelector(getSearchName);
     const totalBookQuantity = useSelector(getTotalQuantity);
@@ -46,34 +50,38 @@ export const BooksList = ({ genre }) => {
 
         <main className='books-list'>
             <div className="books-list__content">
-                {books.length
-                    ? <>
-                        {!genre
-                            ? <h2 className="books-list__heading">
-                                Результаты поиска по запросу представлены ниже.
-                            </h2>
-                            : <h2 className="books-list__heading">
-                                Результаты поиска по жанру {searchName} представлены ниже.
-                            </h2>
-                        }
-                        <div className="books-list__list">
-                            {books.map((book) => (
-                                <BookCard key={uniqid()} book={book} />
-                            ))}
-                        </div>
-                        <Pagination
-                            color="secondary"
-                            count={pages}
-                            page={page}
-                            onChange={handleChange}
-                            size="middle"
-                            variant="outlined" />
-                    </>
-                    : <>
-                        <h2 className="books-list__heading">
-                            Вы не ввели поисковый запрос
-                        </h2>
-                    </>
+                {loading === "pending"
+                    ? <Loader />
+                    : error
+                        ? navigate(`/404`)
+                        : books.length
+                            ? <>
+                                {!genre
+                                    ? <h2 className="books-list__heading">
+                                        Результаты поиска по запросу представлены ниже.
+                                    </h2>
+                                    : <h2 className="books-list__heading">
+                                        Результаты поиска по жанру {searchName} представлены ниже.
+                                    </h2>
+                                }
+                                <div className="books-list__list">
+                                    {books.map((book) => (
+                                        <BookCard key={uniqid()} book={book} />
+                                    ))}
+                                </div>
+                                <Pagination
+                                    color="secondary"
+                                    count={pages}
+                                    page={page}
+                                    onChange={handleChange}
+                                    size="middle"
+                                    variant="outlined" />
+                            </>
+                            : <>
+                                <h2 className="books-list__heading">
+                                    Вы не ввели поисковый запрос
+                                </h2>
+                            </>
                 }
             </div>
         </main>

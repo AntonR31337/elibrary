@@ -26,8 +26,8 @@ import science from "../assets/science.jpg";
 import sport from "../assets/sport.jpg";
 import tales from "../assets/tales.jpg";
 import technical from "../assets/technical.jpg";
-import thriller from "../assets/technical.jpg";
-import tragedy from "../assets/technical.jpg";
+import computers from "../assets/computers.jpg";
+import underwater from "../assets/underwater.jpg";
 
 
 export const genres = [
@@ -53,12 +53,12 @@ export const genres = [
     [pedagogy, "pedagogy"],
     [psyhology, "psyhology"],
     [poetry, "poetry"],
-    [scary, "scary"],
+    [scary, "horror"],
     [romance, "romance"],
     [science, "science"],
     [sport, "sport"],
     [tales, "tales"],
     [technical, "technical"],
-    [thriller, "thriller"],
-    [tragedy, "tragedy"],
+    [computers, "computers"],
+    [underwater, "ocean"],
 ]
