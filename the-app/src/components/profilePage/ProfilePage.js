@@ -10,6 +10,7 @@ import { auth, storage } from "../../firebase/firebase"
 import { useEffect, useState } from 'react';
 import { ref, getDownloadURL, uploadBytesResumable } from "firebase/storage";
 import { DeleteProfile } from "./DeleteProfile";
+import { fileCheck } from "../../helpers/uploadFileToFirebase";
 
 const ProfilePage = () => {
 
@@ -24,11 +25,8 @@ const ProfilePage = () => {
             setEmail(user.email);
             setPhoneNumber(user.phoneNumber);
             setImgUrl(user.photoURL)
-            //   console.log('user', user);
         });
-
     }, []);
-
 
     const handleChangeUserInfo = (event) => {
         event.preventDefault();
@@ -57,27 +55,28 @@ const ProfilePage = () => {
     const handleSubmitImg = (e) => {
         e.preventDefault()
         const file = e.target[0]?.files[0]
+        const resultOfCheckFile = fileCheck(file);
 
-        if (!file) return;
+        if (resultOfCheckFile) {
+            const storageRef = ref(storage, `files/${file.name}`);
+            const uploadTask = uploadBytesResumable(storageRef, file);
 
-        const storageRef = ref(storage, `files/${file.name}`);
-        const uploadTask = uploadBytesResumable(storageRef, file);
-
-        uploadTask.on("state_changed",
-            () => {
-                getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-                    setImgUrl(downloadURL)
-                    updateProfile(auth.currentUser, {
-                        photoURL: downloadURL
-                    }).then(() => {
-                        console.log('ProfileFoto updated!');
-                    }).catch((error) => {
-                        console.log('An error occurred', error);
+            uploadTask.on("state_changed",
+                () => {
+                    getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+                        console.log('downloadURL', downloadURL);
+                        setImgUrl(downloadURL)
+                        updateProfile(auth.currentUser, {
+                            photoURL: downloadURL
+                        }).then(() => {
+                            console.log('ProfileFoto updated!');
+                        }).catch((error) => {
+                            console.log('An error occurred', error);
+                        });
                     });
-                });
-            }
-        );
-
+                }
+            );
+        }
     }
 
     return (
