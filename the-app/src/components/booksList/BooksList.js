@@ -9,6 +9,7 @@ import { useEffect, useState } from "react";
 import Pagination from '@mui/material/Pagination';
 import { bookGenreSearchRequest, bookSearchRequest } from "../../store/actions/getListOfBooksActions";
 import Loader from "../UI components/Loader";
+import { translate } from "../../helpers/genres";
 
 export const BooksList = ({ genre }) => {
 
@@ -61,7 +62,7 @@ export const BooksList = ({ genre }) => {
                                         Результаты поиска по запросу представлены ниже.
                                     </h2>
                                     : <h2 className="books-list__heading">
-                                        Результаты поиска по жанру {searchName} представлены ниже.
+                                        Результаты поиска по жанру <span>"{translate[searchName]}"</span>  представлены ниже.
                                     </h2>
                                 }
                                 <div className="books-list__list">
