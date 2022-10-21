@@ -15,7 +15,12 @@ export const theme = createTheme({
                 root: {
                     color: "#f8d862",
                     maxWidth: "365px",
-                    margin: "20px 0 0"
+                    margin: "20px 0 0",
+                    backgroundColor: "#FFFFFF",
+                    border: "3px solid #FFCA42",
+                    borderRadius: "30px",
+                    padding: "5px",
+                    boxShadow: "0px 8px 20px rgba(0, 0, 0, 0.25)"
                 },
                 outlined: {
                     color: "#f8d862",
@@ -28,7 +33,7 @@ export const theme = createTheme({
                     color: "#1B3764",
                     fontSize: "20px",
                     fontWeight: "700",
-                    border: "2px solid #1B3764"
+                    border: "none"
                 },
                 icon: {
                     color: "#1B3764",
