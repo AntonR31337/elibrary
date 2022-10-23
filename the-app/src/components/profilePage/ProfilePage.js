@@ -101,8 +101,8 @@ const ProfilePage = () => {
     }
 
     return (
-        <div className="profile">
-            <div className="container">
+        <section className="profile">
+            <div className="profile__content">
                 <div className="crumbs">
                     <Link to="/">Главная</Link> - <p>Профиль</p>
                 </div>
@@ -146,7 +146,7 @@ const ProfilePage = () => {
                     <DeleteProfile />
                 </div>
             </div>
-        </div>
+        </section>
     );
 };
 

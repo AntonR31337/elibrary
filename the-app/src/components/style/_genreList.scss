@@ -1,12 +1,7 @@
 .genre-list {
-    @extend %grid;
-    margin: 50px 0;       
-    text-align: center;
+    @extend %grid-wrapper;
     &__content{
-        grid-column: 2/3;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+        @extend %grid-content;
         color: $primary-bg-color;
     }
     &__heading{
@@ -19,6 +14,5 @@
         justify-content: center;
         padding: 50px 0;
         gap: 30px;
-        flex-grow: 1;
     }
 }

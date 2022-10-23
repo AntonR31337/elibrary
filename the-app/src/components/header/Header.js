@@ -1,4 +1,3 @@
-import * as React from 'react';
 import IconButton from '@mui/material/IconButton';
 import Menu from '@mui/material/Menu';
 import Tooltip from '@mui/material/Tooltip';
@@ -13,10 +12,11 @@ import { logOut } from '../../firebase/firebaseAuth';
 
 import SearchForm from "../UI components/SearchForm";
 import logo from "../../assets/bookLogo.svg";
+import { memo, useState } from 'react';
 
-export function Header({ authed }) {
+export const Header = memo(({ authed }) => {
 
-    const [anchorElUser, setAnchorElUser] = React.useState(null);
+    const [anchorElUser, setAnchorElUser] = useState(null);
 
     const handleOpenUserMenu = (event) => {
         setAnchorElUser(event.currentTarget);
@@ -96,4 +96,4 @@ export function Header({ authed }) {
             </div>
         </header >
     );
-};
+});
