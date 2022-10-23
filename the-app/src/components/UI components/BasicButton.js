@@ -11,9 +11,7 @@ export default function BasicButton({ textBtn, authed = true, children }) {
       borderRadius: "0px",
       margin: "1px"
     }}>
-      <Button variant="text" disabled={!authed} >{ children }{ textBtn }</Button>
-      {/* <Button variant="contained">Contained</Button>
-      <Button variant="outlined">Outlined</Button> */}
+      <Button variant="text" disabled={!authed} >{children}{textBtn}</Button>
     </Stack>
   );
 }

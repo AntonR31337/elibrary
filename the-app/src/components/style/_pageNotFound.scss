@@ -5,11 +5,18 @@
     align-items: center;
     justify-content: center;
     &__heading, &__text{
-        color: #4dabf5;
+        color: $secondary-text-color;
+    }
+    &__heading{
+        @include font($font-1,700,$h1-fs);
     }
     &__text{
     display: flex;
     align-items: center;
-    font-weight: 500;
+    @include font($font-1,500,$h2-fs);
+    }
+    &__img{
+        width: 375px;
+        height: 375px;
     }
 }

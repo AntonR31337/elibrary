@@ -22,10 +22,10 @@
         list-style: none;
     }
     &__heading{
-        @include font($font-2,700,24px);
+        @include font($font-2,700,$p1-fs);
     }
     &__genre{
-        @include font($font-2,400,20px);
+        @include font($font-2,400,$p2-fs);
     }
     &__link{
         color: $primary-text-color;

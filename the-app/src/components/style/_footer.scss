@@ -3,6 +3,6 @@
         justify-content: center
     }
     &__text{
-        @include font($font-2,400,16px);
+        @include font($font-2,400,$p2-fs);
     }
 }

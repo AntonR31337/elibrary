@@ -12,15 +12,15 @@
         color: $primary-bg-color;
     }
     &__heading{
-        @include font($font-2,700,36px);
+        @include font($font-2,700,$h1-fs);
 
     }
     &__link{
-        @include font($font-2,500,24px);
+        @include font($font-2,500,$p1-fs);
         text-decoration: none;
     }
     &__redirect{
-        @include font($font-2,700,30px);
+        @include font($font-2,700,$h2-fs);
         text-decoration: underline;
     }
 }

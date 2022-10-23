@@ -1,5 +1,3 @@
-import "./BookPage.style.scss";
-
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import BasicRating from '../UI components/BasicRating';
 import BasicButton from "../UI components/BasicButton";
