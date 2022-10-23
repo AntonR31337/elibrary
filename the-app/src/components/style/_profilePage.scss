@@ -1,29 +1,48 @@
-.profile{
+.profile {
     @extend %grid-wrapper;
-    &__content{
+
+    &__content {
+        position: relative;
         @extend %grid-content;
         @extend %border;
         margin: 50px;
         background-color: $primary-text-color;
         gap: 20px;
-        & hr{
-            width: 60%;
+        padding: 50px 150px;
+
+        & hr {
+            width: 100%;
             height: 3px;
             background-color: $secondary-bg-color;
         }
     }
-    &__heading{
-        @include font($font-1,700,$h1-fs);
+
+    &__heading {
+        @include font($font-1, 700, $h1-fs);
         color: $primary-bg-color;
     }
-    &__form-content, &__button-wrapper{
+
+    &__form-content,
+    &__button-wrapper {
         display: flex;
     }
-    &__button-wrapper{
+
+    &__form-content {
+        gap: 50px;
+        justify-content: center;
+
+        &--input {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+    }
+
+    &__button-wrapper {
         flex-direction: column;
         justify-content: space-around;
     }
-    &__img{
+
+    &__img {
         position: absolute;
         object-fit: cover;
         width: 100%;
@@ -31,243 +50,84 @@
         top: 0;
         left: 0;
         background: $third-bg-color;
-        &-wrapper{
+
+        &-wrapper {
             position: relative;
-            width: 150px;
-            height: 150px;
+            width: 250px;
+            height: 250px;
             border-radius: 50%;
             overflow: hidden;
         }
     }
-    &__form{
-        &-heading{
-            @include font($font-1,700,$h2-fs);
+
+    &__form {
+        width: 100%;
+
+        &-heading {
+            @include font($font-1, 700, $h2-fs);
             color: $primary-bg-color;
             margin-bottom: 20px;
         }
     }
 
+    &__container {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px
+    }
+
+    &__info,
+    &__input {
+        @include font($font-1, 700, $p1-fs);
+        color: $primary-bg-color;
+    }
+
+    &__info {
+        width: 175px;
+        text-align: right;
+
+        &--info {
+            text-align: left;
+        }
+    }
+
+    &__left {
+        display: flex;
+        align-items: center;
+        flex-grow: 1;
+        gap: 20px;
+    }
+
+    &__input {
+        flex-grow: 1;
+        outline: none;
+        padding: 5px 20px;
+        border: 3px solid $primary-bg-color;
+        border-radius: 15px;
+        justify-self: flex-end;
+        text-overflow: ellipsis;
+
+        &:valid {
+            border-color: $valid-color;
+        }
+
+        &:invalid {
+            border-color: $invalid-color;
+        }
+    }
+
+    &__submit {
+        align-self: center;
+    }
+
+    &__remove {
+        display: flex;
+        align-items: center;
+        column-gap: 10px;
+        font-size: 20px;
+        color: red;
+        cursor: pointer;
+    }
 }
-// .profile {
-//     padding: 50px 50px;
-//     font-family: $font-1;
-// }
-
-// .profile-title {
-//     font-size: 20px;
-//     margin: 20px 0;
-//     font-weight: bold;
-// }
-
-// .main-title {
-//     margin: 50px 0;
-// }
-
-// .profile-user {
-//     display: flex;
-//     column-gap: 20px;
-//     align-items: center;
-//     margin-bottom: 20px;
-// }
-
-// .profile-img {
-//     width: 150px;
-//     height: 150px;
-//     border-radius: 50%;
-//     background: darkgray;
-// }
-
-// .profile-btn {
-//     padding: 10px 15px;
-//     cursor: pointer;
-//     border: 1px solid rgba(46, 46, 183, 0.55);
-//     color: rgba(46, 46, 183, 0.55);
-//     border-radius: 12px;
-//     background: transparent;
-// }
-
-// .profile-icon {
-//     font-size: 40px;
-//     color: $secondary-bg-color;
-//     cursor: pointer;
-// }
-
-// .profile-info {
-//     font-size: 16px;
-//     color: grey;
-//     margin-bottom: 20px;
-//     border-bottom: 1px solid grey;
-//     width: 600px;
-// }
-
-// .profile-input {
-//     width: 600px;
-//     height: 40px;
-//     outline: none;
-//     padding-left: 20px;
-//     border: 1px solid rgb(223, 215, 215);
-//     border-radius: 15px;
-// }
-
-// .profile-btn2 {
-//     display: block;
-//     color: white;
-//     background: $primary-bg-color;
-//     padding: 15px 20px;
-//     border: none;
-//     cursor: pointer;
-//     border-radius: 15px;
-//     margin-top: 20px;
-// }
-
-// .profile-input2 {
-//     width: 600px;
-//     padding: 30px 15px;
-// }
-
-// .profile-remove {
-//     display: flex;
-//     align-items: center;
-//     column-gap: 10px;
-//     font-size: 20px;
-//     color: red;
-//     cursor: pointer;
-
-// }
-
-// .crumbs {
-//     display: flex;
-// }
-
-// .input-file {
-//     position: relative;
-//     display: inline-block;
-// }
-
-// .input-file span {
-//     position: relative;
-//     display: inline-block;
-//     cursor: pointer;
-//     outline: none;
-//     text-decoration: none;
-//     font-size: 14px;
-//     vertical-align: middle;
-//     color: rgb(255, 255, 255);
-//     text-align: center;
-//     border-radius: 10px;
-//     background-color: #040b52;
-//     line-height: 22px;
-//     height: 40px;
-//     padding: 10px 20px;
-//     box-sizing: border-box;
-//     border: none;
-//     margin: 0;
-//     transition: background-color 0.2s;
-// }
-
-// .input-file input[type=file] {
-//     position: absolute;
-//     z-index: -1;
-//     opacity: 0;
-//     display: block;
-//     width: 0;
-//     height: 0;
-// }
-
-// /* Focus */
-// .input-file input[type=file]:focus+span {
-//     box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, .25);
-// }
-
-// /* Hover/active */
-// .input-file:hover span {
-//     background-color: #150ab1;
-// }
-
-// .input-file:active span {
-//     background-color: #2E703A;
-// }
-
-// /* Disabled */
-// .input-file input[type=file]:disabled+span {
-//     background-color: #eee;
-// }
-
-// .profile-modal {
-//     border: 3px solid $secondary-bg-color;
-//     border-radius: 18px;
-//     background: #ffffff;
-//     font-family: $font-1;
-// }
-
-// .profile-modal__header {
-//     background-color: $primary-bg-color;
-//     color: #FFFFFF;
-//     padding: 30px;
-//     border-radius: 18px;
-//     text-align: center;
-// }
-
-// .profile-modal__close {
-//     cursor: pointer;
-//     position: absolute;
-//     display: block;
-//     padding: 2px 5px;
-//     line-height: 20px;
-//     right: -10px;
-//     top: -10px;
-//     font-size: 24px;
-//     background: #ffffff;
-//     border-radius: 18px;
-//     border: 3px solid $secondary-bg-color;
-// }
-
-// .profile-modal__content {
-//     background-color: #fff;
-//     padding: 30px 0;
-//     text-align: center;
-// }
-
-// .profile-modal__content-sub {
-//     padding: 15px 0
-// }
-
-// .profile-modal__actions {
-//     margin: auto;
-//     width: 100%;
-//     padding: 10px 5px;
-//     text-align: center;
-// }
-
-// .profile-modal__button {
-//     color: #ffffff;
-//     cursor: pointer;
-//     padding: 0px 30px;
-//     display: inline-block;
-//     margin: 10px 15px;
-//     text-transform: uppercase;
-//     line-height: 2em;
-//     letter-spacing: 1.5px;
-//     font-size: 1em;
-//     outline: none;
-//     position: relative;
-//     font-size: 14px;
-//     border: 3px solid $primary-bg-color;
-//     background-color: $primary-bg-color;
-//     border-radius: 15px 15px 15px 15px;
-//     -webkit-transition: all 0.3s;
-//     transition: all 0.3s;
-// }
-
-// .profile-modal__button:hover {
-//     border-color: $secondary-bg-color;
-//     color: $secondary-bg-color;
-// }
-
-// .profile-input:invalid {
-//     border-color: red;
-// }
-
-// .profile-input:valid {
-//     border-color: #dfd;
-// }

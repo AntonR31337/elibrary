@@ -1,0 +1,17 @@
+.modal {
+    &__content {
+        color: $primary-bg-color;
+        @include font($font-1,500,$p1-fs);
+        padding: 30px 0;
+        text-align: center;
+        &-sub {
+            @include font($font-1,500,$p2-fs);
+            padding: 15px 0
+        }
+    }
+
+    &__actions{
+        text-align: center;
+    }
+
+}

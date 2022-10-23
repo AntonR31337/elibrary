@@ -24,7 +24,7 @@ const ChangingPhoto = () => {
 
     useEffect(() => {
         onAuthStateChanged(auth, (user) => {
-            setImgUrl(user.photoURL);
+            setImgUrl(user?.photoURL);
         });
     }, []);
 
@@ -46,10 +46,9 @@ const ChangingPhoto = () => {
                         await updateProfile(auth.currentUser, {
                             photoURL: downloadURL
                         });
-                        console.log('ProfileFoto updated!');
                     }
                     catch (error) {
-                        console.log('An error occurred', error);
+                        setError(error);
                     }
                 }
             );
@@ -59,9 +58,9 @@ const ChangingPhoto = () => {
 
     return (
         <>
-            <form className="profile__photo" action="" onSubmit={handleSubmitImg}>
+            <form className="profile__form " action="" onSubmit={handleSubmitImg}>
                 <h2 className="profile__form-heading">Фото:</h2>
-                <div className="profile__form-content profile__form-content--photo">
+                <div className="profile__form-content ">
                     <div className="profile__img-wrapper">
                         <img className="profile__img" src={imgUrl ? imgUrl : face} alt='uploaded file' />
                     </div>

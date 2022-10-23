@@ -16,7 +16,9 @@ const PhotoButtons = () => {
             <IconButton color="primary" aria-label="upload picture" component="label" onClick={() => setSubmitVision(true)} >
                 <input type="file" hidden />
                 <Tooltip title="Нажмите для изменения фотографии пользователя ">
-                    <CreateIcon />
+                    <CreateIcon sx={{
+                        fontSize: "30px"
+                    }} />
                 </Tooltip>
             </IconButton>
             <IconButton color="primary" aria-label="upload picture"
@@ -24,18 +26,24 @@ const PhotoButtons = () => {
                 onClick={() => setSubmitVision(false)}>
                 <input type="submit" hidden />
                 <Tooltip title="Нажмите для обновления фотографии ">
-                    <FileDownloadIcon />
+                    <FileDownloadIcon sx={{
+                        fontSize: "30px"
+                    }} />
                 </Tooltip>
             </IconButton>
             <IconButton color="primary" component="label">
                 <Tooltip title="Нажмите для удаления сохраненного фото">
-                    <DeleteIcon />
+                    <DeleteIcon sx={{
+                        fontSize: "30px"
+                    }} />
                 </Tooltip>
             </IconButton>
             <IconButton color="primary">
                 <Tooltip title="Требования к фото: максимальный размер фото не 
                 должен превышать 1MB, допустимые расширения файлов jpg и png">
-                    <QuestionMarkIcon />
+                    <QuestionMarkIcon sx={{
+                        fontSize: "30px"
+                    }} />
                 </Tooltip>
             </IconButton>
         </div >
