@@ -1,16 +1,13 @@
 .sliders{
-    padding: 54px 10px;
+    padding: 54px 20px;
     background-color: $primary-bg-color;
-    width: 100%;
     display: flex;
+    width: 100%;
     flex-direction: column;
     align-items: center;
-    border: 3px solid $secondary-bg-color;
-    border-radius: 20px;
-    @extend %shadow;
-    color: $primary-text-color;
+    @extend %border;
     &__heading{
-        @include font($font-1,700,36px);
+        @include font($font-1,700,$h2-fs);
         margin: 0 0 50px 0;
     }
     &__content{

@@ -27,6 +27,26 @@ export const theme = createTheme({
                 },
             }
         },
+        MuiTooltip: {
+            styleOverrides: {
+                tooltip: {
+                    fontSize: "12px",
+                    textAlign: "center",
+                },
+            }
+        },
+        MuiPopover: {
+            styleOverrides: {
+                root: {
+                    textAlign: "center",
+                    fontWeight: "500",
+                },
+                paper: {
+                    padding: "10px",
+                    color: "#1B3764"
+                }
+            }
+        },
         MuiPaginationItem: {
             styleOverrides: {
                 page: {

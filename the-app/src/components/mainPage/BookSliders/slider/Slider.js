@@ -40,7 +40,7 @@ const Slider = ({ category, images, delay }) => {
                 Категория:{category}
             </h3>
             <Box sx={{
-                maxWidth: 375,
+                maxWidth: 295,
                 flexGrow: 1,
                 borderRadius: "8px",
                 overflow: "hidden",
@@ -53,17 +53,13 @@ const Slider = ({ category, images, delay }) => {
                         display: 'flex',
                         alignItems: 'center',
                         height: 50,
-                        pl: 2,
+                        padding: "5px",
                         bgcolor: '#FFFFFF',
+                        textOverflow: "ellipsis",
+                        justifyContent: "center"
                     }}
                 >
-                    <Typography
-                        sx={{
-                            fontSize: "18px",
-                            fontWeight: "500",
-                            color: "#1B3764"
-                        }}
-                    ><Link className="book__link" to={`/book/${id}`}>{images[activeStep].label}</Link></Typography>
+                    <Link className="slider__link" to={`/book/${id}`}>{images[activeStep].label}</Link>
                 </Paper>
                 <AutoPlaySwipeableViews
                     axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
@@ -79,9 +75,9 @@ const Slider = ({ category, images, delay }) => {
                                     <Box
                                         component="img"
                                         sx={{
-                                            height: 400,
+                                            height: 300,
                                             display: 'block',
-                                            maxWidth: 375,
+                                            maxWidth: 295,
                                             overflow: 'hidden',
                                             width: '100%',
                                         }}
@@ -102,13 +98,13 @@ const Slider = ({ category, images, delay }) => {
                             size="small"
                             onClick={handleNext}
                             sx={{
-                                fontSize: "14px",
+                                fontSize: "16px",
                                 fontWeight: "500",
                                 color: "#1B3764"
                             }}
                             disabled={activeStep === maxSteps - 1}
                         >
-                            Следующая
+
                             {theme.direction === 'rtl' ? (
                                 <KeyboardArrowLeft />
                             ) : (
@@ -121,7 +117,7 @@ const Slider = ({ category, images, delay }) => {
                             onClick={handleBack}
                             disabled={activeStep === 0}
                             sx={{
-                                fontSize: "14px",
+                                fontSize: "16px",
                                 fontWeight: "500",
                                 color: "#1B3764"
                             }}>
@@ -130,7 +126,7 @@ const Slider = ({ category, images, delay }) => {
                             ) : (
                                 <KeyboardArrowLeft />
                             )}
-                            Предыдущая
+
                         </Button>
                     }
                 />

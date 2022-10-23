@@ -2,7 +2,51 @@
     @extend %grid-wrapper;
     &__content{
         @extend %grid-content;
+        @extend %border;
+        margin: 50px;
+        background-color: $primary-text-color;
+        gap: 20px;
+        & hr{
+            width: 60%;
+            height: 3px;
+            background-color: $secondary-bg-color;
+        }
     }
+    &__heading{
+        @include font($font-1,700,$h1-fs);
+        color: $primary-bg-color;
+    }
+    &__form-content, &__button-wrapper{
+        display: flex;
+    }
+    &__button-wrapper{
+        flex-direction: column;
+        justify-content: space-around;
+    }
+    &__img{
+        position: absolute;
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background: $third-bg-color;
+        &-wrapper{
+            position: relative;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+    }
+    &__form{
+        &-heading{
+            @include font($font-1,700,$h2-fs);
+            color: $primary-bg-color;
+            margin-bottom: 20px;
+        }
+    }
+
 }
 // .profile {
 //     padding: 50px 50px;

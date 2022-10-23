@@ -12,7 +12,7 @@
         text-align: center;
         color: $secondary-text-color;
         margin: 20px;
-        @include font($font-1,700,24px);
+        @include font($font-1,700,$p1-fs);
     }
     &:before,
     &:after {
