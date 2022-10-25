@@ -1,6 +1,5 @@
 import DeleteIcon from '@mui/icons-material/Delete';
 import { deleteUser } from "firebase/auth";
-import { auth } from "../../firebase/firebase"
 import { useState } from 'react';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
@@ -8,6 +7,7 @@ import IconButton from '@mui/material/IconButton';
 import { Tooltip } from "@mui/material";
 import CheckIcon from '@mui/icons-material/Check';
 import ClearIcon from '@mui/icons-material/Clear';
+import { reauthenticate } from '../../firebase/firebaseAuth'
 
 export const DeleteProfile = ({ setError }) => {
 
@@ -24,14 +24,18 @@ export const DeleteProfile = ({ setError }) => {
         p: 4,
 
     };
+
     const deleteProfile = () => {
-        deleteUser(auth.currentUser).then(() => {
-            console.log('User deleted');
-        }).catch((error) => {
-            console.log('An error ocurred', error);
-            setError(error.code.split(",")[0])
-        });
+        reauthenticate().then((data) => {
+            deleteUser(data.user).then(() => {
+                console.log('User deleted');
+            }).catch((error) => {
+                console.log('An error ocurred', error);
+                setError(error.code.split(",")[0])
+            });
+        })
     }
+
 
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);

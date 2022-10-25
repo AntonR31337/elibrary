@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { onAuthStateChanged, updateEmail } from "firebase/auth";
 import { auth } from "../../../firebase/firebase";
 import SubmitButtons from '../../UI components/SubmitButtons';
+import { reauthenticate } from '../../../firebase/firebaseAuth'
 
 
 const ChangeEmailForm = ({ setError }) => {
@@ -21,19 +22,22 @@ const ChangeEmailForm = ({ setError }) => {
             setEmail(user.email);
         });
     }, []);
+    
 
     const handleSubmitEmail = async (event) => {
         console.log(value)
         event.preventDefault();
+        // let password;
         if (value.trim()) {
             try {
+                reauthenticate().then((data) => {
+                    updateEmail(data.user, value)
+                })
                 console.log('email updated!');
-                await updateEmail(auth.currentUser, {
-                    email: value
-                });
                 setEmail(value);
             } catch (error) {
                 setError(error.code.split(",")[0]);
+                setError(error.code);
             } finally {
                 setIsChanging(false);
             }
@@ -54,7 +58,7 @@ const ChangeEmailForm = ({ setError }) => {
                                     type="email"
                                     pattern="[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-zA-Z]{2,4}"
                                     onChange={handleChange}
-                                    value={value} />
+                                   />
                             }
                         </div>
                         <SubmitButtons
