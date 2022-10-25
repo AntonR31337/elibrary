@@ -25,22 +25,19 @@ const ChangeEmailForm = ({ setError }) => {
     
 
     const handleSubmitEmail = async (event) => {
-        console.log(value)
         event.preventDefault();
-        // let password;
+        let password = prompt('Введите ваш пароль');
         if (value.trim()) {
-            try {
-                reauthenticate().then((data) => {
-                    updateEmail(data.user, value)
-                })
-                console.log('email updated!');
-                setEmail(value);
-            } catch (error) {
-                setError(error.code.split(",")[0]);
-                setError(error.code);
-            } finally {
-                setIsChanging(false);
-            }
+            reauthenticate(password).then((data) => {
+                updateEmail(data.user, value).then(() => {
+                    console.log('Email updated!');
+                    setEmail(value);
+                    setIsChanging(false);
+                    })
+            }).catch((error) => {
+                console.log('An error ocurred', error);
+                setError("Вы неверно ввели пароль");
+              });
         }
     }
 

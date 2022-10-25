@@ -26,14 +26,15 @@ export const DeleteProfile = ({ setError }) => {
     };
 
     const deleteProfile = () => {
-        reauthenticate().then((data) => {
+        let password = prompt('Введите ваш пароль');
+        reauthenticate(password).then((data) => {
             deleteUser(data.user).then(() => {
                 console.log('User deleted');
-            }).catch((error) => {
-                console.log('An error ocurred', error);
-                setError(error.code.split(",")[0])
-            });
-        })
+            })
+        }).catch((error) => {
+            console.log('An error ocurred', error);
+            setError('Неверный пароль')
+        });
     }
 
 

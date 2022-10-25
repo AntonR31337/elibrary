@@ -23,11 +23,11 @@ import { auth } from "./firebase"
     console.log("out");
   };
 
-  export const reauthenticate = async () => {
-    let password;
+  export const reauthenticate = async (password) => {
+    
     const credential = EmailAuthProvider.credential(
       auth.currentUser.email,
-      password = prompt('Введите ваш пароль')
+      password
     )
     const result = await reauthenticateWithCredential(
         auth.currentUser,

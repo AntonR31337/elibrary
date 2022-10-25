@@ -2,8 +2,10 @@ import IconButton from '@mui/material/IconButton';
 import { Tooltip } from "@mui/material";
 import FileDownloadIcon from '@mui/icons-material/FileDownload';
 import { useEffect, useState } from "react";
-import { onAuthStateChanged, updatePassword } from "firebase/auth";
+import { onAuthStateChanged, updatePassword, EmailAuthProvider, reauthenticateWithCredential } from "firebase/auth";
 import { auth } from "../../../firebase/firebase";
+import { reauthenticate } from '../../../firebase/firebaseAuth'
+
 
 
 const ChangePswForm = ({ setError }) => {
@@ -11,35 +13,27 @@ const ChangePswForm = ({ setError }) => {
     const [currentPassword, SetCurrentPassword] = useState("");
     const [newPassword, SetNewPassword] = useState("");
     const [repeatPassword, SetRepeatPassword] = useState("");
-    const [password, setPassword] = useState("");
-
-    useEffect(() => {
-        onAuthStateChanged(auth, (user) => {
-            setPassword(user.password)
-        });
-    }, []);
 
     const handleChangePwd = async (e) => {
         e.preventDefault()
         console.log(currentPassword, newPassword, repeatPassword)
-        if (password === currentPassword) {
-            if (newPassword === repeatPassword) {
-                try {
-                    await updatePassword(auth.currentUser, newPassword)
-                    console.log('Password updated!');
-                } catch (error) {
-                    setError(error.code.split(",")[0]);
-                }
-                setPassword(newPassword);
-            } else if (newPassword !== repeatPassword) {
-                setError("Введенные пароли не совпадают");
-            }
-        } else {
-            setError("Вы неверно ввели текущий пароль");
-        }
+        if (newPassword === repeatPassword) {
+            reauthenticate(currentPassword).then((data) => {
+                updatePassword(data.user, newPassword).then(() => {
+                      console.log('Password updated!');
+                      })
+                }).catch((error) => {
+                        console.log('An error ocurred', error);
+                        setError("Вы неверно ввели текущий пароль");
+                      }); 
+        } else if (newPassword !== repeatPassword) {
+                    setError("Введенные пароли не совпадают");
+        } 
+
         SetCurrentPassword("");
         SetNewPassword("");
         SetRepeatPassword("");
+
     }
 
     return (
