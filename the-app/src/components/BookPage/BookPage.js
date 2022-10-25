@@ -4,6 +4,9 @@ import BasicButton from "../UI components/BasicButton";
 import { useParams } from "react-router-dom";
 import { shallowEqual, useSelector } from "react-redux";
 import { getBooks, getSliderBooks } from "../../store/selectors/getListOfBooksSelectors";
+import Modal from '@mui/material/Modal';
+import Box from '@mui/material/Box';
+import { useState } from 'react';
 
 export const BookPage = ({ authed }) => {
 
@@ -13,8 +16,26 @@ export const BookPage = ({ authed }) => {
     const sliderBooks = useSelector(getSliderBooks, shallowEqual);
 
     const book = [...books, ...sliderBooks].find(el => el.id === params.id);
-    const { title, categories, authors } = book.volumeInfo;
+    const { title, categories, authors, previewLink } = book.volumeInfo;
     const description = book.volumeInfo.description || book.volumeInfo.subtitle;
+
+    const [open, setOpen] = useState(false);
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
+
+    console.log(book);
+
+    const style = {
+        position: 'absolute',
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50%, -50%)',
+        width: 400,
+        bgcolor: 'background.paper',
+        border: '2px solid #000',
+        boxShadow: 24,
+        p: 4,
+      };
 
     return (
         <div className="bookPage">
@@ -34,9 +55,16 @@ export const BookPage = ({ authed }) => {
                                 color: "white"
                             }} />
                         </BasicButton>
-                        <BasicButton textBtn={"ЧИТАТЬ"} />
+                        <BasicButton textBtn={"ЧИТАТЬ"} handleDoing={handleOpen} />
                         <BasicButton textBtn={"СКАЧАТЬ"} authed={authed} />
                         <BasicButton textBtn={"КУПИТЬ"} />
+                        <Modal 
+                            open={open}
+                            onClose={handleClose} >
+                                <Box sx={style}>
+                                    {previewLink}
+                                </Box>
+                        </Modal>
                     </div>
                 </div>
             </div>
