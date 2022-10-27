@@ -19,6 +19,7 @@ const LoginForm = ({ onSubmit }) => {
         onSubmit({ login, pass });
         setLogin("");
         setPass("");
+
     };
 
     return (
@@ -28,13 +29,21 @@ const LoginForm = ({ onSubmit }) => {
                 value={login}
                 onChange={handleChangeLogin}
                 label="Почта"
-                variant="outlined" />
+                variant="outlined"
+                pattern="[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-zA-Z]{2,4}"
+                className="input-login"
+            />
             <TextField
                 type="password"
                 value={pass}
                 onChange={handleChangePass}
                 label="Пароль"
-                variant="outlined" />
+                variant="outlined"
+                pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                className="input-login input-login-pswd"
+                data-title="Пароль не может быть короче восьми символов и должен содержать хотя бы одну цифру, одну маленькую и одну большую латинскую букву"
+            />
+
             <Button
                 type="submit"
                 sx={{
