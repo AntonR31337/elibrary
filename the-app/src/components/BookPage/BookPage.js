@@ -23,14 +23,25 @@ export const BookPage = ({ authed }) => {
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
 
-    console.log(book);
+    let {google} = window;
+
+    console.log(google);
+    
+    function initialize() {
+
+        google.books.load();
+
+        let viewer = new google.books.DefaultViewer(document.getElementById('viewerCanvas'));
+        viewer.load('ISBN:0738531367');
+
+        }
 
     const style = {
         position: 'absolute',
         top: '50%',
         left: '50%',
         transform: 'translate(-50%, -50%)',
-        width: 400,
+        width: 600,
         bgcolor: 'background.paper',
         border: '2px solid #000',
         boxShadow: 24,
@@ -61,8 +72,11 @@ export const BookPage = ({ authed }) => {
                         <Modal 
                             open={open}
                             onClose={handleClose} >
-                                <Box sx={style}>
-                                    {previewLink}
+                                <Box sx={style} >
+                                {/* {google.books.load()} */}
+
+                                {google.books.setOnLoadCallback(initialize)}
+                                    <div id="viewerCanvas" style={{width: "100%", height: "300px"}} ></div>
                                 </Box>
                         </Modal>
                     </div>
