@@ -6,7 +6,7 @@ import { shallowEqual, useSelector } from "react-redux";
 import { getBooks, getSliderBooks } from "../../store/selectors/getListOfBooksSelectors";
 import Modal from '@mui/material/Modal';
 import Box from '@mui/material/Box';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 export const BookPage = ({ authed }) => {
 
@@ -23,18 +23,19 @@ export const BookPage = ({ authed }) => {
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
 
-    let {google} = window;
+    const canvasRef = useRef()
 
-    console.log(google);
-    
-    function initialize() {
+    useEffect(() => {
+        if (!open) return;
+        else {
 
-        google.books.load();
+            window.google.books.load();
 
-        let viewer = new google.books.DefaultViewer(document.getElementById('viewerCanvas'));
-        viewer.load('ISBN:0738531367');
+            let viewer = new window.google.books.DefaultViewer(canvasRef.current);
 
+            viewer.load('ISBN:0738531367');
         }
+    }, [open] );
 
     const style = {
         position: 'absolute',
@@ -46,7 +47,7 @@ export const BookPage = ({ authed }) => {
         border: '2px solid #000',
         boxShadow: 24,
         p: 4,
-      };
+    };
 
     return (
         <div className="bookPage">
@@ -69,15 +70,12 @@ export const BookPage = ({ authed }) => {
                         <BasicButton textBtn={"ЧИТАТЬ"} handleDoing={handleOpen} />
                         <BasicButton textBtn={"СКАЧАТЬ"} authed={authed} />
                         <BasicButton textBtn={"КУПИТЬ"} />
-                        <Modal 
+                        <Modal
                             open={open}
                             onClose={handleClose} >
-                                <Box sx={style} >
-                                {/* {google.books.load()} */}
-
-                                {google.books.setOnLoadCallback(initialize)}
-                                    <div id="viewerCanvas" style={{width: "100%", height: "300px"}} ></div>
-                                </Box>
+                            <Box sx={style} >
+                                <div ref={canvasRef} id="viewerCanvas" style={{ width: "100%", height: "300px" }} ></div>
+                            </Box>
                         </Modal>
                     </div>
                 </div>
