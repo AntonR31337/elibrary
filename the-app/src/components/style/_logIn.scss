@@ -37,25 +37,3 @@
     background-color: $invalid-color;
 }
 
-.input-login-pswd:after {
-    content: attr(data-title);
-    display: none;
-    position: absolute;
-    bottom: 150%;
-    width: 200px;
-    left: 60px;
-    background-color: #fff;
-    color: $invalid-color;
-    border-radius: 15px;
-    border: $valid-color solid 1px;
-    padding: 5px;
-    text-align: center;
-    -moz-box-shadow: 0 1px 1px rgba(0, 0, 0, .16);
-    -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .16);
-    box-shadow: 0 1px 1px rgba(0, 0, 0, .16);
-    font-size: 12px;
-}
-
-.input-login-pswd:hover:after {
-    display: block;
-}
