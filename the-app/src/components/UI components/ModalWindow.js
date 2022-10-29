@@ -36,7 +36,7 @@ const ModalWindow = ({
     }
     const handleSubmit = () => {
         if (vision) {
-            setVision(false);
+            setVision(!profile);
             return
         }
         setVision(profile);
@@ -56,7 +56,7 @@ const ModalWindow = ({
         >
             <Box sx={style}>
                 <div className="modal__content">
-                    {vision
+                    {!vision
                         ? <input className="modal__input"
                             placeholder="Введите текущий пароль"
                             type="password"

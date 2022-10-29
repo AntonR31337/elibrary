@@ -14,6 +14,7 @@ export const DeleteProfile = ({ setError }) => {
         try {
             const data = await reauthenticate(password);
             await deleteUser(data.user);
+
             console.log('User deleted');
         } catch (error) {
             console.log('An error ocurred', error);
