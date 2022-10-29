@@ -14,4 +14,12 @@
         text-align: center;
     }
 
+    &__input{
+        width: 100%;
+        outline: none;
+        padding: 5px 20px;
+        border: 3px solid $primary-bg-color;
+        border-radius: 15px;
+        text-overflow: ellipsis;
+    }
 }
