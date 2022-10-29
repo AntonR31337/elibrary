@@ -1,55 +1,45 @@
 import IconButton from '@mui/material/IconButton';
 import { Tooltip } from "@mui/material";
 import FileDownloadIcon from '@mui/icons-material/FileDownload';
-import { useEffect, useState } from "react";
-import { onAuthStateChanged, updatePassword, EmailAuthProvider, reauthenticateWithCredential } from "firebase/auth";
-import { auth } from "../../../firebase/firebase";
+import { useState } from "react";
+import { updatePassword, } from "firebase/auth";
 import { reauthenticate } from '../../../firebase/firebaseAuth'
+import ModalWindow from '../../UI components/ModalWindow';
 
 
 
 const ChangePswForm = ({ setError }) => {
 
-    const [currentPassword, SetCurrentPassword] = useState("");
     const [newPassword, SetNewPassword] = useState("");
     const [repeatPassword, SetRepeatPassword] = useState("");
 
-    const handleChangePwd = async (e) => {
-        e.preventDefault()
-        console.log(currentPassword, newPassword, repeatPassword)
-        if (newPassword === repeatPassword) {
-            reauthenticate(currentPassword).then((data) => {
-                updatePassword(data.user, newPassword).then(() => {
-                      console.log('Password updated!');
-                      })
-                }).catch((error) => {
-                        console.log('An error ocurred', error);
-                        setError("Вы неверно ввели текущий пароль");
-                      }); 
-        } else if (newPassword !== repeatPassword) {
-                    setError("Введенные пароли не совпадают");
-        } 
-
-        SetCurrentPassword("");
-        SetNewPassword("");
-        SetRepeatPassword("");
-
+    const [open, setOpen] = useState(false);
+    const handleOpen = (event) => {
+        event.preventDefault()
+        setOpen(true);
+    }
+    const handleChangePwd = async (password) => {
+        try {
+            if (newPassword === repeatPassword) {
+                const data = await reauthenticate(password);
+                await updatePassword(data.user, newPassword);
+                console.log('Password updated!');
+            } else if (newPassword !== repeatPassword) {
+                setError("Введенные пароли не совпадают");
+            }
+        } catch (error) {
+            console.log('An error ocurred', error);
+            setError("Вы неверно ввели текущий пароль");
+        } finally {
+            SetNewPassword("");
+            SetRepeatPassword("");
+        }
     }
 
     return (
         <>
-            <form className="profile__form " onSubmit={handleChangePwd}>
+            <form className="profile__form " onSubmit={handleOpen}>
                 <div className="profile__form-content profile__form-content--input">
-                    <div className="profile__container">
-                        <div className="profile__left">
-                            <p className="profile__info">Текущий пароль:</p>
-                            <input className="profile__input"
-                                placeholder="Введите текущий пароль"
-                                type="password"
-                                onChange={(e) => SetCurrentPassword(e.target.value)}
-                                value={currentPassword} />
-                        </div>
-                    </div>
                     <div className="profile__container">
                         <div className="profile__left">
                             <p className="profile__info">Новый пароль:</p>
@@ -71,14 +61,18 @@ const ChangePswForm = ({ setError }) => {
                         </div>
                     </div>
                     <IconButton className="profile__submit"
-                        color="primary" onClick={handleChangePwd}>
+                        color="primary" onClick={handleOpen}>
                         <Tooltip title="Нажмите для сохранения информации ">
                             <FileDownloadIcon sx={{
                                 fontSize: "30px"
                             }} />
                         </Tooltip>
                     </IconButton>
-
+                    <ModalWindow
+                        confirmFunction={handleChangePwd}
+                        open={open}
+                        setOpen={setOpen}
+                    />
                 </div>
             </form>
         </>

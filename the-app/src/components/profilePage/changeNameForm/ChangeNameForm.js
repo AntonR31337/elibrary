@@ -8,7 +8,7 @@ import SubmitButtons from '../../UI components/SubmitButtons';
 const ChangeNameForm = ({ setError }) => {
 
     const [value, setValue] = useState("");
-    const [name, setName] = useState('');
+    const [name, setName] = useState("");
 
     const [isChanging, setIsChanging] = useState(false);
 
@@ -49,7 +49,7 @@ const ChangeNameForm = ({ setError }) => {
                         <div className="profile__left">
                             <p className="profile__info">Имя и фамилия:</p>
                             {!isChanging
-                                ? <p className="profile__info">{name}</p>
+                                ? <p className="profile__info">{name ? name : "Нет данных"}</p>
                                 : <input className="profile__input"
                                     placeholder="Введите имя и фамилию"
                                     type="text"

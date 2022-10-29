@@ -20,7 +20,7 @@ const ChangeEmailForm = ({ setError }) => {
 
     useEffect(() => {
         onAuthStateChanged(auth, (user) => {
-            setEmail(user?.email);
+            setEmail(user.email);
         });
     }, []);
 

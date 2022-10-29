@@ -8,7 +8,7 @@ import SubmitButtons from '../../UI components/SubmitButtons';
 const ChangePhoneForm = ({ setError }) => {
 
     const [value, setValue] = useState("");
-    const [phoneNumber, setPhoneNumber] = useState('');
+    const [phoneNumber, setPhoneNumber] = useState("");
 
     const [isChanging, setIsChanging] = useState(false);
 
@@ -36,7 +36,7 @@ const ChangePhoneForm = ({ setError }) => {
                         <div className="profile__left">
                             <p className="profile__info">Номер телефона:</p>
                             {!isChanging
-                                ? <p className="profile__info">{phoneNumber}</p>
+                                ? <p className="profile__info">{phoneNumber ? phoneNumber : "Нет данных"}</p>
                                 : <input className="profile__input"
                                     placeholder="Телефон +XXXXXXXXXXX"
                                     type="tel"
