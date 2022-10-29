@@ -29,6 +29,7 @@ function App() {
   };
   //подписываемся на изменение данных о пользователях в firebase
   useEffect(() => {
+
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         handleLogin();
