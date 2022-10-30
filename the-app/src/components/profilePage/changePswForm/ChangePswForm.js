@@ -5,7 +5,8 @@ import { useState } from "react";
 import { updatePassword, } from "firebase/auth";
 import { reauthenticate } from '../../../firebase/firebaseAuth'
 import ModalWindow from '../../UI components/ModalWindow';
-
+import QuestionMarkIcon from '@mui/icons-material/QuestionMark';
+import { passwordValidation } from '../../../helpers/vars';
 
 
 const ChangePswForm = ({ setError }) => {
@@ -20,11 +21,11 @@ const ChangePswForm = ({ setError }) => {
     }
     const handleChangePwd = async (password) => {
         try {
+            const data = await reauthenticate(password);
             if (newPassword === repeatPassword) {
-                const data = await reauthenticate(password);
                 await updatePassword(data.user, newPassword);
                 console.log('Password updated!');
-            } else if (newPassword !== repeatPassword) {
+            } else {
                 setError("Введенные пароли не совпадают");
             }
         } catch (error) {
@@ -47,6 +48,7 @@ const ChangePswForm = ({ setError }) => {
                                 placeholder="Введите новый пароль"
                                 type="password"
                                 onChange={(e) => SetNewPassword(e.target.value)}
+                                pattern={passwordValidation}
                                 value={newPassword} />
                         </div>
                     </div>
@@ -57,17 +59,28 @@ const ChangePswForm = ({ setError }) => {
                                 placeholder="Повторно введите новый пароль"
                                 type="password"
                                 onChange={(e) => SetRepeatPassword(e.target.value)}
+                                pattern={passwordValidation}
                                 value={repeatPassword} />
                         </div>
                     </div>
-                    <IconButton className="profile__submit"
-                        color="primary" onClick={handleOpen}>
-                        <Tooltip title="Нажмите для сохранения информации ">
-                            <FileDownloadIcon sx={{
-                                fontSize: "30px"
-                            }} />
-                        </Tooltip>
-                    </IconButton>
+                    <div className="profile__submit">
+                        <IconButton
+                            color="primary" onClick={handleOpen}>
+                            <Tooltip title="Нажмите для сохранения информации ">
+                                <FileDownloadIcon sx={{
+                                    fontSize: "30px"
+                                }} />
+                            </Tooltip>
+                        </IconButton>
+                        <IconButton color="primary" >
+                            <Tooltip title="Пароль не может быть короче восьми символов и должен содержать хотя бы одну цифру, одну маленькую и одну большую латинскую букву">
+                                <QuestionMarkIcon sx={{
+                                    fontSize: "30px"
+                                }} />
+                            </Tooltip>
+                        </IconButton>
+                    </div>
+
                     <ModalWindow
                         confirmFunction={handleChangePwd}
                         open={open}
