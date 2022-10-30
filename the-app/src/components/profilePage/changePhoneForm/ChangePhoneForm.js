@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { onAuthStateChanged, updateEmail } from "firebase/auth";
 import { auth } from "../../../firebase/firebase";
 import SubmitButtons from '../../UI components/SubmitButtons';
+import { phoneValidation } from "../../../helpers/vars";
 
 
 const ChangePhoneForm = ({ setError }) => {
@@ -23,7 +24,11 @@ const ChangePhoneForm = ({ setError }) => {
     }, []);
 
     const handleSubmitPhone = async (event) => {
-        setPhoneNumber(value);
+        if (value.match(phoneValidation)) {
+            setPhoneNumber(value);
+        } else {
+            setError("Введите валидный номер телефона")
+        }
         setIsChanging(false);
         setValue("");
     }
@@ -40,7 +45,7 @@ const ChangePhoneForm = ({ setError }) => {
                                 : <input className="profile__input"
                                     placeholder="Телефон +XXXXXXXXXXX"
                                     type="tel"
-                                    pattern="^((\+7|7|8)+([0-9]){10})$"
+                                    pattern={phoneValidation}
                                     onChange={handleChange}
                                     value={value} />
                             }

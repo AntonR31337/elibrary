@@ -5,6 +5,7 @@ import { auth } from "../../../firebase/firebase";
 import SubmitButtons from '../../UI components/SubmitButtons';
 import { reauthenticate } from '../../../firebase/firebaseAuth'
 import ModalWindow from "../../UI components/ModalWindow";
+import { emailValidation } from "../../../helpers/vars";
 
 
 const ChangeEmailForm = ({ setError }) => {
@@ -27,20 +28,24 @@ const ChangeEmailForm = ({ setError }) => {
     const [open, setOpen] = useState(false);
     const handleOpen = (event) => {
         event.preventDefault();
+
         setOpen(true);
     }
     const handleSubmitEmail = async (password) => {
         try {
-            if (value.trim()) {
-                const data = await reauthenticate(password);
+            const data = await reauthenticate(password);
+            if (value.match(emailValidation)) {
                 await updateEmail(data.user, value);
                 console.log('Email updated!');
                 setEmail(value);
-                setIsChanging(false);
+            } else {
+                setError("Введите валидный адрес электронной почты!");
             }
         } catch (error) {
             console.log('An error ocurred', error);
             setError("Вы неверно ввели пароль");
+        } finally {
+            setIsChanging(false);
         }
     }
 
@@ -57,7 +62,7 @@ const ChangeEmailForm = ({ setError }) => {
                                 : <input className="profile__input"
                                     placeholder="Почта sample@sample.sample"
                                     type="email"
-                                    pattern="[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-zA-Z]{2,4}"
+                                    pattern={emailValidation}
                                     onChange={handleChange}
                                 />
                             }

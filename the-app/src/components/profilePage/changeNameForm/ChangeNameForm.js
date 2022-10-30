@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { onAuthStateChanged, updateProfile } from "firebase/auth";
 import { auth } from "../../../firebase/firebase";
 import SubmitButtons from '../../UI components/SubmitButtons';
+import { nameValidation } from "../../../helpers/vars";
 
 
 const ChangeNameForm = ({ setError }) => {
@@ -25,19 +26,21 @@ const ChangeNameForm = ({ setError }) => {
     const handleSubmitName = async (event) => {
         console.log(value)
         event.preventDefault();
-        if (value.trim()) {
 
-            try {
-                console.log('name updated!');
+        try {
+            if (value.match(nameValidation)) {
                 await updateProfile(auth.currentUser, {
                     displayName: value,
                 });
                 setName(value);
-            } catch (error) {
-                setError(error.code.split(",")[0]);
-            } finally {
-                setIsChanging(false);
+                console.log('name updated!');
+            } else {
+                setError("Введите валидный никнэйм");
             }
+        } catch (error) {
+            setError(error.code.split(",")[0]);
+        } finally {
+            setIsChanging(false);
         }
     }
 
@@ -47,13 +50,13 @@ const ChangeNameForm = ({ setError }) => {
                 <div className="profile__form-content profile__form-content--input">
                     <div className="profile__container">
                         <div className="profile__left">
-                            <p className="profile__info">Имя и фамилия:</p>
+                            <p className="profile__info">Никнэйм:</p>
                             {!isChanging
                                 ? <p className="profile__info">{name ? name : "Нет данных"}</p>
                                 : <input className="profile__input"
-                                    placeholder="Введите имя и фамилию"
+                                    placeholder="Введите никнэйм"
                                     type="text"
-                                    pattern="^[а-яА-ЯёЁa-zA-Z]+ [а-яА-ЯёЁa-zA-Z]+ ?[а-яА-ЯёЁa-zA-Z]+$"
+                                    pattern={nameValidation}
                                     onChange={handleChange}
                                     value={value} />
                             }

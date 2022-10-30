@@ -4,6 +4,7 @@ import FormBody from "../../UI components/FormBody";
 import QuestionMarkIcon from '@mui/icons-material/QuestionMark';
 import IconButton from '@mui/material/IconButton';
 import { Tooltip } from "@mui/material";
+import { passwordValidation } from "../../../helpers/vars";
 
 const LoginForm = ({ onSubmit }) => {
     //локально сохраняем данные инпутов
@@ -42,10 +43,10 @@ const LoginForm = ({ onSubmit }) => {
                 onChange={handleChangePass}
                 label="Пароль"
                 variant="outlined"
-                pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                pattern={passwordValidation}
                 className="input-login"
             />
-            <IconButton color="primary" >
+            <IconButton color="primary">
                 <Tooltip title="Пароль не может быть короче восьми символов и должен содержать хотя бы одну цифру, одну маленькую и одну большую латинскую букву">
                     <QuestionMarkIcon sx={{
                         fontSize: "20px"
