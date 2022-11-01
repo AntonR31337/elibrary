@@ -1,4 +1,4 @@
-import { BOOKS_SEARCH, TEXT_SEARCH, TOTAL_BOOK_QUANTITY, } from "../types/types";
+import { BOOKS_SEARCH, BOOKS_SORT, TEXT_SEARCH, TOTAL_BOOK_QUANTITY, } from "../types/types";
 
 import { setLoading, setError, setSuccess } from "./commonActions";
 
@@ -16,6 +16,11 @@ export const bookSearch = (data) => ({
     type: BOOKS_SEARCH,
     data
 })
+
+export const sortBooksByTitle = (data) => ({
+    type: BOOKS_SORT,
+    data
+});
 
 export const setTotalItems = (data) => ({
     type: TOTAL_BOOK_QUANTITY,

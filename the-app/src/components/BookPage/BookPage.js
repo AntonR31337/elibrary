@@ -19,23 +19,17 @@ export const BookPage = ({ authed }) => {
     const { title, categories, authors, previewLink } = book.volumeInfo;
     const description = book.volumeInfo.description || book.volumeInfo.subtitle;
 
+    // const ISBN_num = 'ISBN:0738531367';
+    
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
 
-    const canvasRef = useRef()
+    const canvasRef = useRef();
 
-    useEffect(() => {
-        if (!open) return;
-        else {
-
-            window.google.books.load();
-
-            let viewer = new window.google.books.DefaultViewer(canvasRef.current);
-
-            viewer.load('ISBN:0738531367');
-        }
-    }, [open] );
+      useEffect(()=>{
+        console.log('Модальное окно открыто');
+      }, [open]);
 
     const style = {
         position: 'absolute',
@@ -73,7 +67,7 @@ export const BookPage = ({ authed }) => {
                         <Modal
                             open={open}
                             onClose={handleClose} >
-                            <Box sx={style} >
+                            <Box sx={style} ref={canvasRef} >
                                 <div ref={canvasRef} id="viewerCanvas" style={{ width: "100%", height: "300px" }} ></div>
                             </Box>
                         </Modal>

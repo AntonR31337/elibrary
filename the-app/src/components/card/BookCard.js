@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import "./bookCard.scss";
+import BasicRating from '../UI components/BasicRating';
 
 export const BookCard = ({ book }) => {
   const { id } = book;
@@ -14,6 +15,7 @@ export const BookCard = ({ book }) => {
         <h3 className="book__heading">Название: {title ? title : "Нет информации"}</h3>
         <p className="book__text">Категория: {categories ? categories : "Нет информации"}</p>
         <p className="book__text">Авторы: {authors ? authors : "Нет информации"}</p>
+        <BasicRating />
       </figcaption>
       <Link className="book__link" to={`/book/${id}`}>
         Подробнее...
