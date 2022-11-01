@@ -12,7 +12,7 @@ export const BookCard = ({ book }) => {
       </div>
 
       <figcaption className="book__description" >
-        <h3 className="book__heading">Название: {title ? title : "Нет информации"}</h3>
+        <h3 className="book__heading">{title ? title : "Нет информации"}</h3>
         <p className="book__text">Категория: {categories ? categories : "Нет информации"}</p>
         <p className="book__text">Авторы: {authors ? authors : "Нет информации"}</p>
         <BasicRating />
