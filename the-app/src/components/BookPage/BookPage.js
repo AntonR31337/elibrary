@@ -12,6 +12,8 @@ export const BookPage = ({ authed }) => {
 
     const params = useParams();
 
+
+
     const books = useSelector(getBooks, shallowEqual);
     const sliderBooks = useSelector(getSliderBooks, shallowEqual);
 
@@ -27,9 +29,18 @@ export const BookPage = ({ authed }) => {
 
     const canvasRef = useRef();
 
-      useEffect(()=>{
-        console.log('Модальное окно открыто');
-      }, [open]);
+    const initialise = () => {
+        const viewer = new window.google.books.DefaultViewer(canvasRef.current);
+        viewer.load('ISBN:0738531367');
+    }
+
+    useEffect(() => {
+        const view = async () => {
+            await window.google.books.load();
+            await window.google.books.setOnLoadCallback(initialise);
+        }
+        view()
+    }, []);
 
     const style = {
         position: 'absolute',
@@ -45,6 +56,8 @@ export const BookPage = ({ authed }) => {
 
     return (
         <div className="bookPage">
+            <div ref={canvasRef} style={{ width: "100%", height: "500px" }}></div>
+
             <div className="bookPage__wrapper">
                 <img className="bookPage__img" src={book.volumeInfo.imageLinks.thumbnail} alt="BookImage" />
                 <div className="bookPage__startInfo" >
@@ -64,15 +77,16 @@ export const BookPage = ({ authed }) => {
                         <BasicButton textBtn={"ЧИТАТЬ"} handleDoing={handleOpen} />
                         <BasicButton textBtn={"СКАЧАТЬ"} authed={authed} />
                         <BasicButton textBtn={"КУПИТЬ"} />
-                        <Modal
+                        {/* <Modal
                             open={open}
                             onClose={handleClose} >
-                            <Box sx={style} ref={canvasRef} >
-                                <div ref={canvasRef} id="viewerCanvas" style={{ width: "100%", height: "300px" }} ></div>
+                            <Box sx={style} >
+                                <div ref={canvasRef} style={{ width: "100%", height: "500px", position: "relative", zIndex: "10" }}></div>
                             </Box>
-                        </Modal>
+                        </Modal> */}
                     </div>
                 </div>
+
             </div>
             <div className="bookPage__description">
                 <h4 className="bookPage__description-title boldText">О книге:</h4>
