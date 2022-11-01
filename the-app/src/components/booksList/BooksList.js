@@ -7,9 +7,10 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 import Pagination from '@mui/material/Pagination';
-import { bookGenreSearchRequest, bookSearchRequest } from "../../store/actions/getListOfBooksActions";
+import { bookGenreSearchRequest, bookSearchRequest, sortBooksByTitle } from "../../store/actions/getListOfBooksActions";
 import Loader from "../UI components/Loader";
 import { translate } from "../../helpers/genres";
+import Sorting from "../UI components/Sorting";
 
 export const BooksList = ({ genre }) => {
 
@@ -17,7 +18,7 @@ export const BooksList = ({ genre }) => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
-    const books = useSelector(getBooks, shallowEqual);
+    let books = useSelector(getBooks, shallowEqual);
     const error = useSelector(getError);
     const loading = useSelector(getLoading);
 
@@ -38,6 +39,12 @@ export const BooksList = ({ genre }) => {
             setPage(1);
         }
     }, [currentPage])
+
+    const sortBooks = (arr, arg) => {
+        arr.sort((a, b) => a.volumeInfo[arg] > b.volumeInfo[arg] ? 1 : -1);
+        dispatch(sortBooksByTitle(arr));
+        books = [...books, arr];
+    }
 
     const handleChange = (event, value) => {
         genre
@@ -65,6 +72,10 @@ export const BooksList = ({ genre }) => {
                                         Результаты поиска по жанру <span>"{translate[searchName]}"</span>  представлены ниже.
                                     </h2>
                                 }
+                                <Sorting
+                                    sortBooks={sortBooks}
+                                    books={books} 
+                                />
                                 <div className="books-list__list">
                                     {books.map((book) => (
                                         <BookCard key={uniqid()} book={book} />

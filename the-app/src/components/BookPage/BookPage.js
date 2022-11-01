@@ -21,11 +21,13 @@ export const BookPage = ({ authed }) => {
     const { title, categories, authors, previewLink } = book.volumeInfo;
     const description = book.volumeInfo.description || book.volumeInfo.subtitle;
 
+    // const ISBN_num = 'ISBN:0738531367';
+    
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
 
-    const canvasRef = useRef()
+    const canvasRef = useRef();
 
     const initialise = () => {
         const viewer = new window.google.books.DefaultViewer(canvasRef.current);
