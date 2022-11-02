@@ -18,7 +18,7 @@ export const BookPage = ({ authed }) => {
     const sliderBooks = useSelector(getSliderBooks, shallowEqual);
 
     const book = [...books, ...sliderBooks].find(el => el.id === params.id);
-    const { title, categories, authors, previewLink } = book.volumeInfo;
+    const { title, categories, authors, publishedDate } = book.volumeInfo;
     const description = book.volumeInfo.description || book.volumeInfo.subtitle;
 
     // const ISBN_num = 'ISBN:0738531367';
@@ -56,7 +56,7 @@ export const BookPage = ({ authed }) => {
 
     return (
         <div className="bookPage">
-            <div ref={canvasRef} style={{ width: "100%", height: "500px" }}></div>
+            {/* <div ref={canvasRef} style={{ width: "100%", height: "500px" }}></div> */}
 
             <div className="bookPage__wrapper">
                 <img className="bookPage__img" src={book.volumeInfo.imageLinks.thumbnail} alt="BookImage" />
@@ -64,6 +64,7 @@ export const BookPage = ({ authed }) => {
                     <h3 className="bookPage__startInfo-title boldText">{title ? title : "Нет информации"}</h3>
                     <p className="">Категория: {categories ? categories : "Нет информации"}</p>
                     <p className="">Авторы: {authors ? authors : "Нет информации"}</p>
+                    <p className="">Год: {publishedDate ? publishedDate : "Нет информации"}</p>
                     <div>
                         <BasicRating authed={authed} />
                     </div>
