@@ -4,18 +4,21 @@ import FormBody from "../../UI components/FormBody";
 import QuestionMarkIcon from '@mui/icons-material/QuestionMark';
 import IconButton from '@mui/material/IconButton';
 import { Tooltip } from "@mui/material";
-import { passwordValidation } from "../../../helpers/vars";
+import { passwordValidation, emailValidation } from "../../../helpers/vars";
 
 const LoginForm = ({ onSubmit }) => {
     //локально сохраняем данные инпутов
     const [login, setLogin] = useState("");
     const [pass, setPass] = useState("");
+    const btn = document.querySelector(".button");
+
     //обработчики изменения инпутов
     const handleChangeLogin = (event) => {
         setLogin(event.target.value);
     };
     const handleChangePass = (event) => {
         setPass(event.target.value);
+        
     };
     //обработчик отправки формы
     const handleSubmit = async (event) => {
@@ -23,8 +26,18 @@ const LoginForm = ({ onSubmit }) => {
         onSubmit({ login, pass });
         setLogin("");
         setPass("");
+    } 
 
-    };
+    const inputValidation = () => {
+
+    if((pass.match(passwordValidation)) || (login.match(emailValidation))){
+        btn.disabled = false;
+    } else {
+        btn.disabled = true;
+    }}
+
+   
+    
 
     return (
         <FormBody onSubmit={handleSubmit}>
@@ -34,7 +47,7 @@ const LoginForm = ({ onSubmit }) => {
                 onChange={handleChangeLogin}
                 label="Почта"
                 variant="outlined"
-                pattern="[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-zA-Z]{2,4}"
+                pattern={emailValidation}
                 className="input-login"
             />
             <TextField
@@ -63,6 +76,9 @@ const LoginForm = ({ onSubmit }) => {
                     borderRadius: "8px"
                 }}
                 variant='contained'
+                className="button"
+                onChange={inputValidation} 
+                disabled               
             >
                 Войти!
             </Button>
