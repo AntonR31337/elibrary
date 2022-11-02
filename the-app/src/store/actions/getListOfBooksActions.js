@@ -56,3 +56,18 @@ export const bookGenreSearchRequest = (searchName, startIndex) => async (dispatc
         dispatch(setError(error));
     }
 }
+export const booksSortRequest = (searchName, startIndex, sortParam = 'orderBy=newest') => async (dispatch) => {
+    try {
+        dispatch(setLoading());
+        const books = await axios.get(`https://www.googleapis.com/books/v1/volumes?q=subject:${searchName}&key=${bookApiKey}&maxResults=${maxResults}&${sortParam}&startIndex=${startIndex}`);
+        console.log(books);
+        dispatch(setTotalItems(books.data.totalItems));
+        dispatch(bookSearch(missingData(books)));
+        dispatch(textSearch(searchName));
+        dispatch(setSuccess());
+    }
+    catch (error) {
+        console.log(error);
+        dispatch(setError(error));
+    }
+}
