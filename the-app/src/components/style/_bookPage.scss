@@ -5,6 +5,7 @@
     @include font ();
     color: $secondary-text-color;
     line-height: 24px;
+    flex-grow: 1;
 }
 .boldText {
     font-weight: bold;
