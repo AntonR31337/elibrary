@@ -23,9 +23,14 @@ const ChangePswForm = ({ setError }) => {
         try {
             const data = await reauthenticate(password);
             if (newPassword === repeatPassword) {
-                await updatePassword(data.user, newPassword);
-                console.log('Password updated!');
-            } else {
+                if (!passwordValidation.test(String(password))) {   
+                    setError("Введен невалидный пароль (см.подсказку)");
+                } else {
+                    await updatePassword(data.user, newPassword);
+                    console.log('Password updated!')
+                }
+            } 
+            else {
                 setError("Введенные пароли не совпадают");
             }
         } catch (error) {

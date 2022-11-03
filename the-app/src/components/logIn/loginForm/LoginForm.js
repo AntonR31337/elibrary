@@ -1,50 +1,104 @@
 import { Button, TextField } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import FormBody from "../../UI components/FormBody";
 import QuestionMarkIcon from '@mui/icons-material/QuestionMark';
 import IconButton from '@mui/material/IconButton';
 import { Tooltip } from "@mui/material";
-import { passwordValidation } from "../../../helpers/vars";
+import { passwordValidation, emailValidation } from "../../../helpers/vars";
 
 const LoginForm = ({ onSubmit }) => {
     //локально сохраняем данные инпутов
     const [login, setLogin] = useState("");
     const [pass, setPass] = useState("");
+    //были внутри input или нет
+    const [loginDirty, setLoginDirty] = useState(false);
+    const [passDirty, setPassDirty] = useState(false);
+    //ошибки по умолчанию
+    const [loginError, setLoginError] = useState("Email не может быть пустым");
+    const [passError, setPassError] = useState("Пароль не может быть пустым");
+    //состояние формы
+    const [formValid, setFormValid] = useState(false);
+
+    //форма отсеживает ошибки инпутов
+    useEffect(() => {
+        if (loginError || passError) {
+            setFormValid(false)
+        } else {
+            setFormValid(true)
+        }
+    }, [loginError, passError])
+
     //обработчики изменения инпутов
-    const handleChangeLogin = (event) => {
-        setLogin(event.target.value);
+    const handleChangeLogin = (e) => {
+        setLogin(e.target.value);
+        if (!emailValidation.test(String(e.target.value).toLowerCase())) {
+            setLoginError("Введите корректный адрес электронной почты")
+            if (!e.target.value) {
+                setLoginError("Email не может быть пустым")
+            }
+        } else {
+            setLoginError("")
+        }
     };
-    const handleChangePass = (event) => {
-        setPass(event.target.value);
+
+    const handleChangePass = (e) => {
+        setPass(e.target.value);
+        if (!passwordValidation.test(String(e.target.value))) {
+            setPassError("Невалидный пароль (см.подсказку)")
+            if (!e.target.value) {
+                setPassError("Пароль не может быть пустым")
+            }
+        } else {
+            setPassError("")
+        }
     };
+
+
     //обработчик отправки формы
-    const handleSubmit = async (event) => {
-        event.preventDefault();
+    const handleSubmit = async (e) => {
+        e.preventDefault();
         onSubmit({ login, pass });
         setLogin("");
         setPass("");
-
     };
+
+    //отслеживает действия в инпутах
+    const blurHandler = (e) => {
+        switch (e.target.name) {
+            case "email":
+                setLoginDirty(true)
+                break
+            case "password":
+                setPassDirty(true)
+                break
+        }
+    }
 
     return (
         <FormBody onSubmit={handleSubmit}>
+            {(loginDirty && loginError) && <div style={{ color: "red" }}>{loginError}</div>}
             <TextField
                 type="email"
+                name="email"
                 value={login}
-                onChange={handleChangeLogin}
+                onChange={e => handleChangeLogin(e)}
                 label="Почта"
                 variant="outlined"
-                pattern="[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-zA-Z]{2,4}"
+                pattern={emailValidation}
                 className="input-login"
+                onBlur={e => blurHandler(e)}
             />
+            {(passError && passDirty) && <div style={{ color: "red" }}>{passError}</div>}
             <TextField
                 type="password"
+                name="password"
                 value={pass}
-                onChange={handleChangePass}
+                onChange={e => handleChangePass(e)}
                 label="Пароль"
                 variant="outlined"
                 pattern={passwordValidation}
                 className="input-login"
+                onBlur={e => blurHandler(e)}
             />
             <IconButton color="primary">
                 <Tooltip title="Пароль не может быть короче восьми символов и должен содержать хотя бы одну цифру, одну маленькую и одну большую латинскую букву">
@@ -63,6 +117,7 @@ const LoginForm = ({ onSubmit }) => {
                     borderRadius: "8px"
                 }}
                 variant='contained'
+                disabled={!formValid}
             >
                 Войти!
             </Button>
