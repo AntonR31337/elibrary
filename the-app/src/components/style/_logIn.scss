@@ -30,9 +30,17 @@
         @include font($font-2, 700, $h2-fs);
         text-decoration: underline;
     }
+    &__input{
+        &-wrapper{
+        position: relative;
+        height: 75px;
+    }
+        &-error{
+            top: 55px;
+            position: absolute;
+            color: $invalid-color;
+            text-align: center;
+        }
 }
-
-.input-login :invalid {
-    background-color: $invalid-color;
 }
 
