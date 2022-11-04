@@ -87,7 +87,7 @@ export const Header = memo(({ authed }) => {
                             </Link>
                         </MenuItem>
                         <MenuItem onClick={handleCloseUserMenu}>
-                            <Link className="header__profile-link" to={"/profilepage"} >
+                            <Link className="header__profile-link" to={"/favourites"} >
                                 Избранное
                             </Link>
                         </MenuItem>
