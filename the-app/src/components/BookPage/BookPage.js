@@ -1,63 +1,26 @@
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import BasicRating from '../UI components/BasicRating';
 import BasicButton from "../UI components/BasicButton";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { shallowEqual, useSelector } from "react-redux";
 import { getBooks, getSliderBooks } from "../../store/selectors/getListOfBooksSelectors";
-import Modal from '@mui/material/Modal';
-import Box from '@mui/material/Box';
-import { useEffect, useRef, useState } from 'react';
 
 export const BookPage = ({ authed }) => {
 
     const params = useParams();
-
-
-
+    const navigate = useNavigate();
     const books = useSelector(getBooks, shallowEqual);
     const sliderBooks = useSelector(getSliderBooks, shallowEqual);
 
     const book = [...books, ...sliderBooks].find(el => el.id === params.id);
     const { title, categories, authors, publishedDate } = book.volumeInfo;
     const description = book.volumeInfo.description || book.volumeInfo.subtitle;
+    const vision = book.accessInfo.viewability === "NO_PAGES";
 
-    // const ISBN_num = 'ISBN:0738531367';
-    
-    const [open, setOpen] = useState(false);
-    const handleOpen = () => setOpen(true);
-    const handleClose = () => setOpen(false);
-
-    const canvasRef = useRef();
-
-    const initialise = () => {
-        const viewer = new window.google.books.DefaultViewer(canvasRef.current);
-        viewer.load('ISBN:0738531367');
-    }
-
-    useEffect(() => {
-        const view = async () => {
-            await window.google.books.load();
-            await window.google.books.setOnLoadCallback(initialise);
-        }
-        view()
-    }, []);
-
-    const style = {
-        position: 'absolute',
-        top: '50%',
-        left: '50%',
-        transform: 'translate(-50%, -50%)',
-        width: 600,
-        bgcolor: 'background.paper',
-        border: '2px solid #000',
-        boxShadow: 24,
-        p: 4,
-    };
+    const onRead = () => navigate(`/read/${params.id}`)
 
     return (
         <div className="bookPage">
-            {/* <div ref={canvasRef} style={{ width: "100%", height: "500px" }}></div> */}
-
             <div className="bookPage__wrapper">
                 <img className="bookPage__img" src={book.volumeInfo.imageLinks.thumbnail} alt="BookImage" />
                 <div className="bookPage__startInfo" >
@@ -75,16 +38,9 @@ export const BookPage = ({ authed }) => {
                                 color: "white"
                             }} />
                         </BasicButton>
-                        <BasicButton textBtn={"ЧИТАТЬ"} handleDoing={handleOpen} />
+                        <BasicButton textBtn={"ЧИТАТЬ"} vision={vision} handleDoing={onRead} />
                         <BasicButton textBtn={"СКАЧАТЬ"} authed={authed} />
                         <BasicButton textBtn={"КУПИТЬ"} />
-                        {/* <Modal
-                            open={open}
-                            onClose={handleClose} >
-                            <Box sx={style} >
-                                <div ref={canvasRef} style={{ width: "100%", height: "500px", position: "relative", zIndex: "10" }}></div>
-                            </Box>
-                        </Modal> */}
                     </div>
                 </div>
 
@@ -93,6 +49,6 @@ export const BookPage = ({ authed }) => {
                 <h4 className="bookPage__description-title boldText">О книге:</h4>
                 <p className="">{description ? description : "Нет информации"}</p>
             </div>
-        </div>
+        </div >
     )
 }

@@ -28,29 +28,34 @@ const LoginForm = ({ onSubmit }) => {
         }
     }, [loginError, passError])
 
-    //обработчики изменения инпутов
-    const handleChangeLogin = (e) => {
-        setLogin(e.target.value);
-        if (!emailValidation.test(String(e.target.value).toLowerCase())) {
+    useEffect(() => {
+        if (!login.match(emailValidation)) {
             setLoginError("Введите корректный адрес электронной почты")
-            if (!e.target.value) {
+            if (!login) {
                 setLoginError("Email не может быть пустым")
             }
         } else {
             setLoginError("")
         }
-    };
-
-    const handleChangePass = (e) => {
-        setPass(e.target.value);
-        if (!passwordValidation.test(String(e.target.value))) {
+    }, [login])
+    useEffect(() => {
+        if (!pass.match(passwordValidation)) {
             setPassError("Невалидный пароль (см.подсказку)")
-            if (!e.target.value) {
+            if (!pass) {
                 setPassError("Пароль не может быть пустым")
             }
         } else {
             setPassError("")
         }
+    }, [pass])
+    //обработчики изменения инпутов
+    const handleChangeLogin = (e) => {
+        setLogin(e.target.value);
+    };
+
+
+    const handleChangePass = (e) => {
+        setPass(e.target.value);
     };
 
 
@@ -63,43 +68,39 @@ const LoginForm = ({ onSubmit }) => {
     };
 
     //отслеживает действия в инпутах
-    const blurHandler = (e) => {
-        switch (e.target.name) {
-            case "email":
-                setLoginDirty(true)
-                break
-            case "password":
-                setPassDirty(true)
-                break
-        }
-    }
+    const blurHandler = (e) => e.target.name === "email"
+        ? setLoginDirty(true)
+        : setPassDirty(true)
+
 
     return (
         <FormBody onSubmit={handleSubmit}>
-            {(loginDirty && loginError) && <div style={{ color: "red" }}>{loginError}</div>}
-            <TextField
-                type="email"
-                name="email"
-                value={login}
-                onChange={e => handleChangeLogin(e)}
-                label="Почта"
-                variant="outlined"
-                pattern={emailValidation}
-                className="input-login"
-                onBlur={e => blurHandler(e)}
-            />
-            {(passError && passDirty) && <div style={{ color: "red" }}>{passError}</div>}
-            <TextField
-                type="password"
-                name="password"
-                value={pass}
-                onChange={e => handleChangePass(e)}
-                label="Пароль"
-                variant="outlined"
-                pattern={passwordValidation}
-                className="input-login"
-                onBlur={e => blurHandler(e)}
-            />
+            <div className="logIn__input-wrapper">
+                <TextField
+                    type="email"
+                    name="email"
+                    value={login}
+                    onChange={handleChangeLogin}
+                    label="Почта"
+                    variant="outlined"
+                    pattern={emailValidation}
+                    onBlur={blurHandler}
+                />
+                {(loginDirty && loginError) && <div className="logIn__input-error">{loginError}</div>}
+            </div>
+            <div className="logIn__input-wrapper">
+                <TextField
+                    type="password"
+                    name="password"
+                    value={pass}
+                    onChange={handleChangePass}
+                    label="Пароль"
+                    variant="outlined"
+                    pattern={passwordValidation}
+                    onBlur={blurHandler}
+                />
+                {(passError && passDirty) && <div className="logIn__input-error">{passError}</div>}
+            </div>
             <IconButton color="primary">
                 <Tooltip title="Пароль не может быть короче восьми символов и должен содержать хотя бы одну цифру, одну маленькую и одну большую латинскую букву">
                     <QuestionMarkIcon sx={{

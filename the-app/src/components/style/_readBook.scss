@@ -1,0 +1,13 @@
+.read-book {
+    @extend %grid-wrapper;
+
+    &__content {
+        position: relative;
+        @extend %grid-content;
+    }
+
+    &__book {
+        width: 800px;
+        height: 800px;
+    }
+}

@@ -2,7 +2,7 @@ import * as React from 'react';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 
-export default function BasicButton({ textBtn, authed = true, handleDoing, children }) {
+export default function BasicButton({ textBtn, authed = true, vision, handleDoing, children }) {
 
   return (
     <Stack spacing={2} direction="row" sx={{
@@ -11,7 +11,7 @@ export default function BasicButton({ textBtn, authed = true, handleDoing, child
       borderRadius: "0px",
       margin: "1px"
     }}>
-      <Button variant="text" disabled={!authed} onClick={handleDoing} >{children}{textBtn}</Button>
+      <Button variant="text" disabled={!authed || vision} onClick={handleDoing} >{children}{textBtn}</Button>
     </Stack>
   );
 }
