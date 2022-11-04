@@ -3,9 +3,12 @@ import {
   signInWithEmailAndPassword,
   signOut,
   EmailAuthProvider,
-  reauthenticateWithCredential
+  reauthenticateWithCredential,
+  getIdToken,
+  onAuthStateChanged
   } from "firebase/auth"
 import { auth } from "./firebase"
+import { useHttp } from "../hooks/http.hook";
 
 
     
@@ -35,3 +38,21 @@ import { auth } from "./firebase"
     )
     return result
   }
+
+  // const token = await auth.currentUser.getIdToken(true)
+  // console.log('token', token);
+
+export const CheckAuth = async () => {
+  const { request } = useHttp()
+  onAuthStateChanged(auth, async (user) => {
+    if (user) {
+      const token = await getIdToken(user);
+      console.log('token', token);
+      await request('http://localhost:5000/api/', 'POST', {
+        'AuthToken': token
+      })
+    }
+  });
+}
+
+  
