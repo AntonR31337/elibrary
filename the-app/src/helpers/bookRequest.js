@@ -1,7 +1,7 @@
 
 // корректировка данных, полученных от API 
 export const missingData = (data) => {
-    const missData = data.data.items.map((item) => {
+    const missData = data.items.map((item) => {
         if (item.volumeInfo.hasOwnProperty('imageLinks') === false) {
             item.volumeInfo['imageLinks'] = { thumbnail: 'http://placehold.it/128x190' };
         }

@@ -48,7 +48,7 @@ export const CheckAuth = async () => {
     if (user) {
       const token = await getIdToken(user);
       console.log('token', token);
-      await request('http://localhost:5000/api/', 'POST', {
+      await request('http://localhost:5000/api/profilepage', 'POST', {
         'AuthToken': token
       })
     }
