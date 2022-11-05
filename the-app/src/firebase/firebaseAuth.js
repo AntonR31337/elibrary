@@ -3,7 +3,9 @@ import {
   signInWithEmailAndPassword,
   signOut,
   EmailAuthProvider,
-  reauthenticateWithCredential
+  reauthenticateWithCredential,
+  getIdToken,
+  onAuthStateChanged
   } from "firebase/auth"
 import { auth } from "./firebase"
 
@@ -35,3 +37,19 @@ import { auth } from "./firebase"
     )
     return result
   }
+
+
+// export const CheckAuth = async () => {
+//   const { request } = useHttp()
+//   onAuthStateChanged(auth, async (user) => {
+//     if (user) {
+//       const token = await getIdToken(user);
+//       console.log('token', token);
+//       await request('http://localhost:5000/api/profilepage', 'POST', {
+//         'AuthToken': token
+//       })
+//     }
+//   });
+// }
+
+  

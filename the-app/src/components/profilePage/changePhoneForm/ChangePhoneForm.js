@@ -27,7 +27,7 @@ const ChangePhoneForm =  ({ setError }) => {
     const docRef = doc(db, "users", `${userId}`);
     try {
      getDoc(docRef).then((data) => {
-                console.log("Document data:", data);
+                // console.log("Document data:", data);
                 setPhoneNumber(data._document.data.value.mapValue.fields.phoneNumber.stringValue)
             }).catch((error) => {
                 console.log("No such document!", error);
