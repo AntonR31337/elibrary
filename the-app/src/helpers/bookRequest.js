@@ -28,3 +28,15 @@ export const missingData = (data) => {
     return missData;
 }
 
+export const postData = async (url = '', data = {}) => {
+    const response =  await fetch('http://localhost:5000/api/booksearch',
+        {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify(data)
+        })
+      return response.json()
+}
+

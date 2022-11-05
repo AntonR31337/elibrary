@@ -8,7 +8,6 @@ import {
   onAuthStateChanged
   } from "firebase/auth"
 import { auth } from "./firebase"
-import { useHttp } from "../hooks/http.hook";
 
 
     
@@ -39,20 +38,18 @@ import { useHttp } from "../hooks/http.hook";
     return result
   }
 
-  // const token = await auth.currentUser.getIdToken(true)
-  // console.log('token', token);
 
-export const CheckAuth = async () => {
-  const { request } = useHttp()
-  onAuthStateChanged(auth, async (user) => {
-    if (user) {
-      const token = await getIdToken(user);
-      console.log('token', token);
-      await request('http://localhost:5000/api/profilepage', 'POST', {
-        'AuthToken': token
-      })
-    }
-  });
-}
+// export const CheckAuth = async () => {
+//   const { request } = useHttp()
+//   onAuthStateChanged(auth, async (user) => {
+//     if (user) {
+//       const token = await getIdToken(user);
+//       console.log('token', token);
+//       await request('http://localhost:5000/api/profilepage', 'POST', {
+//         'AuthToken': token
+//       })
+//     }
+//   });
+// }
 
   

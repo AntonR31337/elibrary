@@ -34,15 +34,9 @@ router.post('/singup', async (req, res) => {
     res.json(userResponse)
 })
 
-router.post('/checkauth', async (req, res) => {
-    const userResponse = await admin.auth().createUser({
-        email: req.body.email,
-        password: req.body.password,
-        emailVerified: false,
-        disabled: false
-    })
-    res.json(userResponse)
-})
+// router.post('/checkauth', async (req, res) => {
+    
+// })
 
 
 
