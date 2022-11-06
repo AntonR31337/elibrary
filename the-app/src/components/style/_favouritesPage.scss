@@ -1,4 +1,37 @@
-.favouritesPage {
-    background-color: white;
-    height: 78vh;
+.favouritesPage-content {
+    margin: 0 auto;
+    font-family: $font-1;
+    margin: 50px 150px;
+    height: 65vh;
+}
+
+.favouritesPage-header {
+    display: flex;
+    justify-content: space-between;
+    height: 60px;
+    font-size: 30px;
+    padding: 0 15px;
+    border-bottom: solid 2px $secondary-bg-color;
+}
+
+.favouritesPage-title {
+    font-size: 35px;
+    display: flex;
+    align-items: center;
+    color: $primary-bg-color;
+}
+
+.favouritesPage-add-btn {
+    font-size: 27px;
+}
+
+.favouritesPage-books {
+    border: solid 2px $secondary-bg-color;
+    border-radius: 15px;
+    min-height: 400px;
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
