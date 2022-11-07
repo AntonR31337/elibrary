@@ -12,7 +12,14 @@ export const BookPage = ({ authed }) => {
     const books = useSelector(getBooks, shallowEqual);
     const sliderBooks = useSelector(getSliderBooks, shallowEqual);
 
-    const book = [...books, ...sliderBooks].find(el => el.id === params.id);
+    let book;
+
+    if (localStorage.getItem(`${params.id}`)) {
+        book = JSON.parse(localStorage.getItem(`${params.id}`))
+    } else {
+        book = [...books, ...sliderBooks].find(el => el.id === params.id);
+        localStorage.setItem(`${params.id}`, JSON.stringify(book));
+    }
     const { title, categories, authors, publishedDate } = book.volumeInfo;
     const description = book.volumeInfo.description || book.volumeInfo.subtitle;
     const vision = book.accessInfo.viewability === "NO_PAGES";
