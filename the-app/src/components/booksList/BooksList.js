@@ -30,6 +30,8 @@ export const BooksList = ({ genre }) => {
 
     const [page, setPage] = useState(currentPage ? currentPage : 1);
 
+    const [sortParam, setSortParam] = useState('');
+
     useEffect(() => {
         if (!currentPage || currentPage > pages) {
             setPage(1);
@@ -40,22 +42,28 @@ export const BooksList = ({ genre }) => {
         }
     }, [currentPage])
 
+    useEffect(()=> {
+        console.log(sortParam);
+    }, [sortParam]);
+
     const sortBooks = (arr, arg) => {
         arr.sort((a, b) => a.volumeInfo[arg] > b.volumeInfo[arg] ? 1 : -1);
         dispatch(sortBooksByTitle(arr));
         books = [...books, arr];
     }
 
-    const toSortBooks = (event, value)=> {
-        dispatch(booksSortRequest(searchName, (27 * (currentPage - 1) + 1)));
+    const toSortBooks = (param) => {
+        setSortParam(param);
+        console.log(sortParam);
+        dispatch(booksSortRequest(searchName, (27 * (currentPage - 1) + 1), sortParam));
         // setPage(value);
         // genre ? navigate(`/genre/${value}`) : navigate(`/bookslist/${value}`);
     }
 
     const handleChange = (event, value) => {
         genre
-            ? dispatch(bookGenreSearchRequest(searchName, (27 * (currentPage - 1) + 1)))
-            : dispatch(bookSearchRequest(searchName, (27 * (currentPage - 1) + 1)))
+            ? dispatch(bookGenreSearchRequest(searchName, (27 * (currentPage - 1) + 1), sortParam))
+            : dispatch(bookSearchRequest(searchName, (27 * (currentPage - 1) + 1), sortParam))
         setPage(value);
         genre ? navigate(`/genre/${value}`) : navigate(`/bookslist/${value}`);
     };
@@ -81,7 +89,8 @@ export const BooksList = ({ genre }) => {
                                 <Sorting
                                     sortBooks={sortBooks}
                                     toSortBooks={toSortBooks}
-                                    books={books} 
+                                    books={books}
+                                    sortParam
                                 />
                                 <div className="books-list__list">
                                     {books.map((book) => (
