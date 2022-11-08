@@ -8,7 +8,7 @@ export default function BasicButton({ textBtn, authed = true, vision, handleDoin
     <Stack spacing={2} direction="row" sx={{
       background: "#FFCA42",
       border: "2px solid #FFCA42",
-      borderRadius: "0px",
+      borderRadius: "18px",
       margin: "1px"
     }}>
       <Button variant="text" disabled={!authed || vision} onClick={handleDoing} >{children}{textBtn}</Button>
