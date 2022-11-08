@@ -40,13 +40,21 @@ export const BooksList = ({ genre }) => {
         }
     }, [currentPage])
 
+    useEffect(() => {
+        if (error) navigate(`/404`)
+    }, [error])
+
+    useEffect(() => {
+        if (!books.length && loading === "idle") navigate(`/`)
+    }, [books.length, loading])
+
     const sortBooks = (arr, arg) => {
         arr.sort((a, b) => a.volumeInfo[arg] > b.volumeInfo[arg] ? 1 : -1);
         dispatch(sortBooksByTitle(arr));
         books = [...books, arr];
     }
 
-    const toSortBooks = (event, value)=> {
+    const toSortBooks = (event, value) => {
         dispatch(booksSortRequest(searchName, (27 * (currentPage - 1) + 1)));
         // setPage(value);
         // genre ? navigate(`/genre/${value}`) : navigate(`/bookslist/${value}`);
@@ -67,7 +75,7 @@ export const BooksList = ({ genre }) => {
                 {loading === "pending"
                     ? <Loader />
                     : error
-                        ? navigate(`/404`)
+                        ? null
                         : books.length
                             ? <>
                                 {!genre
@@ -81,7 +89,7 @@ export const BooksList = ({ genre }) => {
                                 <Sorting
                                     sortBooks={sortBooks}
                                     toSortBooks={toSortBooks}
-                                    books={books} 
+                                    books={books}
                                 />
                                 <div className="books-list__list">
                                     {books.map((book) => (
@@ -96,11 +104,7 @@ export const BooksList = ({ genre }) => {
                                     size="middle"
                                     variant="outlined" />
                             </>
-                            : <>
-                                <h2 className="books-list__heading">
-                                    Вы не ввели поисковый запрос
-                                </h2>
-                            </>
+                            : null
                 }
             </div>
         </main>
