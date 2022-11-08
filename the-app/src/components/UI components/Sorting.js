@@ -9,11 +9,11 @@ export default function Sorting({ sortBooks, toSortBooks, books }) {
         marginBottom: "20px"
     }
 
-    const [isActive, setActive] = useState("false");
+    // const [isActive, setActive] = useState("false");
     
-    const handleToggle = () => {
-        setActive(!isActive);
-      };
+    // const handleToggle = () => {
+    //     setActive(!isActive);
+    //   };
 
     const handleClick = (param)=> {
         toSortBooks(param);

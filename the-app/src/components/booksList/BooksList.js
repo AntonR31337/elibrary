@@ -7,7 +7,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 import Pagination from '@mui/material/Pagination';
-import { bookGenreSearchRequest, bookSearchRequest, booksSortRequest, sortBooksByTitle } from "../../store/actions/getListOfBooksActions";
+import { bookGenreSearchRequest, bookSearchRequest, booksSortBySortMethod, booksSortRequest, sortBooksByTitle } from "../../store/actions/getListOfBooksActions";
 import Loader from "../UI components/Loader";
 import { translate } from "../../helpers/genres";
 import Sorting from "../UI components/Sorting";
@@ -55,9 +55,11 @@ export const BooksList = ({ genre }) => {
     }, [sortParam]);
 
     const sortBooks = (arr, arg) => {
+        console.log(arr, arg);
         arr.sort((a, b) => a.volumeInfo[arg] > b.volumeInfo[arg] ? 1 : -1);
-        dispatch(sortBooksByTitle(arr));
         books = [...books, arr];
+        dispatch(booksSortBySortMethod(searchName, arr, totalBookQuantity));
+        // dispatch(sortBooksByTitle(searchName, arr));
     }
 
     const toSortBooks = (param) => {
