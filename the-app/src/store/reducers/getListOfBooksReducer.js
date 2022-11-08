@@ -26,7 +26,7 @@ export const getListOfBooksReducer = (state = initialState, { type, data }) => {
             }
         case BOOKS_SORT:
             return {
-                state,
+                ...state,
                 books: data,
             }
         case TOTAL_BOOK_QUANTITY:

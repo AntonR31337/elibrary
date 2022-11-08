@@ -6,7 +6,7 @@ import axios from 'axios';
 import { bookApiKey } from "../../helpers/googleBookApiKey";
 import { maxResults } from "../../helpers/vars";
 import { missingData } from "../../helpers/bookRequest";
-import { postData } from  "../../helpers/bookRequest"
+import { postData } from "../../helpers/bookRequest"
 
 
 export const textSearch = (data) => ({
@@ -33,10 +33,10 @@ export const bookSearchRequest = (searchName, startIndex, sortParam = '') => asy
         dispatch(setLoading());
         // const books = await axios.get(`https://www.googleapis.com/books/v1/volumes?q=${searchName}+inauthor:${searchName}&key=${bookApiKey}&maxResults=${maxResults}&startIndex=${startIndex}`);
 
-        const books = await postData('http://localhost:5000/api/booksearch/searchbook', { searchName, maxResults, startIndex, sortParam})
-        .then((data) => {
-            return data
-        });
+        const books = await postData('http://localhost:5000/api/booksearch/searchbook', { searchName, maxResults, startIndex, sortParam })
+            .then((data) => {
+                return data
+            });
 
         console.log(books);
         // dispatch(setTotalItems(books.data,totalItems));
@@ -54,10 +54,10 @@ export const bookGenreSearchRequest = (searchName, startIndex, sortParam = '') =
     try {
         dispatch(setLoading());
         // const books = await axios.get(`https://www.googleapis.com/books/v1/volumes?q=subject:${searchName}&key=${bookApiKey}&maxResults=${maxResults}&startIndex=${startIndex}`);
-        const books = await postData('http://localhost:5000/api/booksearch/searchgenre', { searchName, maxResults, startIndex, sortParam})
-        .then((data) => {
-            return data
-        });
+        const books = await postData('http://localhost:5000/api/booksearch/searchgenre', { searchName, maxResults, startIndex, sortParam })
+            .then((data) => {
+                return data
+            });
         console.log(sortParam);
         console.log(books);
         dispatch(setTotalItems(books.totalItems));
@@ -76,10 +76,10 @@ export const booksSortRequest = (searchName, startIndex, sortParam = '') => asyn
         // dispatch(setLoading());
         // const books = await axios.get(`https://www.googleapis.com/books/v1/volumes?q=subject:${searchName}&key=${bookApiKey}&maxResults=${maxResults}&${sortParam}&startIndex=${startIndex}`);
 
-        const books = await postData('http://localhost:5000/api/booksearch/sortbook', { searchName, maxResults, sortParam, startIndex})
-        .then((data) => {
-            return data
-        });
+        const books = await postData('http://localhost:5000/api/booksearch/sortbook', { searchName, maxResults, sortParam, startIndex })
+            .then((data) => {
+                return data
+            });
 
         console.log(sortParam);
         // dispatch(setTotalItems(books.data.totalItems));
@@ -93,3 +93,21 @@ export const booksSortRequest = (searchName, startIndex, sortParam = '') => asyn
         dispatch(setError(error));
     }
 }
+export const booksSortBySortMethod = (searchName, books, totalBookQuantity) => (dispatch) => {
+
+        dispatch(sortBooksByTitle(books));
+        // dispatch(setLoading());
+        // const books = await axios.get(`https://www.googleapis.com/books/v1/volumes?q=subject:${searchName}&key=${bookApiKey}&maxResults=${maxResults}&${sortParam}&startIndex=${startIndex}`);
+
+        // const books = await postData('http://localhost:5000/api/booksearch/sortbook', { searchName, maxResults, sortParam, startIndex })
+        //     .then((data) => {
+        //         return data
+        //     });
+
+        // console.log(sortParam);
+        // dispatch(setTotalItems(books.data.totalItems));
+        dispatch(setTotalItems(totalBookQuantity));
+        // dispatch(bookSearch(missingData(books)));
+        dispatch(textSearch(searchName));
+        dispatch(setSuccess());
+    }
