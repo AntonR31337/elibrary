@@ -42,6 +42,14 @@ export const BooksList = ({ genre }) => {
         }
     }, [currentPage])
 
+    useEffect(() => {
+        if (error) navigate(`/404`)
+    }, [error])
+
+    useEffect(() => {
+        if (!books.length && loading === "idle") navigate(`/`)
+    }, [books.length, loading])
+
     useEffect(()=> {
         console.log(sortParam);
     }, [sortParam]);
@@ -75,7 +83,7 @@ export const BooksList = ({ genre }) => {
                 {loading === "pending"
                     ? <Loader />
                     : error
-                        ? navigate(`/404`)
+                        ? null
                         : books.length
                             ? <>
                                 {!genre
@@ -90,7 +98,6 @@ export const BooksList = ({ genre }) => {
                                     sortBooks={sortBooks}
                                     toSortBooks={toSortBooks}
                                     books={books}
-                                    sortParam
                                 />
                                 <div className="books-list__list">
                                     {books.map((book) => (
@@ -105,11 +112,7 @@ export const BooksList = ({ genre }) => {
                                     size="middle"
                                     variant="outlined" />
                             </>
-                            : <>
-                                <h2 className="books-list__heading">
-                                    Вы не ввели поисковый запрос
-                                </h2>
-                            </>
+                            : null
                 }
             </div>
         </main>

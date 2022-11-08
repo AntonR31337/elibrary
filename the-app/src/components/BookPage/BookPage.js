@@ -1,23 +1,27 @@
-import FavoriteIcon from '@mui/icons-material/Favorite';
 import BasicRating from '../UI components/BasicRating';
 import BasicButton from "../UI components/BasicButton";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { shallowEqual, useSelector } from "react-redux";
 import { getBooks, getSliderBooks } from "../../store/selectors/getListOfBooksSelectors";
+import ReadBtn from './readBtn/ReadBtn';
+import FavoriteBtn from './favoriteBtn/FavoriteBtn';
 
 export const BookPage = ({ authed }) => {
 
     const params = useParams();
-    const navigate = useNavigate();
     const books = useSelector(getBooks, shallowEqual);
     const sliderBooks = useSelector(getSliderBooks, shallowEqual);
 
-    const book = [...books, ...sliderBooks].find(el => el.id === params.id);
+    let book;
+
+    if (localStorage.getItem(`${params.id}`)) {
+        book = JSON.parse(localStorage.getItem(`${params.id}`))
+    } else {
+        book = [...books, ...sliderBooks].find(el => el.id === params.id);
+        localStorage.setItem(`${params.id}`, JSON.stringify(book));
+    }
     const { title, categories, authors, publishedDate } = book.volumeInfo;
     const description = book.volumeInfo.description || book.volumeInfo.subtitle;
-    const vision = book.accessInfo.viewability === "NO_PAGES";
-
-    const onRead = () => navigate(`/read/${params.id}`)
 
     return (
         <div className="bookPage">
@@ -32,13 +36,9 @@ export const BookPage = ({ authed }) => {
                         <BasicRating authed={authed} />
                     </div>
                     <div className="book__buttons">
-                        <BasicButton textBtn={"В ИЗБРАННОЕ"} authed={authed} >
-                            <FavoriteIcon sx={{
-                                marginRight: "10px",
-                                color: "white"
-                            }} />
-                        </BasicButton>
-                        <BasicButton textBtn={"ЧИТАТЬ"} vision={vision} handleDoing={onRead} />
+                        <FavoriteBtn authed={authed}
+                            id={book.id} book={book} />
+                        <ReadBtn book={book} />
                         <BasicButton textBtn={"СКАЧАТЬ"} authed={authed} />
                         <BasicButton textBtn={"КУПИТЬ"} />
                     </div>

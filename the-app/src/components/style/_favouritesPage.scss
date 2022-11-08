@@ -2,36 +2,51 @@
     margin: 0 auto;
     font-family: $font-1;
     margin: 50px 150px;
-    height: 65vh;
+    background-color: #F5F5F5;
+    display: flex;
+    flex-direction: column;
+    padding: 15px 40px;
+    min-height: 65vh;
 }
 
 .favouritesPage-header {
-    display: flex;
-    justify-content: space-between;
     height: 60px;
     font-size: 30px;
-    padding: 0 15px;
-    border-bottom: solid 2px $secondary-bg-color;
 }
 
-.favouritesPage-title {
-    font-size: 35px;
-    display: flex;
-    align-items: center;
+.favouritesPage-title-main {
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 24px;
+    letter-spacing: 0.05em;
+    text-align: left;
     color: $primary-bg-color;
 }
 
-.favouritesPage-add-btn {
-    font-size: 27px;
+.books-list {
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
+    margin-top: 60px;
 }
 
-.favouritesPage-books {
+.favouritesPage-title-mini {
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 24px;
+    letter-spacing: 0.05em;
+    text-align: left;
+    color: $primary-bg-color;
+    border-bottom: solid 2px $primary-bg-color;
+}
+
+.books-content {
+    height: 300px;
     border: solid 2px $secondary-bg-color;
     border-radius: 15px;
-    min-height: 400px;
-    margin-top: 40px;
     display: flex;
     justify-content: center;
     align-items: center;
-    text-align: center;
+    font-size: 32px;
+    color: $primary-bg-color;
 }
