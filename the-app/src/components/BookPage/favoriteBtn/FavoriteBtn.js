@@ -7,9 +7,8 @@ import { useEffect, useState } from "react";
 
 
 const FavoriteBtn = ({ book, authed }) => {
-    let docRef;
-    let userId;
-
+    let userId = auth.currentUser.uid;
+    let docRef = doc(db, "users", `${userId}`);
     const [isFavorite, setIsFavorite] = useState(false)
     const [data, setData] = useState([])
 
@@ -23,12 +22,6 @@ const FavoriteBtn = ({ book, authed }) => {
         thumbnail
     }
 
-    try {
-        userId = auth.currentUser.uid;
-        docRef = doc(db, "users", `${userId}`);
-    } catch (error) {
-        console.log(error)
-    }
     useEffect(() => {
         const getInfo = async () => {
             try {
@@ -51,8 +44,6 @@ const FavoriteBtn = ({ book, authed }) => {
 
     useEffect(() => {
         if (data.length) {
-            console.log(currentBook.id, data)
-            console.log(data.findIndex(item => item.id === currentBook.id))
             const isInTheList = data.findIndex(item => item.id === currentBook.id) === -1;
             !isInTheList ? setIsFavorite(true) : setIsFavorite(false)
         }
@@ -69,7 +60,7 @@ const FavoriteBtn = ({ book, authed }) => {
             console.dir(newUserData._document.data.value.mapValue.fields.favoritesList.arrayValue.values);
             setIsFavorite(!isFavorite)
         } catch (error) {
-            console.log("No such document!", error);
+            console.log(error);
             await setDoc(docRef, { favoritesList: [currentBook] }, { merge: true });
         }
     }
