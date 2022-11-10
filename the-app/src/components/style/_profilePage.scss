@@ -1,12 +1,11 @@
 .profile {
     @extend %grid-wrapper;
-
     &__content {
         position: relative;
         @extend %grid-content;
         @extend %border;
         margin: 50px;
-        background-color: $primary-text-color;
+        background-color: $fourth-bg-color;
         gap: 20px;
         padding: 50px 150px;
 
