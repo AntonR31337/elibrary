@@ -17,7 +17,7 @@ const ProfilePage = () => {
     }, [error])
 
     return (
-        <section className="profile">
+        <main className="profile">
             <div className="profile__content">
                 <h1 className="profile__heading">Информация о вашем профиле.</h1>
                 <hr />
@@ -35,7 +35,7 @@ const ProfilePage = () => {
                 <DeleteProfile setError={setError} />
                 {error && <h2 className="error">{error}</h2>}
             </div>
-        </section>
+        </main>
     );
 };
 

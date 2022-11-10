@@ -61,7 +61,7 @@ const FavoriteBtn = ({ book, authed }) => {
             setIsFavorite(!isFavorite)
         } catch (error) {
             console.log(error);
-            await setDoc(docRef, { favoritesList: [currentBook] }, { merge: true });
+            //await setDoc(docRef, { favoritesList: [currentBook] }, { merge: true });
         }
     }
     return (
