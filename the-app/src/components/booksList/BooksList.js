@@ -55,9 +55,7 @@ export const BooksList = ({ genre }) => {
     }, [sortParam]);
 
     const sortBooks = (arr, arg) => {
-        console.log(arr, arg);
         arr.sort((a, b) => a.volumeInfo[arg] > b.volumeInfo[arg] ? 1 : -1);
-        books = [...books, arr];
         dispatch(booksSortBySortMethod(searchName, arr, totalBookQuantity));
         // dispatch(sortBooksByTitle(searchName, arr));
     }
@@ -103,7 +101,7 @@ export const BooksList = ({ genre }) => {
                                 />
                                 <div className="books-list__list">
                                     {books.map((book) => (
-                                        <BookCard key={uniqid()} book={book} />
+                                        <BookCard key={uniqid()} book />
                                     ))}
                                 </div>
                                 <Pagination
