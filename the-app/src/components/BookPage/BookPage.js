@@ -5,6 +5,7 @@ import { shallowEqual, useSelector } from "react-redux";
 import { getBooks, getSliderBooks } from "../../store/selectors/getListOfBooksSelectors";
 import ReadBtn from './readBtn/ReadBtn';
 import FavoriteBtn from './favoriteBtn/FavoriteBtn';
+import DownloadBtn from './downloadBtn/DownloadBtn';
 
 export const BookPage = ({ authed }) => {
 
@@ -39,7 +40,8 @@ export const BookPage = ({ authed }) => {
                         <FavoriteBtn authed={authed}
                             id={book.id} book={book} />
                         <ReadBtn book={book} />
-                        <BasicButton textBtn={"СКАЧАТЬ"} authed={authed} />
+                        <DownloadBtn  authed={authed} 
+                            id={book.id} book={book}/>
                         <BasicButton textBtn={"КУПИТЬ"} />
                     </div>
                 </div>
