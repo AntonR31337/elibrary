@@ -16,6 +16,8 @@ import ProfilePage from './components/profilePage/ProfilePage';
 import FavouritesPage from './components/favouritesPage/FavouritesPage';
 import { GenreList } from './components/genreList/GenreList';
 import ReadBook from './components/readBook/ReadBook';
+import Downloadbook from './components/downloadBook/downloadBook';
+
 
 
 function App() {
@@ -60,6 +62,7 @@ function App() {
           <Route path="" element={<FavouritesPage />} />
         </Route>
         <Route path="/read/:id" element={<ReadBook />} />
+        <Route path="/download/:id/epub" element={<Downloadbook />} />
         <Route path="/bookslist/:id" element={<BooksList />} />
         <Route path='/book/:id' element={<BookPage authed={authed} />} />
         <Route path="/genres/:id" element={<GenreList />} />
