@@ -5,6 +5,7 @@ import { shallowEqual, useSelector } from "react-redux";
 import { getBooks, getSliderBooks } from "../../store/selectors/getListOfBooksSelectors";
 import ReadBtn from './readBtn/ReadBtn';
 import FavoriteBtn from './favoriteBtn/FavoriteBtn';
+import RecommendedBooks from '../recommendedBooks/recommendedBooks';
 import DownloadBtn from './downloadBtn/DownloadBtn';
 
 export const BookPage = ({ authed }) => {
@@ -48,9 +49,12 @@ export const BookPage = ({ authed }) => {
 
             </div>
             <div className="bookPage__description">
-                <h4 className="bookPage__description-title boldText">О книге:</h4>
+                <h4 className="bookPage__description-title genre__heading">О книге:</h4>
                 <p className="">{description ? description : "Нет информации"}</p>
             </div>
+            <RecommendedBooks 
+                book={book}
+                title={"Похожие книги"} />
         </div >
     )
 }
