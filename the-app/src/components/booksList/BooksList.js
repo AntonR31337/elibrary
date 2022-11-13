@@ -101,7 +101,7 @@ export const BooksList = ({ genre }) => {
                                 />
                                 <div className="books-list__list">
                                     {books.map((book) => (
-                                        <BookCard key={uniqid()} book />
+                                        <BookCard key={uniqid()} book={book} />
                                     ))}
                                 </div>
                                 <Pagination
