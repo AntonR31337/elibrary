@@ -6,6 +6,7 @@ import { getBooks, getSliderBooks } from "../../store/selectors/getListOfBooksSe
 import ReadBtn from './readBtn/ReadBtn';
 import FavoriteBtn from './favoriteBtn/FavoriteBtn';
 import RecommendedBooks from '../recommendedBooks/recommendedBooks';
+import DownloadBtn from './downloadBtn/DownloadBtn';
 
 export const BookPage = ({ authed }) => {
 
@@ -40,7 +41,8 @@ export const BookPage = ({ authed }) => {
                         <FavoriteBtn authed={authed}
                             id={book.id} book={book} />
                         <ReadBtn book={book} />
-                        <BasicButton textBtn={"СКАЧАТЬ"} authed={authed} />
+                        <DownloadBtn  authed={authed} 
+                            id={book.id} book={book}/>
                         <BasicButton textBtn={"КУПИТЬ"} />
                     </div>
                 </div>

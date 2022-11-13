@@ -1,50 +1,26 @@
-import AddBoxIcon from '@mui/icons-material/AddBox';
-import { Button } from '@mui/material';
+import Favourites from "./favourites/Favourites";
+import BuyList from "./buyList/BuyList";
+import { useNavigate } from "react-router-dom";
 
 
+const FavouritesPage = () => {
 
-const favouritesPage = () => {
+    const navigate = useNavigate();
+    const onRead = (id) => navigate(`/read/${id}`);
+    const onFavourites = (id) => console.log(id);
+
     return (
-        <section className="favouritesPage-content">
-
-            <div className='favouritesPage-header'>
-                <div className="favouritesPage-title-main">
+        <main className="favourites">
+            <div className="favourites__content">
+                <h1 className='favourites__heading'>
                     Мои книги
-                </div>
+                </h1>
+                <Favourites path={"favourites"} onClick={onFavourites} />
+                <Favourites path={"recent"} onClick={onRead} />
+                <BuyList />
             </div>
-
-            <div className="favouritesPage-wish books-list">
-                <div className="favouritesPage-title-mini">
-                    Буду читать
-                </div>
-
-                <div className='wish-content books-content'>
-                    Здесь пока ничего нет...
-                </div>
-            </div>
-
-            <div className="favouritesPage-continue books-list">
-                <div className="favouritesPage-title-mini">
-                    Продолжить чтение
-                </div>
-
-                <div className='continue-content books-content'>
-                    Здесь пока ничего нет...
-                </div>
-            </div>
-
-            <div className="favouritesPage-shopping books-list">
-                <div className="favouritesPage-title-mini">
-                    Покупки
-                </div>
-
-                <div className='shopping-content books-content'>
-                    Список покупок пуст
-                </div>
-            </div>
-
-        </section>
+        </main>
     )
 };
 
-export default favouritesPage;
+export default FavouritesPage;
