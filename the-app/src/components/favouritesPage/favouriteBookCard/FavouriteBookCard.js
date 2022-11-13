@@ -1,7 +1,7 @@
-const FavouriteBookCard = ({ book }) => {
+const FavouriteBookCard = ({ book, onClick }) => {
     const { id, title, thumbnail } = book;
     return (
-        <figure className="favourite-book" >
+        <figure className="favourite-book" onClick={() => onClick(id)} >
             <div className="favourite-book__wrapper">
                 <img className="favourite-book__img" src={thumbnail} alt="BookImage" />
             </div>
