@@ -9,3 +9,6 @@ const firebaseApp = initializeApp(firebaseConfig);
 export const auth = getAuth(firebaseApp);
 export const db = getFirestore(firebaseApp);
 export const storage = getStorage(firebaseApp)
+
+const userId = auth.currentUser?.uid;
+export const docRef = doc(db, "users", `${userId}`);

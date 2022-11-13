@@ -18,7 +18,7 @@
         align-self: center
     }
 
-    &__favourites,&__buy,&__last-read {
+    &__favourites,&__buy,&__recent {
         width: 100%;
         &-heading {
             @include font($font-1, 700, $h2-fs);
@@ -40,6 +40,7 @@
             @extend %shadow; 
             @include font($font-1, 700, $h3-fs);
             color: $primary-bg-color;
+            flex-wrap: wrap;
         }
     }
 }

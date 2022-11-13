@@ -1,21 +1,37 @@
-import { doc, getDoc, setDoc } from "firebase/firestore";
+import { getDoc } from "firebase/firestore";
 import { docRef } from "../firebase/firebase";
 
-
-export const getInfo = async (docRef) => {
+export const getInfo = async (setFunction, setLoading, path) => {
     try {
+        if (setLoading) setLoading("pending")
         const userData = await getDoc(docRef)
-        const favorites = userData._document.data.value.mapValue.fields.favoritesList.arrayValue.values
-        const currentList = favorites.map(item => {
+        const arr = userData._document.data.value.mapValue.fields[path].arrayValue.values
+        const currentList = arr.map(item => {
             const { id, title, thumbnail } = item.mapValue.fields;
             const number = id.stringValue;
             const name = title.stringValue;
             const img = thumbnail.stringValue;
             return { id: number, title: name, thumbnail: img }
         })
-        console.log(currentList)
-        return currentList
+        setFunction(currentList)
     } catch (error) {
         console.log(error)
+        setFunction([])
+    } finally {
+        if (setLoading) setLoading("")
     }
+}
+
+export const adapter = (book) => {
+    const { id } = book;
+    const { title } = book.volumeInfo;
+    const thumbnail = book.volumeInfo.imageLinks.thumbnail
+
+    const currentBook = {
+        id,
+        title,
+        thumbnail
+    }
+
+    return currentBook
 }
