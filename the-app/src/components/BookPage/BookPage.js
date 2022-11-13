@@ -47,12 +47,12 @@ export const BookPage = ({ authed }) => {
 
             </div>
             <div className="bookPage__description">
-                <h4 className="bookPage__description-title boldText">О книге:</h4>
+                <h4 className="bookPage__description-title genre__heading">О книге:</h4>
                 <p className="">{description ? description : "Нет информации"}</p>
             </div>
             <RecommendedBooks 
                 book={book}
-                title={"С этой книгой читают"} />
+                title={"Похожие книги"} />
         </div >
     )
 }
