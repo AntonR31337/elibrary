@@ -1,12 +1,12 @@
-
+import sample from "../assets/sample.jpg";
 // корректировка данных, полученных от API 
 export const missingData = (data) => {
     const missData = data.items.map((item) => {
         if (item.volumeInfo.hasOwnProperty('imageLinks') === false) {
-            item.volumeInfo['imageLinks'] = { thumbnail: 'http://placehold.it/128x190' };
+            item.volumeInfo['imageLinks'] = { thumbnail: sample };
         }
         if (item.volumeInfo.imageLinks.hasOwnProperty('thumbnail') === false) {
-            item.volumeInfo.imageLinks['thumbnail'] = 'http://placehold.it/128x190';
+            item.volumeInfo.imageLinks['thumbnail'] = sample;
         }
         if (item.volumeInfo.hasOwnProperty('categories') === false) {
             item.volumeInfo['categories'] = '';
@@ -29,14 +29,14 @@ export const missingData = (data) => {
 }
 
 export const postData = async (url = '', data = {}) => {
-    const response =  await fetch('http://localhost:5000/api/booksearch',
+    const response = await fetch('http://localhost:5000/api/booksearch',
         {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
-              },
-              body: JSON.stringify(data)
+            },
+            body: JSON.stringify(data)
         })
-      return response.json()
+    return response.json()
 }
 
