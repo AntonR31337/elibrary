@@ -1,12 +1,13 @@
 import IconButton from '@mui/material/IconButton';
-import { Tooltip } from "@mui/material";
+import { Button, Tooltip } from "@mui/material";
 import FileDownloadIcon from '@mui/icons-material/FileDownload';
 import { useState } from "react";
-import { updatePassword, } from "firebase/auth";
+import { updatePassword } from "firebase/auth";
 import { reauthenticate } from '../../../firebase/firebaseAuth'
 import ModalWindow from '../../UI components/ModalWindow';
 import QuestionMarkIcon from '@mui/icons-material/QuestionMark';
 import { passwordValidation } from '../../../helpers/vars';
+import ModalWindowResetPsw from '../../UI components/ModalWindowResetPsw';
 
 
 const ChangePswForm = ({ setError }) => {
@@ -41,8 +42,14 @@ const ChangePswForm = ({ setError }) => {
         }
     }
 
+    const handleResetPsw = () => {
+        setOpen(true);
+    }
+    
+
     return (
         <>
+        <div>
             <form className="profile__form " onSubmit={handleOpen}>
                 <div className="profile__form-content profile__form-content--input">
                     <div className="profile__container">
@@ -83,6 +90,7 @@ const ChangePswForm = ({ setError }) => {
                                 }} />
                             </Tooltip>
                         </IconButton>
+                     
                     </div>
 
                     <ModalWindow
@@ -92,6 +100,13 @@ const ChangePswForm = ({ setError }) => {
                     />
                 </div>
             </form>
+            <Button variant="contained" onClick={handleResetPsw}>Забыли пароль?</Button>
+            <ModalWindowResetPsw
+                        confirmFunction={handleResetPsw}
+                        open={open}
+                        setOpen={setOpen}
+                    />
+            </div>
         </>
     )
 }
