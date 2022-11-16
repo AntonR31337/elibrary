@@ -4,7 +4,7 @@ import BasicButton from "../../UI components/BasicButton";
 const DownloadBtn = ({ authed, book }) => {
 
     const vision = book.accessInfo.viewability === "NO_PAGES";
-    const onDownload = () => window.location.href = `https://books.google.ru/books?id=${book.id}&output=epub&source=gbs_api`
+    const onDownload = () => window.location.href = `${book.accessInfo.epub.downloadLink}`
 
 
     return (
