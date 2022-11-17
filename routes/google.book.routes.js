@@ -11,9 +11,9 @@ router.post('/searchbook', async (req, res) => {
         const books = response.data
         res.status(201).json(books);
       })
-      .catch(function (error) {
-        res.status(401).json({ error: err.message })
-      })
+    .catch(function (error) {
+      res.status(401).json({ error: err.message })
+    })
 })
 
 router.post('/searchgenre', async (req, res) => {
@@ -23,9 +23,9 @@ router.post('/searchgenre', async (req, res) => {
       const books = response.data
       res.status(201).json(books);
     })
-    .catch(function (error) {
-      res.status(401).json({ error: err.message })
-    })
+  .catch(function (error) {
+    res.status(401).json({ error: err.message })
+  })
 })
 
 router.post('/sortbook', async (req, res) => {
@@ -35,15 +35,9 @@ router.post('/sortbook', async (req, res) => {
       const books = response.data
       res.status(201).json(books);
     })
-    .catch(function (error) {
-      res.status(401).json({ error: err.message })
-    })
+  .catch(function (error) {
+    res.status(401).json({ error: err.message })
+  })
 })
-
-
-
-
-
-
 
 module.exports = router

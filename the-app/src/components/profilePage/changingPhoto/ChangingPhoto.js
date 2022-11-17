@@ -8,7 +8,7 @@ import {
 } from "firebase/auth"
 import { auth, storage } from "../../../firebase/firebase";
 import { fileCheck } from "../../../helpers/uploadFileToFirebase";
-import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
+import { getDownloadURL, ref, uploadBytesResumable, deleteObject } from "firebase/storage";
 
 import PhotoButtons from "./photoButtons/PhotoButtons";
 
@@ -28,34 +28,57 @@ const ChangingPhoto = () => {
         });
     }, []);
 
+
     const handleSubmitImg = (e) => {
         e.preventDefault()
-
+        
         const file = e.target[0]?.files[0]
         const resultOfCheckFile = fileCheck(file);
 
-        if (resultOfCheckFile[0]) {
-            const storageRef = ref(storage, `files/${file.name}`);
-            const uploadTask = uploadBytesResumable(storageRef, file);
+        if (e.nativeEvent.submitter.name === 'upload'){
+            if (resultOfCheckFile[0]) {
+                const storageRef = ref(storage, `files/${file.name}`);
+                const uploadTask = uploadBytesResumable(storageRef, file);
+    
+                uploadTask.on("state_changed", 
+                    null,
+                    (error) => {
+                        console.log('Error', error)
+                    }, 
+                    async () => {
+                        await getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+                            setImgUrl(downloadURL);
+                            updateProfile(auth.currentUser, {
+                                photoURL: downloadURL
+                            });
+                        }).catch((error)=> console.log('Error', error));
+                    }
+                );
+            }
+            else setError(resultOfCheckFile[1]);
+        }
+        
+        if (e.nativeEvent.submitter.name === 'delete') {
 
-            uploadTask.on("state_changed",
-                async () => {
-                    const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
-                    setImgUrl(downloadURL);
+            const storageRef = ref(storage, imgUrl);
+            deleteObject(storageRef).then( async () => {
+                console.log('foto deleted');
+
                     try {
                         await updateProfile(auth.currentUser, {
-                            photoURL: downloadURL
+                            photoURL: ''
                         });
+                        setImgUrl('');
                     }
                     catch (error) {
                         setError(error);
                     }
-                }
-            );
+                
+            }).catch((error) => {
+                    console.log('Uh-oh, an error occurred!', error); 
+                });
         }
-        else setError(resultOfCheckFile[1])
     }
-
     return (
         <>
             <form className="profile__form " action="" onSubmit={handleSubmitImg}>
