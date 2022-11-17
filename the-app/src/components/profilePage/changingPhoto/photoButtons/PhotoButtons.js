@@ -7,10 +7,11 @@ import { Tooltip } from "@mui/material";
 
 import { useState } from 'react';
 
+
 const PhotoButtons = () => {
 
     const [submitVision, setSubmitVision] = useState(false);
-
+  
     return (
         <div className="profile__button-wrapper">
             <IconButton color="primary" aria-label="upload picture" component="label" onClick={() => setSubmitVision(true)} >
@@ -24,7 +25,7 @@ const PhotoButtons = () => {
             <IconButton color="primary" aria-label="upload picture"
                 component="label" disabled={!submitVision}
                 onClick={() => setSubmitVision(false)}>
-                <input type="submit" hidden />
+                <input type="submit" name='upload' hidden />
                 <Tooltip title="Нажмите для обновления фотографии ">
                     <FileDownloadIcon sx={{
                         fontSize: "30px"
@@ -32,6 +33,7 @@ const PhotoButtons = () => {
                 </Tooltip>
             </IconButton>
             <IconButton color="primary" component="label">
+                <input type="submit" name='delete' hidden />
                 <Tooltip title="Нажмите для удаления сохраненного фото">
                     <DeleteIcon sx={{
                         fontSize: "30px"

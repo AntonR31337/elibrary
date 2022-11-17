@@ -9,11 +9,8 @@ import { useNavigate } from "react-router-dom";
 import { useLocation } from 'react-router-dom';
 import { useTheme } from '@mui/material/styles';
 
-import axios from 'axios';
 
-import { missingData } from '../../helpers/bookRequest';
-import { bookApiKey } from '../../helpers/googleBookApiKey';
-import { bookSearch, bookSearchRequest } from '../../store/actions/getListOfBooksActions';
+import { bookSearchRequest } from '../../store/actions/getListOfBooksActions';
 
 const SearchForm = () => {
 
