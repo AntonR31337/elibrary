@@ -1,5 +1,6 @@
 export const maxResults = 27;
 
+
 // export const emailValidation = "^[^\s@]+@[^\s@]+\.[^\s@]+$";
 export const emailValidation = "^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$";
 export const phoneValidation = "^[+][1-9]{1}[0-9]{10}";

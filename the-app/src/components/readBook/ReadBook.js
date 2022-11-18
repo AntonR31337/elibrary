@@ -45,7 +45,7 @@ const ReadBook = () => {
 
     useEffect(() => {
         const setInfoToFb = async () => {
-            try {
+            try { 
                 const isInTheList = data.findIndex(item => item.id === currentBook.id) === -1;
                 if (isInTheList) {
                     const newData = [...data, currentBook]

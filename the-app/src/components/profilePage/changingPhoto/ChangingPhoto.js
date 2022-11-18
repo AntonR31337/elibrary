@@ -28,7 +28,6 @@ const ChangingPhoto = () => {
         });
     }, []);
 
-
     const handleSubmitImg = (e) => {
         e.preventDefault()
         
@@ -45,8 +44,8 @@ const ChangingPhoto = () => {
                     (error) => {
                         console.log('Error', error)
                     }, 
-                    async () => {
-                        await getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+                    () => {
+                       getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
                             setImgUrl(downloadURL);
                             updateProfile(auth.currentUser, {
                                 photoURL: downloadURL
@@ -61,19 +60,12 @@ const ChangingPhoto = () => {
         if (e.nativeEvent.submitter.name === 'delete') {
 
             const storageRef = ref(storage, imgUrl);
-            deleteObject(storageRef).then( async () => {
+            deleteObject(storageRef).then(() => {
                 console.log('foto deleted');
-
-                    try {
-                        await updateProfile(auth.currentUser, {
+                updateProfile(auth.currentUser, {
                             photoURL: ''
                         });
-                        setImgUrl('');
-                    }
-                    catch (error) {
-                        setError(error);
-                    }
-                
+                setImgUrl('');
             }).catch((error) => {
                     console.log('Uh-oh, an error occurred!', error); 
                 });
