@@ -3,8 +3,12 @@ import "./bookCard.scss";
 import BasicRating from '../UI components/BasicRating';
 
 export const BookCard = ({ book }) => {
+  console.log('bookBookcard1111111111', book);
   const { id } = book;
+  console.log('ID1111111111', id);
+  console.log('book.volumeInfo.imageLinks.thumbnail', book.volumeInfo.imageLinks.thumbnail);
   const { title, categories, authors, publishedDate } = book.volumeInfo;
+  console.log('bookBookcard', book);
   return (
     <figure className="book" >
       <div className="book__wrapper">

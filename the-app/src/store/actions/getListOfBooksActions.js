@@ -30,10 +30,7 @@ export const bookSearchRequest = (searchName, startIndex, sortParam = '') => asy
     try {
         dispatch(setLoading());
 
-        const books = await postData(`${serverhost}/api/booksearch/searchbook`, { searchName, maxResults, startIndex, sortParam })
-            .then((data) => {
-                return data
-            });
+        const books = await postData(`${serverhost}/api/booksearch/searchbook`, { searchName, maxResults, startIndex, sortParam });
 
         dispatch(setTotalItems(books.totalItems));
         dispatch(bookSearch(missingData(books)));
@@ -49,10 +46,7 @@ export const bookGenreSearchRequest = (searchName, startIndex, sortParam = '') =
     try {
         dispatch(setLoading());
 
-        const books = await postData(`${serverhost}/api/booksearch/searchgenre`, { searchName, maxResults, startIndex, sortParam })
-            .then((data) => {
-                return data
-            });
+        const books = await postData(`${serverhost}/api/booksearch/searchgenre`, { searchName, maxResults, startIndex, sortParam });
             
         dispatch(setTotalItems(books.totalItems));
         dispatch(bookSearch(missingData(books)));
@@ -67,10 +61,7 @@ export const bookGenreSearchRequest = (searchName, startIndex, sortParam = '') =
 export const booksSortRequest = (searchName, startIndex, sortParam = '') => async (dispatch) => {
     try {
 
-        const books = await postData(`${serverhost}/api/booksearch/sortbook`, { searchName, maxResults, sortParam, startIndex })
-            .then((data) => {
-                return data
-            });
+        const books = await postData(`${serverhost}/api/booksearch/sortbook`, { searchName, maxResults, sortParam, startIndex });
 
         dispatch(setTotalItems(books.totalItems));
         dispatch(bookSearch(missingData(books)));
