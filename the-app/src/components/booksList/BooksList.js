@@ -61,9 +61,10 @@ export const BooksList = ({ genre }) => {
     }
 
     const toSortBooks = (param) => {
+        debugger
         setSortParam(param);
         console.log(sortParam);
-        dispatch(booksSortRequest(searchName, (27 * (currentPage - 1) + 1), sortParam));
+        dispatch(booksSortRequest(searchName, (27 * (currentPage - 1) + 1), param));
         // setPage(value);
         // genre ? navigate(`/genre/${value}`) : navigate(`/bookslist/${value}`);
     }
