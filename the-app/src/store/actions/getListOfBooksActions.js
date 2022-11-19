@@ -1,4 +1,4 @@
-import { BOOKS_SEARCH, BOOKS_SORT, TEXT_SEARCH, TOTAL_BOOK_QUANTITY, } from "../types/types";
+import { BOOKS_SEARCH, BOOKS_SORT, CURRENT_BOOK, TEXT_SEARCH, TOTAL_BOOK_QUANTITY, } from "../types/types";
 
 import { setLoading, setError, setSuccess } from "./commonActions";
 import { maxResults } from "../../helpers/vars";
@@ -14,6 +14,10 @@ export const textSearch = (data) => ({
 
 export const bookSearch = (data) => ({
     type: BOOKS_SEARCH,
+    data
+})
+export const currentBook = (data) => ({
+    type: CURRENT_BOOK,
     data
 })
 
@@ -42,12 +46,26 @@ export const bookSearchRequest = (searchName, startIndex, sortParam = '') => asy
         dispatch(setError(error));
     }
 }
+export const currentBookRequest = (id) => async (dispatch) => {
+    try {
+        dispatch(setLoading());
+        console.log("loading current book")
+        const book = await postData(`${serverhost}/api/booksearch/currentbook`, { id });
+        console.log("new current book", book)
+        dispatch(currentBook(book));
+        dispatch(setSuccess());
+    }
+    catch (error) {
+        console.log(error);
+        dispatch(setError(error));
+    }
+}
 export const bookGenreSearchRequest = (searchName, startIndex, sortParam = '') => async (dispatch) => {
     try {
         dispatch(setLoading());
 
         const books = await postData(`${serverhost}/api/booksearch/searchgenre`, { searchName, maxResults, startIndex, sortParam });
-            
+
         dispatch(setTotalItems(books.totalItems));
         dispatch(bookSearch(missingData(books)));
         dispatch(textSearch(searchName));

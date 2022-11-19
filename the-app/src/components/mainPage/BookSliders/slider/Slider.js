@@ -10,12 +10,15 @@ import SwipeableViews from 'react-swipeable-views';
 import { autoPlay } from 'react-swipeable-views-utils';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { currentBookRequest } from '../../../../store/actions/getListOfBooksActions';
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
 const Slider = ({ category, images, delay }) => {
 
     const theme = useTheme();
+    const dispatch = useDispatch();
 
     const [activeStep, setActiveStep] = useState(0);
 
@@ -59,7 +62,10 @@ const Slider = ({ category, images, delay }) => {
                         justifyContent: "center"
                     }}
                 >
-                    <Link className="slider__link" to={`/book/${id}`}>{images[activeStep].label}</Link>
+                    <Link
+                        className="slider__link"
+                        to={`/book/${id}`}
+                        onClick={() => dispatch(currentBookRequest(id))}>{images[activeStep].label}</Link>
                 </Paper>
                 <AutoPlaySwipeableViews
                     axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
@@ -69,7 +75,11 @@ const Slider = ({ category, images, delay }) => {
                     enableMouseEvents
                 >
                     {images.map((step, index) => (
-                        <Link key={step.label} className="book__link" to={`/book/${id}`}>
+                        <Link
+                            key={step.label}
+                            className="book__link"
+                            to={`/book/${id}`}
+                            onClick={() => dispatch(currentBookRequest(id))}>
                             <div >
                                 {Math.abs(activeStep - index) <= 2 ? (
                                     <Box

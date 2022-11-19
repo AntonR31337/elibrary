@@ -5,6 +5,9 @@ import { useNavigate, useParams } from "react-router-dom";
 import { setDoc } from "firebase/firestore";
 import { docRef } from "../../firebase/firebase";
 import { adapter, getInfo } from "../../helpers/getInfoFromFB";
+import { shallowEqual, useDispatch, useSelector } from "react-redux";
+import { getCurrentBook } from "../../store/selectors/getListOfBooksSelectors";
+import { currentBookRequest } from "../../store/actions/getListOfBooksActions";
 
 const ReadBook = () => {
     const canvasRef = useRef();
@@ -13,9 +16,17 @@ const ReadBook = () => {
     const [loaded, setLoaded] = useState(false);
     const [error, setError] = useState("");
     const [data, setData] = useState();
+    const dispatch = useDispatch();
+    const currentBook = useSelector(getCurrentBook, shallowEqual);
 
-    const book = JSON.parse(localStorage.getItem(`${params.id}`));
-    const currentBook = adapter(book);
+
+    let book;
+    if (currentBook.id === params.id) {
+        book = adapter(currentBook);
+    } else {
+        console.log("getting book")
+        dispatch(currentBookRequest(params.id))
+    }
 
     const handleError = () => {
         setError(true);
@@ -29,7 +40,7 @@ const ReadBook = () => {
             window.google.books.load();
             window.google.books.setOnLoadCallback(() => {
                 const viewer = new window.google.books.DefaultViewer(canvasRef.current);
-                viewer.load(`${currentBook.id}`, handleError);
+                viewer.load(`${params.id}`, handleError);
             });
             setLoaded(true)
 
@@ -45,17 +56,17 @@ const ReadBook = () => {
 
     useEffect(() => {
         const setInfoToFb = async () => {
-            try { 
-                const isInTheList = data.findIndex(item => item.id === currentBook.id) === -1;
+            try {
+                const isInTheList = data.findIndex(item => item.id === book.id) === -1;
                 if (isInTheList) {
-                    const newData = [...data, currentBook]
+                    const newData = [...data, book]
                     if (newData.length > 6) {
                         newData.splice(0, 1);
                     }
                     await setDoc(docRef, { recent: newData }, { merge: true });
                 } else {
                     const newData = data.filter(item => item.id !== params.id);
-                    newData.push(currentBook)
+                    newData.push(book)
                     await setDoc(docRef, { recent: newData }, { merge: true });
                 }
             } catch (error) {
