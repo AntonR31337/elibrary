@@ -40,7 +40,6 @@ export const BookPage = ({ authed }) => {
                     : error
                         ? null
                         : <>
-
                             <div className="bookPage__wrapper">
                                 <img className="bookPage__img" src={img} alt="BookImage" />
                                 <div className="bookPage__startInfo" >
@@ -66,9 +65,9 @@ export const BookPage = ({ authed }) => {
                                 <h4 className="bookPage__description-title genre__heading">О книге:</h4>
                                 <p className="">{description ? description : "Нет информации"}</p>
                             </div>
-                            {/* <RecommendedBooks
-                                book={book}
-                                title={"Похожие книги"} /> */}
+                            <RecommendedBooks
+                                categories={categories}
+                                title={"Похожие книги"} />
 
                         </>
             }
