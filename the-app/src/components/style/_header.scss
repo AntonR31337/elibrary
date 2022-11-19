@@ -35,3 +35,12 @@
         text-decoration: none;
     }
 }
+
+@media (max-width:550px) {
+    .header__heading{
+        display: none;
+    }
+    .header__genre{
+        margin-right: 20px;
+    }
+}

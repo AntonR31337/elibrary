@@ -50,6 +50,10 @@ export const BooksList = ({ genre }) => {
         if (!books.length && loading === "idle") navigate(`/`)
     }, [books.length, loading])
 
+    // useEffect(()=> {
+    //     console.log(sortParam);
+    // }, [sortParam]);
+
     const sortBooks = (arr, arg) => {
         arr.sort((a, b) => a.volumeInfo[arg] > b.volumeInfo[arg] ? 1 : -1);
         dispatch(booksSortBySortMethod(searchName, arr, totalBookQuantity));

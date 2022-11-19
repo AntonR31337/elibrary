@@ -34,10 +34,6 @@ router.post('/singup', async (req, res) => {
     res.json(userResponse)
 })
 
-// router.post('/checkauth', async (req, res) => {
-    
-// })
-
 
 
 
