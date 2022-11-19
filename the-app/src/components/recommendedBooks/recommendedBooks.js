@@ -22,12 +22,20 @@ const RecommendedBooks = ({ title = "Рекомендуем:", categories = "" }
     }, []);
 
     return (
-        <div className="recommended-books">
-            <h2 className="recommended-books__title genre__heading">{title}</h2>
-            <div className="recommended-books__items">
-                {recommendedBooks.map(book => <BookCard key={uniqid()} book={book} />)}
-            </div>
-        </div>
+        <>
+            {
+                recommendedBooks?.length
+                    ? <>
+                        <div className="recommended-books">
+                            <h2 className="recommended-books__title genre__heading">{title}</h2>
+                            <div className="recommended-books__items">
+                                {recommendedBooks?.length && recommendedBooks.map(book => <BookCard key={uniqid()} book={book} />)}
+                            </div>
+                        </div>
+                    </>
+                    : null
+            }
+        </>
     );
 }
 

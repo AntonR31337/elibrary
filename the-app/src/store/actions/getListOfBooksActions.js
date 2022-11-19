@@ -2,7 +2,7 @@ import { BOOKS_SEARCH, BOOKS_SORT, CURRENT_BOOK, TEXT_SEARCH, TOTAL_BOOK_QUANTIT
 
 import { setLoading, setError, setSuccess } from "./commonActions";
 import { maxResults } from "../../helpers/vars";
-import { missingData } from "../../helpers/bookRequest";
+import { bookAdapter, missingData } from "../../helpers/bookRequest";
 import { postData } from "../../helpers/bookRequest";
 import { serverhost } from "../../helpers/vars"
 
@@ -50,7 +50,7 @@ export const currentBookRequest = (id) => async (dispatch) => {
     try {
         dispatch(setLoading());
         const book = await postData(`${serverhost}/api/booksearch/currentbook`, { id });
-        dispatch(currentBook(book));
+        dispatch(currentBook(bookAdapter(book)));
         dispatch(setSuccess());
     }
     catch (error) {

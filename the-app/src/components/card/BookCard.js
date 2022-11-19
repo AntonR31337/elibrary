@@ -3,7 +3,7 @@ import "./bookCard.scss";
 import BasicRating from '../UI components/BasicRating';
 import { useDispatch } from "react-redux";
 import { currentBook } from "../../store/actions/getListOfBooksActions";
-
+import sample from "../../assets/sample.jpg";
 export const BookCard = ({ book }) => {
 
   const dispatch = useDispatch();
@@ -14,7 +14,7 @@ export const BookCard = ({ book }) => {
   return (
     <figure className="book" >
       <div className="book__wrapper">
-        <img className="book__img" src={book.volumeInfo.imageLinks.thumbnail} alt="BookImage" />
+        <img className="book__img" src={book.volumeInfo.imageLinks?.thumbnail || sample} alt="BookImage" />
       </div>
 
       <figcaption className="book__description" >
