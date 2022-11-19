@@ -62,10 +62,6 @@ const Slider = ({ category, images, delay }) => {
                         justifyContent: "center"
                     }}
                 >
-                    <Link
-                        className="slider__link"
-                        to={`/book/${id}`}
-                        onClick={() => dispatch(currentBookRequest(id))}>{images[activeStep].label}</Link>
                 </Paper>
                 <AutoPlaySwipeableViews
                     axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}

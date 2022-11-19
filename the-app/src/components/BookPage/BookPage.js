@@ -1,15 +1,14 @@
 import BasicRating from '../UI components/BasicRating';
 import BasicButton from "../UI components/BasicButton";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
-import { getBooks, getCurrentBook, getSliderBooks } from "../../store/selectors/getListOfBooksSelectors";
+import { getCurrentBook } from "../../store/selectors/getListOfBooksSelectors";
 import ReadBtn from './readBtn/ReadBtn';
 import FavoriteBtn from './favoriteBtn/FavoriteBtn';
 import RecommendedBooks from "../recommendedBooks/RecommendedBooks";
 import DownloadBtn from './downloadBtn/DownloadBtn';
 import { currentBookRequest } from '../../store/actions/getListOfBooksActions';
 import { getError, getLoading } from '../../store/selectors/commonSelectors';
-import { useEffect } from 'react';
 import Loader from '../UI components/Loader';
 
 export const BookPage = ({ authed }) => {
@@ -20,7 +19,7 @@ export const BookPage = ({ authed }) => {
     const loading = useSelector(getLoading);
     const currentBook = useSelector(getCurrentBook, shallowEqual);
 
-    let book, title, categories, authors, publishedDate, description;
+    let book, title, categories, authors, publishedDate, description, img, id;
     currentBook.id === params.id ? book = currentBook : dispatch(currentBookRequest(params.id))
 
     if (book) {
@@ -29,6 +28,8 @@ export const BookPage = ({ authed }) => {
         authors = book.volumeInfo.authors;
         publishedDate = book.volumeInfo.publishedDate;
         description = book?.volumeInfo?.description || book.volumeInfo.subtitle;
+        img = book.volumeInfo.imageLinks.thumbnail;
+        id = book.id;
     }
 
     return (
@@ -39,9 +40,8 @@ export const BookPage = ({ authed }) => {
                     : error
                         ? null
                         : <>
-
                             <div className="bookPage__wrapper">
-                                <img className="bookPage__img" src={book.volumeInfo.imageLinks.thumbnail} alt="BookImage" />
+                                <img className="bookPage__img" src={img} alt="BookImage" />
                                 <div className="bookPage__startInfo" >
                                     <h3 className="bookPage__startInfo-title boldText">{title ? title : "Нет информации"}</h3>
                                     <p className="">Категория: {categories ? categories : "Нет информации"}</p>
@@ -52,10 +52,10 @@ export const BookPage = ({ authed }) => {
                                     </div>
                                     <div className="book__buttons">
                                         <FavoriteBtn authed={authed}
-                                            id={book.id} book={book} />
+                                            id={id} book={book} />
                                         <ReadBtn book={book} />
                                         <DownloadBtn authed={authed}
-                                            id={book.id} book={book} />
+                                            id={id} book={book} />
                                         <BasicButton textBtn={"КУПИТЬ"} />
                                     </div>
                                 </div>
@@ -65,9 +65,9 @@ export const BookPage = ({ authed }) => {
                                 <h4 className="bookPage__description-title genre__heading">О книге:</h4>
                                 <p className="">{description ? description : "Нет информации"}</p>
                             </div>
-                            {/* <RecommendedBooks
-                                book={book}
-                                title={"Похожие книги"} /> */}
+                            <RecommendedBooks
+                                categories={categories}
+                                title={"Похожие книги"} />
 
                         </>
             }

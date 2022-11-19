@@ -4,10 +4,9 @@ import "../style/_recommendedBooks.scss";
 import { postData } from "../../helpers/bookRequest";
 import { useEffect, useState } from "react";
 
-const RecommendedBooks = ({ title = "Рекомендуем:", book }) => {
-
+const RecommendedBooks = ({ title = "Рекомендуем:", categories = "" }) => {
     const someData = {
-        searchName: book.volumeInfo.categories,
+        searchName: categories,
         maxResults: 3,
         sortParam: '',
         startIndex: 1
