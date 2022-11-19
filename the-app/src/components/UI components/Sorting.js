@@ -2,7 +2,10 @@ import * as React from 'react';
 import { useRef, useState } from 'react';
 import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
+import uniqid from "uniqid";
 
+import FormControl from '@mui/material/FormControl';
+import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 
@@ -20,7 +23,7 @@ export default function Sorting({ sortBooks, toSortBooks, books }) {
     const listOfLanguages = [
         {
             code: "",
-            name: "Выбрать язык"
+            name: "Любой"
         },
         {
             code: "&langRestrict=ru",
@@ -45,22 +48,21 @@ export default function Sorting({ sortBooks, toSortBooks, books }) {
 
     const handleChange = (event) => {
         setLanguage(event.target.value);
+        handleClick(event.target.value);
     };
-
-    React.useEffect(() => handleClick(language), [language])
 
     return (
         <Accordion sx={{ display: "contents" }}>
             <AccordionSummary
-            expandIcon={<ExpandMoreIcon />}
-            aria-controls="panel1a-content"
-            id="panel1a-header"
+                expandIcon={<ExpandMoreIcon />}
+                aria-controls="panel1a-content"
+                id="panel1a-header"
             >
-            <div>Фильтры</div>
+                <div>Фильтры</div>
             </AccordionSummary>
             <AccordionDetails>
                 <ButtonGroup aria-label="outlined primary button group"
-                sx={style} >
+                    sx={style} >
                     {/* <Button onClick={() => sortBooks(books, 'title')}>Название</Button>
                     <Button onClick={() => sortBooks(books, 'authors[0]')}>Автор</Button>
                     <Button onClick={()=> handleClick('&orderBy=newest')}>Сначала новые</Button>
@@ -73,15 +75,24 @@ export default function Sorting({ sortBooks, toSortBooks, books }) {
                     <Button onClick={() => handleClick('&printType=books')}>Книги</Button>
                     <Button onClick={() => handleClick('&printType=magazines')}>Журналы</Button>
                     <Button onClick={() => handleClick('&download=epub')}>epub</Button>
-                    <Select
-                        labelId="demo-select-small"
-                        id="demo-select-small"
-                        value={language}
-                        sx={{minWidth: "150px"}}
-                        onChange={handleChange}
-                    >
-                        {listOfLanguages.map(el => <MenuItem value={el.code}>{el.name}</MenuItem>)}
-                    </Select>
+                    <FormControl sx={{ minWidth: "150px" }}>
+                        <InputLabel id="demo-simple-select-label" sx={{ color: "#1B3764" }}>Язык</InputLabel>
+                        <Select
+                            labelId="demo-select-small"
+                            id="demo-select-small"
+                            value={language}
+                            label="Язык"
+                            onChange={handleChange}
+                        >
+                            {listOfLanguages.map(el => {
+                                if (el.code == "") {
+                                    return <MenuItem key={uniqid()} value={el.code} selected>{el.name}</MenuItem>
+                                } else {
+                                    return <MenuItem key={uniqid()} value={el.code}>{el.name}</MenuItem>
+                                }
+                            })}
+                        </Select>
+                    </FormControl>
                 </ButtonGroup>
             </AccordionDetails>
         </Accordion>
