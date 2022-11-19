@@ -49,9 +49,7 @@ export const bookSearchRequest = (searchName, startIndex, sortParam = '') => asy
 export const currentBookRequest = (id) => async (dispatch) => {
     try {
         dispatch(setLoading());
-        console.log("loading current book")
         const book = await postData(`${serverhost}/api/booksearch/currentbook`, { id });
-        console.log("new current book", book)
         dispatch(currentBook(book));
         dispatch(setSuccess());
     }

@@ -1,13 +1,20 @@
 import Favourites from "./favourites/Favourites";
 import BuyList from "./buyList/BuyList";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { currentBookRequest } from "../../store/actions/getListOfBooksActions";
 
 
 const FavouritesPage = () => {
 
+    const dispatch = useDispatch();
+
     const navigate = useNavigate();
     const onRead = (id) => navigate(`/read/${id}`);
-    const onFavourites = (id) => console.log(id);
+    const onFavourites = (id) => {
+        dispatch(currentBookRequest(id));
+        navigate(`/book/${id}`);
+    }
 
     return (
         <main className="favourites">

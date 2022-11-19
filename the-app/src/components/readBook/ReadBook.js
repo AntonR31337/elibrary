@@ -24,7 +24,6 @@ const ReadBook = () => {
     if (currentBook.id === params.id) {
         book = adapter(currentBook);
     } else {
-        console.log("getting book")
         dispatch(currentBookRequest(params.id))
     }
 
