@@ -2,10 +2,7 @@ import * as React from 'react';
 import { useRef, useState } from 'react';
 import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
-import Checkbox from '@mui/material/Checkbox';
-import FormGroup from '@mui/material/FormGroup';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import InputLabel from '@mui/material/InputLabel';
+
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 
@@ -23,7 +20,7 @@ export default function Sorting({ sortBooks, toSortBooks, books }) {
     const listOfLanguages = [
         {
             code: "",
-            name: "None"
+            name: "Выбрать язык"
         },
         {
             code: "&langRestrict=ru",
@@ -44,7 +41,7 @@ export default function Sorting({ sortBooks, toSortBooks, books }) {
         console.log(param);
     }
 
-    const [language, setLanguage] = React.useState('');
+    const [language, setLanguage] = React.useState("");
 
     const handleChange = (event) => {
         setLanguage(event.target.value);
@@ -62,37 +59,30 @@ export default function Sorting({ sortBooks, toSortBooks, books }) {
             <div>Фильтры</div>
             </AccordionSummary>
             <AccordionDetails>
-            <ButtonGroup aria-label="outlined primary button group"
-            sx={style} >
-            {/* <Button onClick={() => sortBooks(books, 'title')}>Название</Button>
-            <Button onClick={() => sortBooks(books, 'authors[0]')}>Автор</Button>
-            <Button onClick={()=> handleClick('&orderBy=newest')}>Сначала новые</Button>
-            <Button onClick={()=> handleClick('&langRestrict=el')}>RU</Button>
-            <Button onClick={()=> handleClick('&download=epub')}>epub</Button>
-            <Button onClick={() => sortBooks(books, 'categories')}>Категория</Button> */}
-            <Button onClick={() => handleClick('&orderBy=newest')}>Сначала новые</Button>
-            <Button onClick={() => handleClick('&filter=free-ebooks')}>Бесплатные</Button>
-            <Button onClick={() => handleClick('&filter=paid-ebooks')}>Платные</Button>
-            <Button onClick={() => handleClick('&printType=books')}>Книги</Button>
-            <Button onClick={() => handleClick('&printType=magazines')}>Журналы</Button>
-            <Button onClick={() => handleClick('&download=epub')}>epub</Button>
-            <Select
-                labelId="demo-select-small"
-                id="demo-select-small"
-                value={language}
-                placeholder={'выбрать язык'}
-                label="Язык"
-                sx={{width: "150px"}}
-                onChange={()=> handleChange}
-            >
-                {listOfLanguages.map(el => <MenuItem value={el.code}>{el.name}</MenuItem>)}
-            </Select>
-            {/* <FormGroup>
-                <Button onClick={()=> handleClick('&orderBy=newest')}>Сначала новые</Button>
-                <Button onClick={()=> handleClick('&download=epub')}>epub</Button>
-
-            </FormGroup> */}
-            </ButtonGroup>
+                <ButtonGroup aria-label="outlined primary button group"
+                sx={style} >
+                    {/* <Button onClick={() => sortBooks(books, 'title')}>Название</Button>
+                    <Button onClick={() => sortBooks(books, 'authors[0]')}>Автор</Button>
+                    <Button onClick={()=> handleClick('&orderBy=newest')}>Сначала новые</Button>
+                    <Button onClick={()=> handleClick('&langRestrict=el')}>RU</Button>
+                    <Button onClick={()=> handleClick('&download=epub')}>epub</Button>
+                    <Button onClick={() => sortBooks(books, 'categories')}>Категория</Button> */}
+                    <Button onClick={() => handleClick('&orderBy=newest')}>Сначала новые</Button>
+                    <Button onClick={() => handleClick('&filter=free-ebooks')}>Бесплатные</Button>
+                    <Button onClick={() => handleClick('&filter=paid-ebooks')}>Платные</Button>
+                    <Button onClick={() => handleClick('&printType=books')}>Книги</Button>
+                    <Button onClick={() => handleClick('&printType=magazines')}>Журналы</Button>
+                    <Button onClick={() => handleClick('&download=epub')}>epub</Button>
+                    <Select
+                        labelId="demo-select-small"
+                        id="demo-select-small"
+                        value={language}
+                        sx={{minWidth: "150px"}}
+                        onChange={handleChange}
+                    >
+                        {listOfLanguages.map(el => <MenuItem value={el.code}>{el.name}</MenuItem>)}
+                    </Select>
+                </ButtonGroup>
             </AccordionDetails>
         </Accordion>
     );
