@@ -1,5 +1,6 @@
 import { getDoc } from "firebase/firestore";
 import { docRef } from "../firebase/firebase";
+import sample from "../assets/sample.jpg";
 
 export const getInfo = async (setFunction, setLoading, path) => {
     try {
@@ -25,7 +26,7 @@ export const getInfo = async (setFunction, setLoading, path) => {
 export const adapter = (book) => {
     const { id } = book;
     const { title } = book.volumeInfo;
-    const thumbnail = book.volumeInfo.imageLinks.thumbnail
+    const thumbnail = book.volumeInfo.imageLinks?.thumbnail || sample
 
     const currentBook = {
         id,

@@ -1,6 +1,6 @@
 import BasicRating from '../UI components/BasicRating';
 import BasicButton from "../UI components/BasicButton";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { getCurrentBook } from "../../store/selectors/getListOfBooksSelectors";
 import ReadBtn from './readBtn/ReadBtn';
@@ -10,11 +10,14 @@ import DownloadBtn from './downloadBtn/DownloadBtn';
 import { currentBookRequest } from '../../store/actions/getListOfBooksActions';
 import { getError, getLoading } from '../../store/selectors/commonSelectors';
 import Loader from '../UI components/Loader';
+import { useEffect } from 'react';
+import sample from "../../assets/sample.jpg";
 
 export const BookPage = ({ authed }) => {
 
     const params = useParams();
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const error = useSelector(getError);
     const loading = useSelector(getLoading);
     const currentBook = useSelector(getCurrentBook, shallowEqual);
@@ -28,16 +31,21 @@ export const BookPage = ({ authed }) => {
         authors = book.volumeInfo.authors;
         publishedDate = book.volumeInfo.publishedDate;
         description = book?.volumeInfo?.description || book.volumeInfo.subtitle;
-        img = book.volumeInfo.imageLinks.thumbnail;
+        img = book.volumeInfo.imageLinks?.thumbnail || sample;
         id = book.id;
     }
+
+    useEffect(() => {
+        if (error) navigate(`/404`)
+    }, [error])
+
 
     return (
         <div className="bookPage">
             {
                 loading === "pending"
                     ? <Loader />
-                    : error
+                    : !book
                         ? null
                         : <>
                             <div className="bookPage__wrapper">
