@@ -39,20 +39,21 @@ export default function Sorting({ sortBooks, toSortBooks, books }) {
         },
     ]
 
-    const handleClick = (param)=> {
+    const handleClick = (param) => {
         toSortBooks(param);
+        console.log(param);
     }
 
     const [language, setLanguage] = React.useState('');
 
     const handleChange = (event) => {
         setLanguage(event.target.value);
-      };
+    };
 
-      React.useEffect(()=> console.log(language), [language])
+    React.useEffect(() => handleClick(language), [language])
 
     return (
-        <Accordion sx={{display: "contents"}}>
+        <Accordion sx={{ display: "contents" }}>
             <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
             aria-controls="panel1a-content"
@@ -62,29 +63,36 @@ export default function Sorting({ sortBooks, toSortBooks, books }) {
             </AccordionSummary>
             <AccordionDetails>
             <ButtonGroup aria-label="outlined primary button group"
-            sx={style}
-        >
+            sx={style} >
             {/* <Button onClick={() => sortBooks(books, 'title')}>Название</Button>
             <Button onClick={() => sortBooks(books, 'authors[0]')}>Автор</Button>
             <Button onClick={()=> handleClick('&orderBy=newest')}>Сначала новые</Button>
             <Button onClick={()=> handleClick('&langRestrict=el')}>RU</Button>
             <Button onClick={()=> handleClick('&download=epub')}>epub</Button>
             <Button onClick={() => sortBooks(books, 'categories')}>Категория</Button> */}
-            <FormGroup>
-                <FormControlLabel control={<Checkbox defaultChecked />} label="Сначала новые" />
-                <FormControlLabel control={<Checkbox />} label="epub" />
-                <Select
-                    labelId="demo-select-small"
-                    id="demo-select-small"
-                    value={language}
-                    label="Язык"
-                    onChange={handleChange}
-                >
-                    {listOfLanguages.map(el => <MenuItem value={el.code}>{el.name}</MenuItem>)}
-                </Select>
-            </FormGroup>
-            <Button onClick={handleClick}>Применить</Button>
-        </ButtonGroup>
+            <Button onClick={() => handleClick('&orderBy=newest')}>Сначала новые</Button>
+            <Button onClick={() => handleClick('&filter=free-ebooks')}>Бесплатные</Button>
+            <Button onClick={() => handleClick('&filter=paid-ebooks')}>Платные</Button>
+            <Button onClick={() => handleClick('&printType=books')}>Книги</Button>
+            <Button onClick={() => handleClick('&printType=magazines')}>Журналы</Button>
+            <Button onClick={() => handleClick('&download=epub')}>epub</Button>
+            <Select
+                labelId="demo-select-small"
+                id="demo-select-small"
+                value={language}
+                placeholder={'выбрать язык'}
+                label="Язык"
+                sx={{width: "150px"}}
+                onChange={()=> handleChange}
+            >
+                {listOfLanguages.map(el => <MenuItem value={el.code}>{el.name}</MenuItem>)}
+            </Select>
+            {/* <FormGroup>
+                <Button onClick={()=> handleClick('&orderBy=newest')}>Сначала новые</Button>
+                <Button onClick={()=> handleClick('&download=epub')}>epub</Button>
+
+            </FormGroup> */}
+            </ButtonGroup>
             </AccordionDetails>
         </Accordion>
     );
