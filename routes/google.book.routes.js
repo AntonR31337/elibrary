@@ -13,7 +13,7 @@ router.post('/searchbook', async (req, res) => {
 
   }
   catch (error) {
-    res.status(401).json({ error: err.message })
+    res.status(401).json({ error: error.message })
   }
 
 })
@@ -26,7 +26,7 @@ router.post('/currentbook', async (req, res) => {
 
   }
   catch (error) {
-    res.status(401).json({ error: err.message })
+    res.status(401).json({ error: error.message })
   }
 
 })
@@ -38,7 +38,7 @@ router.post('/searchgenre', async (req, res) => {
     res.status(201).json(booksData.data);
   }
   catch (error) {
-    res.status(401).json({ error: err.message })
+    res.status(401).json({ error: error.message })
   }
 
 })
@@ -51,7 +51,7 @@ router.post('/sortbook', async (req, res) => {
     res.status(201).json(booksData.data);
   }
   catch (error) {
-    res.status(401).json({ error: err.message })
+    res.status(401).json({ error: error.message })
   }
 
 })
