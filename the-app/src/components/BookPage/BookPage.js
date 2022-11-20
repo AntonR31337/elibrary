@@ -5,7 +5,7 @@ import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { getBooks, getCurrentBook, getSliderBooks } from "../../store/selectors/getListOfBooksSelectors";
 import ReadBtn from './readBtn/ReadBtn';
 import FavoriteBtn from './favoriteBtn/FavoriteBtn';
-import RecommendedBooks from "../recommendedBooks/RecommendedBooks";
+import RecommendedBooks from "../recommendedBooks/recommendedBooks";
 import DownloadBtn from './downloadBtn/DownloadBtn';
 import { currentBookRequest } from '../../store/actions/getListOfBooksActions';
 import { getError, getLoading } from '../../store/selectors/commonSelectors';
