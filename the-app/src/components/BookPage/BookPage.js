@@ -22,7 +22,7 @@ export const BookPage = ({ authed }) => {
     const loading = useSelector(getLoading);
     const currentBook = useSelector(getCurrentBook, shallowEqual);
 
-    let book, title, categories, authors, publishedDate, description, img, id;
+    let book, title, categories, authors, publishedDate, description, img, id, link;
     currentBook.id === params.id ? book = currentBook : dispatch(currentBookRequest(params.id))
 
     if (book) {
@@ -33,6 +33,7 @@ export const BookPage = ({ authed }) => {
         description = book?.volumeInfo?.description || book.volumeInfo.subtitle;
         img = book.volumeInfo.imageLinks?.thumbnail || sample;
         id = book.id;
+        link = book.accessInfo.epub?.downloadLink
     }
 
     useEffect(() => {
@@ -63,7 +64,7 @@ export const BookPage = ({ authed }) => {
                                             id={id} book={book} />
                                         <ReadBtn book={book} />
                                         <DownloadBtn authed={authed}
-                                            id={id} book={book} />
+                                            link={link} />
                                         <BasicButton textBtn={"КУПИТЬ"} />
                                     </div>
                                 </div>

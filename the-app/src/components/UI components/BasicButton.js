@@ -2,8 +2,7 @@ import * as React from 'react';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 
-export default function BasicButton({ textBtn, authed = true, vision, handleDoing, children }) {
-
+export default function BasicButton({ textBtn, authed = true, vision = false, handleDoing, children }) {
   return (
     <Stack spacing={2} direction="row" sx={{
       background: "#FFCA42",

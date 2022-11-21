@@ -1,14 +1,12 @@
 import BasicButton from "../../UI components/BasicButton";
 
 
-const DownloadBtn = ({ authed, book }) => {
+const DownloadBtn = ({ authed, link }) => {
 
-    const vision = book.accessInfo.publicDomain === "true";
-    const onDownload = () => window.location.href = `${book.accessInfo.epub.downloadLink}`
-
+    const onDownload = () => window.location.href = link
 
     return (
-        <BasicButton textBtn={"СКАЧАТЬ"} authed={authed} vision={vision} handleDoing={onDownload} />
+        <BasicButton textBtn={"СКАЧАТЬ"} authed={authed} vision={!link} handleDoing={onDownload} />
     )
 }
 
