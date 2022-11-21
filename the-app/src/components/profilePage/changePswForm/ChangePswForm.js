@@ -20,6 +20,8 @@ const ChangePswForm = ({ setError }) => {
         event.preventDefault()
         setOpen(true);
     }
+    const [openReset, setOpenReset] = useState(false);
+    
     const handleChangePwd = async (password) => {
         try {
             const data = await reauthenticate(password);
@@ -43,13 +45,14 @@ const ChangePswForm = ({ setError }) => {
     }
 
     const handleResetPsw = () => {
-        setOpen(true);
+        setOpenReset(true);
     }
     
 
     return (
         <>
         <div>
+            
             <form className="profile__form " onSubmit={handleOpen}>
                 <div className="profile__form-content profile__form-content--input">
                     <div className="profile__container">
@@ -100,12 +103,14 @@ const ChangePswForm = ({ setError }) => {
                     />
                 </div>
             </form>
-            <Button variant="contained" onClick={handleResetPsw}>Забыли пароль?</Button>
-            <ModalWindowResetPsw
+                <div className="profile__reset">
+                    <Button variant="contained" onClick={handleResetPsw}>Забыли пароль?</Button>
+                    <ModalWindowResetPsw
                         confirmFunction={handleResetPsw}
-                        open={open}
-                        setOpen={setOpen}
+                        openReset={openReset}
+                        setOpenReset={setOpenReset}
                     />
+                </div>
             </div>
         </>
     )
