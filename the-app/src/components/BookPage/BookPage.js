@@ -5,7 +5,7 @@ import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { getCurrentBook } from "../../store/selectors/getListOfBooksSelectors";
 import ReadBtn from './readBtn/ReadBtn';
 import FavoriteBtn from './favoriteBtn/FavoriteBtn';
-import RecommendedBooks from "../recommendedBooks/recommendedBooks";
+import RecommendedBooks from "../recommendedBooks/RecommendedBooks";
 import DownloadBtn from './downloadBtn/DownloadBtn';
 import { currentBookRequest } from '../../store/actions/getListOfBooksActions';
 import { getError, getLoading } from '../../store/selectors/commonSelectors';
@@ -22,7 +22,7 @@ export const BookPage = ({ authed }) => {
     const loading = useSelector(getLoading);
     const currentBook = useSelector(getCurrentBook, shallowEqual);
 
-    let book, title, categories, authors, publishedDate, description, img, id, link;
+    let book, title, categories, authors, publishedDate, description, img, id, link, averageRating, ratingsCount;
     currentBook.id === params.id ? book = currentBook : dispatch(currentBookRequest(params.id))
 
     if (book) {
@@ -33,7 +33,9 @@ export const BookPage = ({ authed }) => {
         description = book?.volumeInfo?.description || book.volumeInfo.subtitle;
         img = book.volumeInfo.imageLinks?.thumbnail || sample;
         id = book.id;
-        link = book.accessInfo.epub?.downloadLink
+        link = book.accessInfo.epub?.downloadLink;
+        averageRating = book.volumeInfo.averageRating;
+        ratingsCount = book.volumeInfo.ratingsCount
     }
 
     useEffect(() => {
@@ -57,7 +59,10 @@ export const BookPage = ({ authed }) => {
                                     <p className="">Авторы: {authors ? authors : "Нет информации"}</p>
                                     <p className="">Год: {publishedDate ? publishedDate : "Нет информации"}</p>
                                     <div>
-                                        <BasicRating authed={authed} />
+                                        <BasicRating 
+                                            authed={authed} 
+                                            book={currentBook}
+                                        />
                                     </div>
                                     <div className="book__buttons">
                                         <FavoriteBtn authed={authed}
