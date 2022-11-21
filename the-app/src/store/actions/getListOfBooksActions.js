@@ -5,7 +5,7 @@ import { maxResults } from "../../helpers/vars";
 import { bookAdapter, missingData } from "../../helpers/bookRequest";
 import { postData } from "../../helpers/bookRequest";
 import { serverhost } from "../../helpers/vars"
-
+ 
 
 export const textSearch = (data) => ({
     type: TEXT_SEARCH,

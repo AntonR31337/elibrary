@@ -10,8 +10,8 @@ import { logOut } from '../../firebase/firebaseAuth';
 
 
 const ModalWindowResetPsw = ({
-    open,
-    setOpen }) => {
+    openReset,
+    setOpenReset }) => {
 
     const style = {
         position: 'absolute',
@@ -28,7 +28,7 @@ const ModalWindowResetPsw = ({
     };
 
     const handleClose = () => {
-        setOpen(false);
+        setOpenReset(false);
     }
 
     const handleResetPsw = async () => {
@@ -40,7 +40,7 @@ const ModalWindowResetPsw = ({
     return (
         <Modal
             keepMounted
-            open={open}
+            open={openReset}
             onClose={handleClose}
             aria-labelledby="keep-mounted-modal-title"
             aria-describedby="keep-mounted-modal-description"
