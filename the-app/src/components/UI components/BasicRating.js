@@ -4,9 +4,11 @@ import Rating from '@mui/material/Rating';
 import Typography from '@mui/material/Typography';
 import { useNavigate } from 'react-router-dom';
 
-export default function BasicRating({ authed }) {
+export default function BasicRating({ authed, book }) {
 
-  const [value, setValue] = React.useState(2);
+  const { averageRating, ratingsCount = 0 } = book.volumeInfo
+
+  const [value, setValue] = React.useState(averageRating);
 
   const navigate = useNavigate();
 
@@ -16,7 +18,7 @@ export default function BasicRating({ authed }) {
         '& > legend': { mt: 2 },
       }}
     >
-      <Typography component="legend">Рейтинг</Typography>
+      <Typography component="legend">Рейтинг ({ratingsCount})</Typography>
       <Rating
         name="simple-controlled"
         value={value}
@@ -25,7 +27,8 @@ export default function BasicRating({ authed }) {
             navigate("/login");
             return
           }
-          setValue(newValue);
+          // setValue(newValue);
+          console.log(book);
         }}
       />
     </Box>
