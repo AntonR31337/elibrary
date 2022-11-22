@@ -12,6 +12,7 @@ import { getError, getLoading } from '../../store/selectors/commonSelectors';
 import Loader from '../UI components/Loader';
 import { useEffect } from 'react';
 import sample from "../../assets/sample.jpg";
+import BasicTabs from '../UI components/BasicTabs';
 
 export const BookPage = ({ authed }) => {
 
@@ -59,8 +60,8 @@ export const BookPage = ({ authed }) => {
                                     <p className="">Авторы: {authors ? authors : "Нет информации"}</p>
                                     <p className="">Год: {publishedDate ? publishedDate : "Нет информации"}</p>
                                     <div>
-                                        <BasicRating 
-                                            authed={authed} 
+                                        <BasicRating
+                                            authed={authed}
                                             book={currentBook}
                                         />
                                     </div>
@@ -75,10 +76,11 @@ export const BookPage = ({ authed }) => {
                                 </div>
 
                             </div>
-                            <div className="bookPage__description">
+                            <BasicTabs data={description} />
+                            {/* <div className="bookPage__description">
                                 <h4 className="bookPage__description-title genre__heading">О книге:</h4>
                                 <p className="">{description ? description : "Нет информации"}</p>
-                            </div>
+                            </div> */}
                             <RecommendedBooks
                                 categories={categories}
                                 title={"Похожие книги"} />
