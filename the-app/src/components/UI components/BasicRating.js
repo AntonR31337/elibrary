@@ -3,12 +3,17 @@ import Box from '@mui/material/Box';
 import Rating from '@mui/material/Rating';
 import Typography from '@mui/material/Typography';
 import { useNavigate } from 'react-router-dom';
+import { toAddRating } from '../../store/actions/getListOfBooksActions';
+import { useDispatch } from 'react-redux';
 
 export default function BasicRating({ authed, book }) {
 
-  const { averageRating, ratingsCount = 0 } = book.volumeInfo
+  const dispatch = useDispatch();
+
+  const { averageRating, ratingsCount = 0 } = book.volumeInfo;
 
   const [value, setValue] = React.useState(averageRating);
+
 
   const navigate = useNavigate();
 
@@ -28,7 +33,7 @@ export default function BasicRating({ authed, book }) {
             return
           }
           // setValue(newValue);
-          console.log(book);
+          dispatch(toAddRating(newValue, book ));
         }}
       />
     </Box>
