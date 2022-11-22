@@ -1,11 +1,11 @@
-import { BOOKS_SEARCH, BOOKS_SORT, CURRENT_BOOK, TEXT_SEARCH, TOTAL_BOOK_QUANTITY, } from "../types/types";
+import { BOOKS_SEARCH, BOOKS_SORT, CURRENT_BOOK, TEXT_SEARCH, TOTAL_BOOK_QUANTITY, BOOK_RATING } from "../types/types";
 
 import { setLoading, setError, setSuccess } from "./commonActions";
 import { maxResults } from "../../helpers/vars";
 import { bookAdapter, missingData } from "../../helpers/bookRequest";
 import { postData } from "../../helpers/bookRequest";
 import { serverhost } from "../../helpers/vars"
- 
+
 
 export const textSearch = (data) => ({
     type: TEXT_SEARCH,
@@ -20,7 +20,10 @@ export const currentBook = (data) => ({
     type: CURRENT_BOOK,
     data
 })
-
+export const addRating = (data) => ({
+    type: BOOK_RATING,
+    data
+})
 export const sortBooksByTitle = (data) => ({
     type: BOOKS_SORT,
     data
@@ -106,4 +109,30 @@ export const booksSortBySortMethod = (searchName, books, totalBookQuantity) => (
     // dispatch(bookSearch(missingData(books)));
     dispatch(textSearch(searchName));
     dispatch(setSuccess());
+}
+export const toAddRating = (newValue, book) => (dispatch) => {
+
+    const oldRating = book.volumeInfo.averageRating ? undefined : 0;
+    let oldCounts = book.volumeInfo.ratingsCount;
+    const nweRating = (oldRating * oldCounts + newValue) / ++oldCounts;
+
+    if (book.volumeInfo.ratingsCount) {
+
+        const oldRating = book.volumeInfo.averageRating;
+        let oldCounts = book.volumeInfo.ratingsCount;
+        const nweRating = (oldRating * oldCounts + newValue) / ++oldCounts;
+
+        book.volumeInfo.ratingsCount++;
+        book.volumeInfo.averageRating = nweRating;
+
+    } else {
+
+        const oldRating = 0;
+        let oldCounts = 0;
+        const nweRating = (oldRating * oldCounts + newValue) / ++oldCounts;
+
+        book.volumeInfo.ratingsCount = 1;
+        book.volumeInfo.averageRating = nweRating;
+    }
+    dispatch(addRating(book));
 }
