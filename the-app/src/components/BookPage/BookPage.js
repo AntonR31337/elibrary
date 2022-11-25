@@ -45,7 +45,7 @@ export const BookPage = ({ authed }) => {
 
 
     return (
-        <div className="bookPage">
+        <main className="bookPage">
             {
                 loading === "pending"
                     ? <Loader />
@@ -53,40 +53,36 @@ export const BookPage = ({ authed }) => {
                         ? null
                         : <>
                             <div className="bookPage__wrapper">
-                                <img className="bookPage__img" src={img} alt="BookImage" />
-                                <div className="bookPage__startInfo" >
-                                    <h3 className="bookPage__startInfo-title boldText">{title ? title : "Нет информации"}</h3>
-                                    <p className="">Категория: {categories ? categories : "Нет информации"}</p>
-                                    <p className="">Авторы: {authors ? authors : "Нет информации"}</p>
-                                    <p className="">Год: {publishedDate ? publishedDate : "Нет информации"}</p>
-                                    <div>
+                                <div className="bookPage__info">
+                                    <div className="bookPage__img-wrapper">
+                                        <img className="bookPage__img" src={img} alt="BookImage" />
+                                    </div>
+                                    <div className="bookPage__content" >
+                                        <h1 className="bookPage__heading">{title ? title : "Нет информации"}</h1>
+                                        <p className="bookPage__text">Категория: {categories ? categories : "Нет информации"}</p>
+                                        <p className="bookPage__text">Авторы: {authors ? authors : "Нет информации"}</p>
+                                        <p className="bookPage__text">Год: {publishedDate ? publishedDate : "Нет информации"}</p>
                                         <BasicRating
                                             authed={authed}
                                             book={currentBook}
                                         />
-                                    </div>
-                                    <div className="book__buttons">
-                                        <FavoriteBtn authed={authed}
-                                            id={id} book={book} />
-                                        <ReadBtn book={book} />
-                                        <DownloadBtn authed={authed}
-                                            link={link} />
-                                        <BasicButton textBtn={"КУПИТЬ"} />
+                                        <div className="bookPage__buttons">
+                                            <FavoriteBtn authed={authed}
+                                                id={id} book={book} />
+                                            <ReadBtn book={book} />
+                                            <DownloadBtn authed={authed}
+                                                link={link} />
+                                            <BasicButton textBtn={"КУПИТЬ"} />
+                                        </div>
                                     </div>
                                 </div>
-
+                                <BasicTabs data={description} />
+                                <RecommendedBooks
+                                    categories={categories}
+                                    title={"Похожие книги"} />
                             </div>
-                            <BasicTabs data={description} />
-                            {/* <div className="bookPage__description">
-                                <h4 className="bookPage__description-title genre__heading">О книге:</h4>
-                                <p className="">{description ? description : "Нет информации"}</p>
-                            </div> */}
-                            <RecommendedBooks
-                                categories={categories}
-                                title={"Похожие книги"} />
-
                         </>
             }
-        </div >
+        </main >
     )
 }
