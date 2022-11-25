@@ -19,7 +19,8 @@
         gap: 20px;
     }
     &__left{
-        list-style: none;
+        list-style: none;       
+        margin-right: 10px;
     }
     &__heading{
         @include font($font-2,700,$p1-fs);
@@ -41,9 +42,6 @@
         padding: 10px 5px;
         &__logo,&__genre {
             display: none;
-        }
-        &__left{
-            margin-right: 10px;
         }
         &__right{
            gap:5px;
