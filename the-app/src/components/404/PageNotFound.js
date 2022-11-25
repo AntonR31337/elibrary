@@ -10,7 +10,7 @@ const PageNotFound = () => {
     useEffect(() => {
         let timeout = setTimeout(() => {
             navigate("/")
-        }, 50000)
+        }, 5000)
         return () => {
             clearTimeout(timeout);
         }

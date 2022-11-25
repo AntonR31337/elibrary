@@ -37,10 +37,16 @@
 }
 
 @media (max-width:550px) {
-    .header__heading{
-        display: none;
-    }
-    .header__genre{
-        margin-right: 20px;
+    .header{
+        padding: 10px 5px;
+        &__logo,&__genre {
+            display: none;
+        }
+        &__left{
+            margin-right: 10px;
+        }
+        &__right{
+           gap:5px;
+        }
     }
 }
