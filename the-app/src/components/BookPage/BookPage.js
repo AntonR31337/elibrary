@@ -46,13 +46,14 @@ export const BookPage = ({ authed }) => {
 
     return (
         <main className="bookPage">
-            {
-                loading === "pending"
-                    ? <Loader />
-                    : !book
-                        ? null
-                        : <>
-                            <div className="bookPage__wrapper">
+            <div className="bookPage__wrapper">
+                {
+                    loading === "pending"
+                        ? <Loader />
+                        : !book
+                            ? null
+                            : <>
+
                                 <div className="bookPage__info">
                                     <div className="bookPage__img-wrapper">
                                         <img className="bookPage__img" src={img} alt="BookImage" />
@@ -80,9 +81,10 @@ export const BookPage = ({ authed }) => {
                                 <RecommendedBooks
                                     categories={categories}
                                     title={"Похожие книги"} />
-                            </div>
-                        </>
-            }
+
+                            </>
+                }
+            </div>
         </main >
     )
 }
