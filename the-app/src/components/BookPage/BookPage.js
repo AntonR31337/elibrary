@@ -35,8 +35,8 @@ export const BookPage = ({ authed }) => {
         img = book.volumeInfo.imageLinks?.thumbnail || sample;
         id = book.id;
         link = book.accessInfo.epub?.downloadLink;
-        averageRating = book.volumeInfo.averageRating;
-        ratingsCount = book.volumeInfo.ratingsCount
+        averageRating = currentBook.volumeInfo.averageRating;
+        ratingsCount = currentBook.volumeInfo.ratingsCount
     }
 
     useEffect(() => {
@@ -65,7 +65,8 @@ export const BookPage = ({ authed }) => {
                                         <p className="bookPage__text">Год: {publishedDate ? publishedDate : "Нет информации"}</p>
                                         <BasicRating
                                             authed={authed}
-                                            book={currentBook}
+                                            averageRating={averageRating}
+                                            ratingsCount={ratingsCount}
                                         />
                                         <div className="bookPage__buttons">
                                             <FavoriteBtn authed={authed}
@@ -78,9 +79,9 @@ export const BookPage = ({ authed }) => {
                                     </div>
                                 </div>
                                 <BasicTabs data={description} />
-                                <RecommendedBooks
+                                {/* <RecommendedBooks
                                     categories={categories}
-                                    title={"Похожие книги"} />
+                                    title={"Похожие книги"} /> */}
 
                             </>
                 }

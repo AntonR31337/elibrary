@@ -99,29 +99,15 @@ export const booksSortBySortMethod = (searchName, books, totalBookQuantity) => (
     dispatch(textSearch(searchName));
     dispatch(setSuccess());
 }
-export const toAddRating = (newValue, book) => (dispatch) => {
+export const toAddRating = (newValue, averageRating = 0, ratingsCount = 0) => (dispatch) => {
 
-    const oldRating = book.volumeInfo.averageRating ? undefined : 0;
-    let oldCounts = book.volumeInfo.ratingsCount;
-    const nweRating = (oldRating * oldCounts + newValue) / ++oldCounts;
+    const oldRating = averageRating;
+    let oldCounts = ratingsCount;
 
-    if (book.volumeInfo.ratingsCount) {
+    const nweRating = {
+        averageRating: ((oldRating * oldCounts + newValue) / ++oldCounts).toFixed(1),
+        ratingsCount: oldCounts
+    };
 
-        const oldRating = book.volumeInfo.averageRating;
-        let oldCounts = book.volumeInfo.ratingsCount;
-        const nweRating = (oldRating * oldCounts + newValue) / ++oldCounts;
-
-        book.volumeInfo.ratingsCount++;
-        book.volumeInfo.averageRating = nweRating;
-
-    } else {
-
-        const oldRating = 0;
-        let oldCounts = 0;
-        const nweRating = (oldRating * oldCounts + newValue) / ++oldCounts;
-
-        book.volumeInfo.ratingsCount = 1;
-        book.volumeInfo.averageRating = nweRating;
-    }
-    dispatch(addRating(book));
+    dispatch(addRating(nweRating));
 }
