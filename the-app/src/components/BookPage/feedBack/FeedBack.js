@@ -21,7 +21,7 @@ export default function FeedBack({ data }) {
             <Card variant="outlined">
                 <CardContent sx={{ textAlign: "left" }}>
                     <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-                        {data.user}
+                        {data.user} {data.date}
                     </Typography>
                     {/* <Typography sx={{ mb: 1.5 }} color="text.secondary">
                         Оценил книгу:

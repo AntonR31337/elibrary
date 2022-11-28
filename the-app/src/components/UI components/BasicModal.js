@@ -31,7 +31,7 @@ export default function BasicModal({ open, setOpen }) {
             dispatch(toFeedBack({
                 text: feedBack,
                 user: auth.currentUser.displayName,
-                date: new Date()
+                date: (new Date()).toISOString().slice(0, 10).replace(/-/g, ".")
             }))
         }
         setFeedBack('');
@@ -42,7 +42,6 @@ export default function BasicModal({ open, setOpen }) {
 
     return (
         <div>
-            {/* <Button onClick={handleOpen}>Open modal</Button> */}
             <Modal
                 open={open}
                 onClose={handleClose}
