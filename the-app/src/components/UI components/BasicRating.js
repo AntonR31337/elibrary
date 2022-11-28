@@ -5,17 +5,15 @@ import Typography from '@mui/material/Typography';
 import { useNavigate } from 'react-router-dom';
 import { toAddRating } from '../../store/actions/getListOfBooksActions';
 import { useDispatch } from 'react-redux';
+import BasicModal from '../UI components/BasicModal';
 
-export default function BasicRating({ authed, book }) {
+export default function BasicRating({ authed, averageRating = 0, ratingsCount }) {
 
   const dispatch = useDispatch();
-
-  const { averageRating, ratingsCount = 0 } = book.volumeInfo;
-
-  const [value, setValue] = React.useState(averageRating);
-
-
   const navigate = useNavigate();
+
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
 
   return (
     <Box
@@ -23,18 +21,25 @@ export default function BasicRating({ authed, book }) {
         '& > legend': { mt: 2 },
       }}
     >
-      <Typography component="legend">Рейтинг ({ratingsCount})</Typography>
+      <Typography component="legend">Рейтинг ({averageRating})</Typography>
       <Rating
+        key="rating"
         name="simple-controlled"
-        value={value}
+        disabled={!authed}
+        defaultValue={averageRating || 0}
+        value={averageRating}
         onChange={(event, newValue) => {
           if (!authed) {
             navigate("/login");
             return
           }
-          // setValue(newValue);
-          dispatch(toAddRating(newValue, book ));
+          dispatch(toAddRating(newValue, averageRating, ratingsCount));
+          handleOpen();
         }}
+      />
+      <BasicModal
+        open={open}
+        setOpen={setOpen}
       />
     </Box>
   );

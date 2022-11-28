@@ -2,7 +2,7 @@ import BasicRating from '../UI components/BasicRating';
 import BasicButton from "../UI components/BasicButton";
 import { useNavigate, useParams } from "react-router-dom";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
-import { getCurrentBook } from "../../store/selectors/getListOfBooksSelectors";
+import { getCurrentBook, getFeedBaks } from "../../store/selectors/getListOfBooksSelectors";
 import ReadBtn from './readBtn/ReadBtn';
 import FavoriteBtn from './favoriteBtn/FavoriteBtn';
 import RecommendedBooks from "../recommendedBooks/recommendedBooks";
@@ -22,6 +22,7 @@ export const BookPage = ({ authed }) => {
     const error = useSelector(getError);
     const loading = useSelector(getLoading);
     const currentBook = useSelector(getCurrentBook, shallowEqual);
+    const feedBack = useSelector(getFeedBaks, shallowEqual);
 
     let book, title, categories, authors, publishedDate, description, img, id, link, averageRating, ratingsCount;
     currentBook.id === params.id ? book = currentBook : dispatch(currentBookRequest(params.id))
@@ -35,14 +36,13 @@ export const BookPage = ({ authed }) => {
         img = book.volumeInfo.imageLinks?.thumbnail || sample;
         id = book.id;
         link = book.accessInfo.epub?.downloadLink;
-        averageRating = book.volumeInfo.averageRating;
-        ratingsCount = book.volumeInfo.ratingsCount
+        averageRating = currentBook.volumeInfo.averageRating;
+        ratingsCount = currentBook.volumeInfo.ratingsCount;
     }
 
     useEffect(() => {
         if (error) navigate(`/404`)
     }, [error])
-
 
     return (
         <main className="bookPage">
@@ -65,7 +65,9 @@ export const BookPage = ({ authed }) => {
                                         <p className="bookPage__text">Год: {publishedDate ? publishedDate : "Нет информации"}</p>
                                         <BasicRating
                                             authed={authed}
-                                            book={currentBook}
+                                            averageRating={averageRating}
+                                            ratingsCount={ratingsCount}
+                                            feedBack={feedBack}
                                         />
                                         <div className="bookPage__buttons">
                                             <FavoriteBtn authed={authed}
@@ -77,10 +79,13 @@ export const BookPage = ({ authed }) => {
                                         </div>
                                     </div>
                                 </div>
-                                <BasicTabs data={description} />
-                                <RecommendedBooks
+                                <BasicTabs 
+                                    data={description}
+                                    feedBack={feedBack}
+                                />
+                                {/* <RecommendedBooks
                                     categories={categories}
-                                    title={"Похожие книги"} />
+                                    title={"Похожие книги"} /> */}
 
                             </>
                 }
