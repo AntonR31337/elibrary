@@ -1,4 +1,4 @@
-import { BOOKS_SEARCH, BOOKS_SORT, CURRENT_BOOK, TEXT_SEARCH, TOTAL_BOOK_QUANTITY, BOOK_RATING } from "../types/types";
+import { BOOKS_SEARCH, BOOKS_SORT, CURRENT_BOOK, TEXT_SEARCH, TOTAL_BOOK_QUANTITY, BOOK_RATING, BOOK_FEEDBACK } from "../types/types";
 
 import { setLoading, setError, setSuccess } from "./commonActions";
 import { maxResults } from "../../helpers/vars";
@@ -23,7 +23,11 @@ export const currentBook = (data) => ({
 export const addRating = (data) => ({
     type: BOOK_RATING,
     data
-})
+});
+export const setFeedBack = (data) => ({
+    type: BOOK_FEEDBACK,
+    data
+});
 export const sortBooksByTitle = (data) => ({
     type: BOOKS_SORT,
     data
@@ -110,4 +114,7 @@ export const toAddRating = (newValue, averageRating = 0, ratingsCount = 0) => (d
     };
 
     dispatch(addRating(nweRating));
+}
+export const toFeedBack = (newFeedBack) => (dispatch) => {
+    dispatch(setFeedBack(newFeedBack))
 }

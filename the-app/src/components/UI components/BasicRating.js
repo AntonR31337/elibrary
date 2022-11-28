@@ -5,17 +5,15 @@ import Typography from '@mui/material/Typography';
 import { useNavigate } from 'react-router-dom';
 import { toAddRating } from '../../store/actions/getListOfBooksActions';
 import { useDispatch } from 'react-redux';
+import BasicModal from '../UI components/BasicModal';
 
 export default function BasicRating({ authed, averageRating = 0, ratingsCount }) {
 
   const dispatch = useDispatch();
-
-  const [defaultValue, setDefaultValue] = React.useState();
-  if (averageRating !== undefined && defaultValue == undefined) {
-    setDefaultValue(averageRating);
-  }
-
   const navigate = useNavigate();
+
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
 
   return (
     <Box
@@ -28,7 +26,7 @@ export default function BasicRating({ authed, averageRating = 0, ratingsCount })
         key="rating"
         name="simple-controlled"
         disabled={!authed}
-        defaultValue={defaultValue || 0}
+        defaultValue={averageRating || 0}
         value={averageRating}
         onChange={(event, newValue) => {
           if (!authed) {
@@ -36,7 +34,12 @@ export default function BasicRating({ authed, averageRating = 0, ratingsCount })
             return
           }
           dispatch(toAddRating(newValue, averageRating, ratingsCount));
+          handleOpen();
         }}
+      />
+      <BasicModal
+        open={open}
+        setOpen={setOpen}
       />
     </Box>
   );

@@ -5,7 +5,8 @@ import {
     CURRENT_BOOK,
     TEXT_SEARCH,
     TOTAL_BOOK_QUANTITY,
-    BOOK_RATING
+    BOOK_RATING,
+    BOOK_FEEDBACK
 } from "../types/types";
 
 const initialState = {
@@ -16,6 +17,7 @@ const initialState = {
     ],
     books: [],
     currentBook: {},
+    feedBack: [],
     searchParam: '',
     totalBookQuantity: 0,
 }
@@ -54,6 +56,11 @@ export const getListOfBooksReducer = (state = initialState, { type, data }) => {
                     ...state.currentBook,
                     volumeInfo: { ...state.currentBook.volumeInfo, ...data },
                 }
+            }
+        case BOOK_FEEDBACK:
+            return {
+                ...state,
+                feedBack: [...state.feedBack, data]
             }
         default:
             return state

@@ -4,6 +4,7 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
+import FeedBack from '../BookPage/feedBack/FeedBack';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -38,7 +39,7 @@ function a11yProps(index) {
   };
 }
 
-export default function BasicTabs({ data }) {
+export default function BasicTabs({ data, feedBack }) {
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event, newValue) => {
@@ -58,7 +59,7 @@ export default function BasicTabs({ data }) {
         {data ? data : "Нет информации"}
       </TabPanel>
       <TabPanel value={value} index={1}>
-        Тут зарегистрированные пользователи смогут оставлять свои рецензии
+        {feedBack.map((el) => (<FeedBack data={el} />))}
       </TabPanel>
       {/* <TabPanel value={value} index={2}>
         Item Three
