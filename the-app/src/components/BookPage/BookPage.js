@@ -79,13 +79,13 @@ export const BookPage = ({ authed }) => {
                                         </div>
                                     </div>
                                 </div>
-                                <BasicTabs 
+                                <BasicTabs
                                     data={description}
                                     feedBack={feedBack}
                                 />
-                                {/* <RecommendedBooks
+                                <RecommendedBooks
                                     categories={categories}
-                                    title={"Похожие книги"} /> */}
+                                    title={"Похожие книги"} />
 
                             </>
                 }

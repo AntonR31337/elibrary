@@ -7,6 +7,7 @@ import TextField from '@mui/material/TextField';
 import { auth } from '../../firebase/firebase';
 import { useDispatch } from 'react-redux';
 import { toFeedBack } from '../../store/actions/getListOfBooksActions';
+import { useParams } from 'react-router-dom';
 
 const style = {
     position: 'absolute',
@@ -23,12 +24,14 @@ const style = {
 
 export default function BasicModal({ open, setOpen }) {
 
+    const param = useParams();
+
     const handleClose = () => {
 
         dispatch(toFeedBack({
             text: feedBack,
             user: auth.currentUser.displayName,
-            date: new Date()
+            date: (new Date()).toISOString().slice(0, 10).replace(/-/g, ".")
         }))
         setFeedBack('');
         setOpen(false)
@@ -39,7 +42,6 @@ export default function BasicModal({ open, setOpen }) {
 
     return (
         <div>
-            {/* <Button onClick={handleOpen}>Open modal</Button> */}
             <Modal
                 open={open}
                 onClose={handleClose}

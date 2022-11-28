@@ -109,7 +109,7 @@ export const toAddRating = (newValue, averageRating = 0, ratingsCount = 0) => (d
     let oldCounts = ratingsCount;
 
     const nweRating = {
-        averageRating: ((oldRating * oldCounts + newValue) / ++oldCounts).toFixed(1),
+        averageRating: +((oldRating * oldCounts + newValue) / ++oldCounts).toFixed(1),
         ratingsCount: oldCounts
     };
 

@@ -5,6 +5,7 @@ import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import FeedBack from '../BookPage/feedBack/FeedBack';
+import uniqid from "uniqid";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -59,7 +60,7 @@ export default function BasicTabs({ data, feedBack }) {
         {data ? data : "Нет информации"}
       </TabPanel>
       <TabPanel value={value} index={1}>
-        {feedBack.map((el) => (<FeedBack data={el} />))}
+        {feedBack.map((el) => (<FeedBack key={uniqid()} data={el} />))}
       </TabPanel>
       {/* <TabPanel value={value} index={2}>
         Item Three
