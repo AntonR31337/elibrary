@@ -7,14 +7,14 @@ import TextField from '@mui/material/TextField';
 import { auth } from '../../firebase/firebase';
 import { useDispatch } from 'react-redux';
 import { toFeedBack } from '../../store/actions/getListOfBooksActions';
-import { useParams } from 'react-router-dom';
+import { terminate } from 'firebase/firestore';
 
 const style = {
     position: 'absolute',
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: 500,
+    width: 365,
     bgcolor: 'background.paper',
     border: '3px solid #FFCA42',
     boxShadow: 24,
@@ -24,19 +24,19 @@ const style = {
 
 export default function BasicModal({ open, setOpen }) {
 
-    const param = useParams();
+    const [feedBack, setFeedBack] = React.useState("");
 
     const handleClose = () => {
-
-        dispatch(toFeedBack({
-            text: feedBack,
-            user: auth.currentUser.displayName,
-            date: (new Date()).toISOString().slice(0, 10).replace(/-/g, ".")
-        }))
+        if (feedBack.trim()) {
+            dispatch(toFeedBack({
+                text: feedBack,
+                user: auth.currentUser.displayName,
+                date: (new Date()).toISOString().slice(0, 10).replace(/-/g, ".")
+            }))
+        }
         setFeedBack('');
         setOpen(false)
     };
-    const [feedBack, setFeedBack] = React.useState("");
 
     const dispatch = useDispatch();
 
