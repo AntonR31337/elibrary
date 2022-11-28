@@ -7,6 +7,7 @@ import TextField from '@mui/material/TextField';
 import { auth } from '../../firebase/firebase';
 import { useDispatch } from 'react-redux';
 import { toFeedBack } from '../../store/actions/getListOfBooksActions';
+import { terminate } from 'firebase/firestore';
 
 const style = {
     position: 'absolute',
@@ -23,17 +24,19 @@ const style = {
 
 export default function BasicModal({ open, setOpen }) {
 
-    const handleClose = () => {
+    const [feedBack, setFeedBack] = React.useState("");
 
-        dispatch(toFeedBack({
-            text: feedBack,
-            user: auth.currentUser.displayName,
-            date: new Date()
-        }))
+    const handleClose = () => {
+        if (feedBack.trim()) {
+            dispatch(toFeedBack({
+                text: feedBack,
+                user: auth.currentUser.displayName,
+                date: new Date()
+            }))
+        }
         setFeedBack('');
         setOpen(false)
     };
-    const [feedBack, setFeedBack] = React.useState("");
 
     const dispatch = useDispatch();
 
